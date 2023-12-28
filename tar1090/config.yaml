@@ -1,0 +1,33 @@
+name: Tar 1090
+version: 0.0.7
+slug: tar1090
+description: Plots aircraft
+stage: experimental
+startup: application
+init: false
+
+arch:
+  - armhf
+  - armv7
+  - aarch64
+  - amd64
+  - i386
+
+panel_icon: mdi:cloud
+panel_admin: false
+
+ingress: true
+ports:
+  80/tcp: 8899
+ports_description:
+  80/tcp: Web interface (Not required for Ingress)
+
+usb: true
+
+map:
+  - config:rw
+
+options:
+  message: "tar 1090 Aircraft Plotter..."
+schema:
+  message: "str?"
