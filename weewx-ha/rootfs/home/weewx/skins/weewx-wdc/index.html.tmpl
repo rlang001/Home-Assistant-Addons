@@ -1,0 +1,86 @@
+<!--prettier-ignore-->
+#errorCatcher Echo
+#encoding UTF-8
+#attr $context = 'day'
+#attr $daily_archive = False
+#attr $use_parameter_month = False
+#attr $use_parameter_year = False
+
+<!DOCTYPE html>
+<html lang="$lang">
+  <head>
+    #include "includes/html-head.inc"
+    <title>$station.location - $gettext("Current Weather Conditions")</title>
+    #if 'refresh_interval' in $Extras
+    <meta http-equiv="refresh" content="$Extras.refresh_interval" />
+    #end if
+  </head>
+
+  <body class="theme-$DisplayOptions.get('layout', 'alternative')">
+    #include "includes/ui-shell.inc"
+
+    <main>
+      <section class="main bx--content">
+        <div class="bx--grid bx--grid--full-width">
+          <div class="bx--row">
+            <header class="bx--col page-header">
+              <h1>$gettext("Current Weather Conditions")</h1>
+              <h2>$current.dateTime</h2>
+              <!--prettier-ignore-->
+              #if $to_bool($Extras['mqtt']['mqtt_websockets_enabled'])
+              #if $DisplayOptions.get('layout', 'alternative') == 'alternative'
+                #set $mqtt_notfication_classes = "bx--col-sm-4 bx--col-md-8 bx--col-lg-6 bx--col-xlg-6 bx--col-max-6"
+              #else
+                #set $mqtt_notfication_classes = "bx--col-sm-4 bx--col-md-8 bx--col-lg-4 bx--col-xlg-4 bx--col-max-4"
+              #end if
+              <script
+                type="module"
+                src="https://1.www.s81c.com/common/carbon/web-components/version/v1.25.0/notification.min.js"
+              ></script>
+              <div
+                class="bx--row"
+                id="notification-container-mqtt"
+                style="display: none"
+              >
+                <div class="$mqtt_notfication_classes">
+                  <bx-inline-notification
+                    style="
+                      min-width: auto;
+                      max-width: none;
+                      margin-bottom: 0.5rem;
+                    "
+                    title="Connected to live weather station."
+                    subtitle=""
+                  >
+                  </bx-inline-notification>
+                </div>
+              </div>
+              #end if
+            </header>
+          </div>
+
+          <!--prettier-ignore-->
+          #if $DisplayOptions.get('layout', 'alternative') == 'alternative'
+            #include 'includes/body-alternative.inc'
+          #else
+            #include 'includes/body-classic.inc'
+          #end if
+        </div>
+      </section>
+    </main>
+
+    #include "includes/footer.inc"
+
+    <script src="$get_base_path(path='dist/main.js')" defer></script>
+    #if $to_bool($Extras['mqtt']['mqtt_websockets_enabled'])
+    <!--prettier-ignore-->
+    <script>
+      var mqtt_host = "$Extras['mqtt']['mqtt_websockets_host']";
+      var mqtt_port = "$Extras['mqtt']['mqtt_websockets_port']";
+      var mqtt_topic = "$Extras['mqtt']['mqtt_websockets_topic']";
+      var mqtt_ssl = "$Extras['mqtt']['mqtt_websockets_ssl']";
+    </script>
+    <script src="$get_base_path(path='dist/live-updates.js')" defer></script>
+    #end if
+  </body>
+</html>

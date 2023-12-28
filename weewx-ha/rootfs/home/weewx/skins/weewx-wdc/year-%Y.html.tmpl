@@ -1,0 +1,62 @@
+#errorCatcher Echo
+
+<!--prettier-ignore-->
+#encoding UTF-8
+#attr $context = 'year'
+#attr $use_parameter_year = True
+#attr $use_parameter_month = False
+
+<!DOCTYPE html>
+<html lang="$lang">
+  <head>
+    #include "includes/html-head.inc"
+    <title>$station.location - $gettext("Yearly Weather Conditions")</title>
+  </head>
+
+  <body class="theme-$DisplayOptions.get('layout', 'alternative')">
+    #include "includes/ui-shell.inc"
+
+    <main>
+      <section class="main bx--content">
+        <div class="bx--grid bx--grid--full-width">
+          <div class="bx--row">
+            <header class="bx--col page-header">
+              <h1>$gettext("Yearly Weather Conditions")</h1>
+              <h2>$year_name</h2>
+              <h3>
+                <a
+                  class="noaa-report-link"
+                  target="_blank"
+                  href="NOAA/NOAA-${year.start.format('%Y')}.txt"
+                >
+                  NOAA Report
+                </a>
+              </h3>
+            </header>
+          </div>
+
+          <!--prettier-ignore-->
+          #if len($DisplayOptions.get('climatological_days', [])) > 0
+          <div class="bx--row">
+            <div class="bx--col">
+              <!--prettier-ignore-->
+              #include "includes/climatological-days.inc"
+            </div>
+          </div>
+          #end if
+
+          <!--prettier-ignore-->
+          #if $DisplayOptions.get('layout', 'alternative') == 'alternative'
+            #include 'includes/body-alternative.inc'
+          #else
+            #include 'includes/body-classic.inc'
+          #end if
+        </div>
+      </section>
+    </main>
+
+    #include "includes/footer.inc"
+
+    <script src="$get_base_path(path='dist/main.js')" defer></script>
+  </body>
+</html>
