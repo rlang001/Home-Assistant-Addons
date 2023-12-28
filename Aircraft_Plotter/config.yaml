@@ -1,0 +1,33 @@
+name: Aircraft Plotter
+version: 0.0.29c
+slug: aircraft_plotter
+description: Plots aircraft
+stage: experimental
+startup: application
+init: false
+
+arch:
+  - armhf
+  - armv7
+  - aarch64
+  - amd64
+  - i386
+
+panel_icon: mdi:cloud
+panel_admin: false
+
+ingress: true
+ports:
+  80/tcp: 80
+ports_description:
+  80/tcp: Web interface (Not required for Ingress)
+
+usb: true
+
+map:
+  - config:rw
+
+options:
+  message: "Aircraft Plotter..."
+schema:
+  message: "str?"
