@@ -1,0 +1,42 @@
+name: webSDR
+version: 0.0.01
+slug: websdr
+description: websdr
+stage: experimental
+startup: application
+init: false
+
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+  - i386
+
+panel_icon: mdi:radio-tower
+panel_admin: false
+
+ingress: false
+ports:
+  80/tcp: 80
+ports_description:
+  80/tcp: Web Server
+
+usb: true
+
+#map:
+#  - config:rw
+
+options:
+  device: 0
+  frequency: 100000000
+  gain: 0
+  samplerate: 2048000
+  buffers: 15
+
+schema:
+  device: int(0,3)
+  frequency: int(500000,1700000000)
+  gain: int(0,100)
+  samplerate: int(250000,2400000)
+  buffers: int(0,10000)

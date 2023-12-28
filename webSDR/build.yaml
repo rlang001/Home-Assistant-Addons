@@ -1,0 +1,22 @@
+build_from:
+  aarch64: ghcr.io/hassio-addons/debian-base/aarch64:6.2.3
+  amd64: ghcr.io/hassio-addons/debian-base/amd64:6.2.3
+  armhf: ghcr.io/hassio-addons/debian-base/armhf:6.2.3
+  armv7: ghcr.io/hassio-addons/debian-base/armv7:6.2.3
+  i386: ghcr.io/hassio-addons/debian-base/i386:6.2.3
+
+#build_from:
+#  aarch64: ghcr.io/hassio-addons/debian-base/aarch64:stable
+#  amd64: ghcr.io/hassio-addons/debiab-base/amd64:stable
+#  armhf: ghcr.io/hassio-addons/debian-base/armhf:stable
+#  armv7: ghcr.io/hassio-addons/debian-base/armv7:stable
+# i386: ghcr.io/hassio-addons/debian-base/i386:stable
+
+labels:
+  org.opencontainers.image.title: "Home Assistant Add-on: WebSDR"
+  org.opencontainers.image.description: "webSDR"
+  org.opencontainers.image.source: https://
+  org.opencontainers.image.licenses: Apache License 2.0
+
+args:
+  TEMPIO_VERSION: 2021.09.0
