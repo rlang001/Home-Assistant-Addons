@@ -1,0 +1,70 @@
+# Required configuration options
+name: NOAA
+version: 0.0.4a
+slug: noaa
+description: NOAA HA Add-on
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+  - i386
+
+# Optional configuration options
+# machine:
+# url:
+
+startup: application
+
+# webui:
+boot: auto
+
+# ports:
+# 80/tcp: 80
+# ports_description:
+# 80/tcp: Web interface (Not required for Ingress)
+
+#host_network: false
+#host_ipc: false
+#host_dbus: false
+#host_pid: false
+#host_uts: false
+# devices:
+# homeassistant:
+#hassio_role: false
+#hassio_api: false
+#homeassistant_api: false
+#docker_api: false
+# privileged:
+#full_access: false
+#apparmor: false
+
+map:
+  # - config:rw
+  - share:rw
+
+# environment:
+#audio: false
+#video: false
+#gpio: false
+#usb: false
+#uart: false
+#udev: false
+#devicetree: false
+#kernel_modules: false
+#stdin: false
+
+stage: experimental
+
+init: false
+#panel_icon: mdi:cloud
+#panel_admin: false
+#ingress: false
+
+#services:
+#  - mqtt:want
+
+#options:
+#  "maintenance_mode": false
+#schema:
+#  "maintenance_mode": "bool?"
