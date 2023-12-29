@@ -1,5 +1,5 @@
 name: OpenWebRX
-version: 0.0.23
+version: 0.0.24
 slug: openwebrx
 description: OpenWebRX
 stage: experimental
@@ -30,10 +30,8 @@ map:
   - config:rw
 
 options:
-  logins:
-    - username: beer
-      password: "123456"
+  username: ""
+  password: ""
 schema:
-  logins:
-    - username: "str"
-      password: "str"
+  username: "str"
+  password: "str"
