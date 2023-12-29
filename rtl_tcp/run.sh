@@ -2,6 +2,9 @@
 export PATH="$PATH:/usr/local/bin"
 CONFIG_PATH=/data/options.json
 
+export LD_LIBRARY_PATH=/usr/local/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+
+
 IP="$(hostname -I)"
 DEVICE="$(bashio::config 'device')"
 FREQUENCY="$(bashio::config 'frequency')"
