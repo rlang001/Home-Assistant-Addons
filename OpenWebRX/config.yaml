@@ -30,6 +30,10 @@ map:
   - config:rw
 
 options:
-  message: "OpenWebRX"
+  logins:
+    - username: beer
+      password: "123456"
 schema:
-  message: "str?"
+  logins:
+    - username: "str"
+      password: "str"
