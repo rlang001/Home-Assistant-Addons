@@ -30,6 +30,6 @@ ln -s /config/openwebrx/bookmarks.json /var/lib/openwebrx/bookmarks.json
 ln -s /config/openwebrx/users.json /var/lib/openwebrx/users.json
 
 # Start openwebrx
-# openwebrx
+openwebrx
 
-sleep infinity
+#sleep infinity
