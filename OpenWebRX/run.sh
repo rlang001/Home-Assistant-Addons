@@ -37,9 +37,10 @@ if [ -z "$(ls -A /config/openwebrx/bookmarks.json 2>/dev/null)" ]; then
     cp -u /configs/bookmarks.json /config/openwebrx/bookmarks.json
 fi
 
-if [ -z "$(ls -A /config/openwebrx/bookmarks.json 2>/dev/null)" ]; then
+if [ -z "$(ls -A /config/openwebrx/users.json 2>/dev/null)" ]; then
     cp -u /configs/users.json /config/openwebrx/users.json
 fi
+
 
 # Remove the default settings file
 rm /var/lib/openwebrx/settings.json
