@@ -11,7 +11,7 @@ RUN apt-get update && apt-get -y upgrade
 #########################################################
 # Install prerequisites
 #########################################################
-RUN apt-get install -y wget gpg nano
+RUN apt-get install -y wget gpg nano apt-transport-https
 
 RUN wget -O - https://repo.openwebrx.de/debian/key.gpg.txt | gpg --dearmor -o /usr/share/keyrings/openwebrx.gpg
 RUN echo "deb [signed-by=/usr/share/keyrings/openwebrx.gpg] https://repo.openwebrx.de/debian/ bullseye main" > /etc/apt/sources.list.d/openwebrx.list
