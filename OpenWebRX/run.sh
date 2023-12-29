@@ -51,7 +51,7 @@ ln -s /config/openwebrx/settings.json /var/lib/openwebrx/settings.json
 ln -s /config/openwebrx/bookmarks.json /var/lib/openwebrx/bookmarks.json
 ln -s /config/openwebrx/users.json /var/lib/openwebrx/users.json
 
-openwebrx admin --noninteractive --silent adduser ${USER}
+#openwebrx admin --noninteractive --silent adduser ${USER}
 
 # Start openwebrx
 openwebrx
