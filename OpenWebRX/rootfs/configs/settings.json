@@ -123,45 +123,15 @@
                 }
             },
             "enabled": false
-        },
-        "84ce9733-354e-4476-9eda-21e9687d1e04": {
-            "name": "RTL_TCP",
-            "type": "rtl_tcp",
-            "profiles": {
-                "f06d17fd-be73-4ff4-8566-4adf1af2dd74": {
-                    "name": "FM Broadcast",
-                    "center_freq": 98000000,
-                    "samp_rate": 2048000,
-                    "start_freq": 98000000,
-                    "start_mod": "nfm"
-                },
-                "70cm": {
-                    "name": "70cm Repeaters",
-                    "center_freq": 438800000,
-                    "rf_gain": 29,
-                    "samp_rate": 2400000,
-                    "start_freq": 439275000,
-                    "start_mod": "nfm"
-                },
-                "2m": {
-                    "name": "2m",
-                    "center_freq": 145000000,
-                    "rf_gain": 29,
-                    "samp_rate": 2048000,
-                    "start_freq": 145725000,
-                    "start_mod": "nfm"
-                }
-            },
-            "remote": "192.168.10.14:1234"
         }
     },
     "receiver_name": "[Callsign]",
-    "receiver_location": "Lexington Park, MD",
+    "receiver_location": "Washington DC",
     "receiver_asl": 19,
-    "receiver_admin": "richalang@GMAIL.COM",
+    "receiver_admin": "",
     "receiver_gps": {
-        "lat": 38.22594,
-        "lon": -76.446485
+        "lat": 38.89762234300874,
+        "lon": -77.03651255632647
     },
     "photo_title": "",
     "photo_desc": "",
