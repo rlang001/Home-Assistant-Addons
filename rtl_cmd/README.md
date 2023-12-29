@@ -12,7 +12,7 @@ _rtl-cmd addon - docker container to access rtl-sdr and rtl-433_
 
 
 ## Installation
-- Repository not yet created
+- 
 
 ## Configuration
 

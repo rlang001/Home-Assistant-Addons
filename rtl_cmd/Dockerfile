@@ -6,13 +6,6 @@ ENV LANG C.UTF-8
 RUN apt-get update && apt-get -y upgrade
 
 #########################################################
-# Install prerequisites
-#########################################################
-#RUN apt-get install -y sqlite3 wget sudo \
-#      python-is-python3 python3-pip python3-configobj python3-cheetah python3-pil python3-serial python3-usb python3-ephem python3-setuptools \
-#      supervisor tzdata jq nginx 
-
-#########################################################
 # Development stuff.  Not needed for operation
 #########################################################
 #RUN apt-get install -y nano
@@ -39,14 +32,6 @@ RUN rm -fr \
 # Copy data for add-on to docker fs
 #########################################################
 COPY rootfs /
-
-#########################################################
-# Startup
-# Right now weewx is started from run.sh
-#########################################################
-#COPY weewx.debian /etc/init.d/weewx
-#RUN chmod +x /etc/init.d/weewx
-#RUN update-rc.d weewx defaults 98
 
 #########################################################
 # 
