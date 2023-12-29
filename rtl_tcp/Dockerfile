@@ -6,14 +6,15 @@ LABEL \
     io.hass.type="addon" \
     io.hass.arch="armhf|aarch64|i386|amd64"
 
-# Install requirements for add-on
-#RUN apk add --no-cache example_alpine_package
-
 # Execute during the build of the image
 ARG TEMPIO_VERSION BUILD_ARCH
 RUN \
     curl -sSLf -o /usr/bin/tempio \
     "https://github.com/home-assistant/tempio/releases/download/${TEMPIO_VERSION}/tempio_${BUILD_ARCH}"
+
+# Install requirements for add-on
+#RUN apk add --no-cache example_alpine_package
+
 
 #########################################################
 COPY rootfs /
