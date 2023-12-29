@@ -1,9 +1,9 @@
-# https://github.com/rlang001/Home-Assistant-Addons/tree/master/rtl_tcp
+# https://github.com/rlang001/Home-Assistant-Addons/rtl_tcp
 name: RTL_TCP
-version: "0.1.0"
+version: "0.1.2"
 slug: rtl_tcp
 description: Runs rtl_tcp
-url: "https://github.com/rlang001/Home-Assistant-Addons/tree/master/rtl_tcp"
+url: "https://github.com/rlang001/Home-Assistant-Addons/rtl_tcp"
 arch:
   - armhf
   - armv7
