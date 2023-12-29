@@ -32,4 +32,4 @@ ln -s /config/openwebrx/users.json /var/lib/openwebrx/users.json
 # Start openwebrx
 # openwebrx
 
-#sleep infinity
+sleep infinity
