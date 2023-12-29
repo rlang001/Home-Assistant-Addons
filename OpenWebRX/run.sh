@@ -8,9 +8,12 @@ if [ -z "$(ls -A /config/openwebrx 2>/dev/null)" ]; then
     mkdir -p /config/openwebrx
 
     bashio::log.info "Update the /config/openwebrx/weewx.conf and restart"
+    # Copy the openwebrx.conf
     cp -u /configs/openwebrx.conf /config/openwebrx/openwebrx.conf
-    #rm -f /config/openwebrx/openwebrx.conf
-    #ln -s /config/openwebrx/openwebrx.conf /etc/openwebrx/openwebrx.conf 
+    # Remove the original
+    rm -f /etc/openwebrx/openwebrx.conf
+    # Link to ours
+    ln -s /config/openwebrx/openwebrx.conf /etc/openwebrx/openwebrx.conf 
 
     # Copy the settings file if it doesn't exist or is newer
     cp -u /configs/settings.json /config/openwebrx/settings.json
