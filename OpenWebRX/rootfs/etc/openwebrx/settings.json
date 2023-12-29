@@ -1,0 +1,190 @@
+{
+    "version": 7,
+    "sdrs": {
+        "rtlsdr": {
+            "name": "RTL-SDR USB Stick",
+            "type": "rtl_sdr",
+            "device": "1",
+            "profiles": {
+                "70cm": {
+                    "name": "70cm Repeaters",
+                    "center_freq": 438800000,
+                    "rf_gain": 29,
+                    "samp_rate": 2400000,
+                    "start_freq": 439275000,
+                    "start_mod": "nfm"
+                },
+                "2m": {
+                    "name": "2m",
+                    "center_freq": 145000000,
+                    "rf_gain": 29,
+                    "samp_rate": 2048000,
+                    "start_freq": 145725000,
+                    "start_mod": "nfm"
+                },
+                "7a074d0c-e058-4a36-9093-f9216cacc2a2": {
+                    "name": "FM Broadcast",
+                    "center_freq": 98000000,
+                    "samp_rate": 2048000,
+                    "start_freq": 98000000,
+                    "start_mod": "wfm",
+                    "rf_gain": 30.0
+                }
+            },
+            "enabled": false
+        },
+        "airspy": {
+            "name": "Airspy HF+",
+            "type": "airspyhf",
+            "rf_gain": "auto",
+            "profiles": {
+                "20m": {
+                    "name": "20m",
+                    "center_freq": 14150000,
+                    "samp_rate": 384000,
+                    "start_freq": 14070000,
+                    "start_mod": "usb"
+                },
+                "30m": {
+                    "name": "30m",
+                    "center_freq": 10125000,
+                    "samp_rate": 192000,
+                    "start_freq": 10142000,
+                    "start_mod": "usb"
+                },
+                "40m": {
+                    "name": "40m",
+                    "center_freq": 7100000,
+                    "samp_rate": 256000,
+                    "start_freq": 7070000,
+                    "start_mod": "lsb"
+                },
+                "80m": {
+                    "name": "80m",
+                    "center_freq": 3650000,
+                    "samp_rate": 384000,
+                    "start_freq": 3570000,
+                    "start_mod": "lsb"
+                },
+                "49m": {
+                    "name": "49m Broadcast",
+                    "center_freq": 6050000,
+                    "samp_rate": 384000,
+                    "start_freq": 6070000,
+                    "start_mod": "am"
+                }
+            },
+            "enabled": false
+        },
+        "sdrplay": {
+            "name": "SDRPlay RSP2",
+            "type": "sdrplay",
+            "antenna": "Antenna A",
+            "profiles": {
+                "20m": {
+                    "name": "20m",
+                    "center_freq": 14150000,
+                    "rf_gain": 0,
+                    "samp_rate": 500000,
+                    "start_freq": 14070000,
+                    "start_mod": "usb"
+                },
+                "30m": {
+                    "name": "30m",
+                    "center_freq": 10125000,
+                    "rf_gain": 0,
+                    "samp_rate": 250000,
+                    "start_freq": 10142000,
+                    "start_mod": "usb"
+                },
+                "40m": {
+                    "name": "40m",
+                    "center_freq": 7100000,
+                    "rf_gain": 0,
+                    "samp_rate": 500000,
+                    "start_freq": 7070000,
+                    "start_mod": "lsb"
+                },
+                "80m": {
+                    "name": "80m",
+                    "center_freq": 3650000,
+                    "rf_gain": 0,
+                    "samp_rate": 500000,
+                    "start_freq": 3570000,
+                    "start_mod": "lsb"
+                },
+                "49m": {
+                    "name": "49m Broadcast",
+                    "center_freq": 6000000,
+                    "rf_gain": 0,
+                    "samp_rate": 500000,
+                    "start_freq": 6070000,
+                    "start_mod": "am"
+                }
+            },
+            "enabled": false
+        },
+        "84ce9733-354e-4476-9eda-21e9687d1e04": {
+            "name": "RTL_TCP",
+            "type": "rtl_tcp",
+            "profiles": {
+                "f06d17fd-be73-4ff4-8566-4adf1af2dd74": {
+                    "name": "FM Broadcast",
+                    "center_freq": 98000000,
+                    "samp_rate": 2048000,
+                    "start_freq": 98000000,
+                    "start_mod": "nfm"
+                },
+                "70cm": {
+                    "name": "70cm Repeaters",
+                    "center_freq": 438800000,
+                    "rf_gain": 29,
+                    "samp_rate": 2400000,
+                    "start_freq": 439275000,
+                    "start_mod": "nfm"
+                },
+                "2m": {
+                    "name": "2m",
+                    "center_freq": 145000000,
+                    "rf_gain": 29,
+                    "samp_rate": 2048000,
+                    "start_freq": 145725000,
+                    "start_mod": "nfm"
+                }
+            },
+            "remote": "192.168.10.14:1234"
+        }
+    },
+    "receiver_name": "[Callsign]",
+    "receiver_location": "Lexington Park, MD",
+    "receiver_asl": 19,
+    "receiver_admin": "richalang@GMAIL.COM",
+    "receiver_gps": {
+        "lat": 38.22594,
+        "lon": -76.446485
+    },
+    "photo_title": "",
+    "photo_desc": "",
+    "max_clients": 20,
+    "receiver_keys": [
+        ""
+    ],
+    "waterfall_scheme": "GoogleTurboWaterfall",
+    "fft_fps": 9,
+    "fft_size": 4096,
+    "fft_voverlap_factor": 0.3,
+    "waterfall_levels": {
+        "min": -88.0,
+        "max": -20.0
+    },
+    "waterfall_auto_levels": {
+        "min": 3.0,
+        "max": 10.0
+    },
+    "waterfall_auto_min_range": 50,
+    "audio_compression": "adpcm",
+    "fft_compression": "adpcm",
+    "tuning_precision": 2,
+    "google_maps_api_key": "",
+    "map_position_retention_time": 7200
+}
