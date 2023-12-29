@@ -4,7 +4,7 @@ FROM $BUILD_FROM
 ENV LANG C.UTF-8
 
 ENV OPENWEBRX_ADMIN_USER=ha
-ENV OPENWEBRX_ADMIN_PASSWORD=password
+ENV OPENWEBRX_ADMIN_PASSWORD=mypassword
 
 RUN apt-get update && apt-get -y upgrade
 
