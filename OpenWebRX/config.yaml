@@ -33,5 +33,5 @@ options:
   username: ""
   password: ""
 schema:
-  username: "str"
-  password: "str"
+  username: str
+  password: password

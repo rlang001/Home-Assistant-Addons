@@ -2,6 +2,11 @@
 export PATH="$PATH:/usr/local/bin"
 CONFIG_PATH=/data/options.json
 
+USER="$(bashio::config 'username')"
+PASSWORD="$(bashio::config 'password')"
+
+
+
 
 if [ -z "$(ls -A /config/openwebrx 2>/dev/null)" ]; then
     bashio::log.info "Creating default OpenWebRX configuration under /config/openwebrx"
@@ -45,6 +50,8 @@ rm /var/lib/openwebrx/users.json
 ln -s /config/openwebrx/settings.json /var/lib/openwebrx/settings.json
 ln -s /config/openwebrx/bookmarks.json /var/lib/openwebrx/bookmarks.json
 ln -s /config/openwebrx/users.json /var/lib/openwebrx/users.json
+
+exec openwebrx admin --noninteractive --silent adduser ${USER}
 
 # Start openwebrx
 openwebrx
