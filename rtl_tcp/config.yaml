@@ -1,6 +1,6 @@
 # https://github.com/rlang001/Home-Assistant-Addons/tree/master/rtl_tcp
 name: RTL_TCP
-version: "0.0.5"
+version: "0.1.0"
 slug: rtl_tcp
 description: Runs rtl_tcp
 url: "https://github.com/rlang001/Home-Assistant-Addons/tree/master/rtl_tcp"
@@ -11,10 +11,24 @@ arch:
   - amd64
   - i386
 init: false
-#map:
-#  - share:rw
+startup: application
+usb: true
+
+ports:
+  1244/tcp: 1234
+ports_description:
+  1234/tcp: RTL_TCP listen port
 
 options:
-  message: "Hello world..."
+  device: 0
+  frequency: 100000000
+  gain: 0
+  samplerate: 2048000
+  buffers: 15
+
 schema:
-  message: "str?"
+  device: int(0,3)
+  frequency: int(500000,1700000000)
+  gain: int(0,100)
+  samplerate: int(250000,2400000)
+  buffers: int(0,10000)
