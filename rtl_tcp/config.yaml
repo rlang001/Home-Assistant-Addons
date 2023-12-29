@@ -1,6 +1,6 @@
 # https://github.com/rlang001/Home-Assistant-Addons/rtl_tcp
 name: RTL_TCP
-version: "0.1.4"
+version: "0.1.5"
 slug: rtl_tcp
 description: Runs rtl_tcp
 url: "https://github.com/rlang001/Home-Assistant-Addons/rtl_tcp"
