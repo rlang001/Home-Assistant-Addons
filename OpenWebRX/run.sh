@@ -3,7 +3,7 @@ export PATH="$PATH:/usr/local/bin"
 CONFIG_PATH=/data/options.json
 
 USER="$(bashio::config 'username')"
-#PASSWORD="$(bashio::config 'password')"
+PASSWORD="$(bashio::config 'password')"
 
 
 if [ -z "$(ls -A /config/openwebrx 2>/dev/null)" ]; then
@@ -35,22 +35,23 @@ if [ -z "$(ls -A /config/openwebrx/bookmarks.json 2>/dev/null)" ]; then
     cp -u /configs/bookmarks.json /config/openwebrx/bookmarks.json
 fi
 
-#if [ -z "$(ls -A /config/openwebrx/users.json 2>/dev/null)" ]; then
-#    cp -u /var/lib/openwebrx/users.json /config/openwebrx/users.json
-#fi
+# Set the user/password
+/root/useradmin.exp ${USER} ${PASSWORD}
+
+if [ -z "$(ls -A /config/openwebrx/users.json 2>/dev/null)" ]; then
+    cp -u /var/lib/openwebrx/users.json /config/openwebrx/users.json
+fi
 
 
 # Remove the default settings file
 rm /var/lib/openwebrx/settings.json
 rm /var/lib/openwebrx/bookmarks.json
-#rm /var/lib/openwebrx/users.json
+rm /var/lib/openwebrx/users.json
 
 # Point it to ours
 ln -s /config/openwebrx/settings.json /var/lib/openwebrx/settings.json
 ln -s /config/openwebrx/bookmarks.json /var/lib/openwebrx/bookmarks.json
-#ln -s /config/openwebrx/users.json /var/lib/openwebrx/users.json
-
-#openwebrx admin --noninteractive --silent adduser ${USER}
+ln -s /config/openwebrx/users.json /var/lib/openwebrx/users.json
 
 # Start openwebrx
 openwebrx

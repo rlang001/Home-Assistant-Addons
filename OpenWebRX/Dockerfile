@@ -3,15 +3,12 @@ FROM $BUILD_FROM
 
 ENV LANG C.UTF-8
 
-ENV OPENWEBRX_ADMIN_USER ha
-ENV OPENWEBRX_ADMIN_PASSWORD mypassword
-
 RUN apt-get update && apt-get -y upgrade
 
 #########################################################
 # Install prerequisites
 #########################################################
-RUN apt-get install -y wget gpg apt-transport-https nano vim
+RUN apt-get install -y wget gpg apt-transport-https expect
 
 RUN wget -O - https://repo.openwebrx.de/debian/key.gpg.txt | gpg --dearmor -o /usr/share/keyrings/openwebrx.gpg
 RUN echo "deb [signed-by=/usr/share/keyrings/openwebrx.gpg] https://repo.openwebrx.de/debian/ bullseye main" > /etc/apt/sources.list.d/openwebrx.list

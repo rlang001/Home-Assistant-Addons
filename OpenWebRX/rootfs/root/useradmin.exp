@@ -1,0 +1,16 @@
+#!/usr/bin/expect
+
+set USER [lindex argv 0]
+set PASSWORD [lindex argv 1]
+
+
+# Add user/password
+spawn openwebrx admin adduser $USER
+
+expect -exact "Please enter the new password for $USER:"
+send -- "PASS\r"
+
+expect -exact "Please confirm the new password:"
+send -- "PASS\r"
+
+
