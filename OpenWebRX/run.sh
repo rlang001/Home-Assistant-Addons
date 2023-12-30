@@ -5,8 +5,6 @@ CONFIG_PATH=/data/options.json
 USER="$(bashio::config 'username')"
 PASSWORD="$(bashio::config 'password')"
 
-
-
 if [ -z "$(ls -A /config/openwebrx 2>/dev/null)" ]; then
     bashio::log.info "Creating default OpenWebRX configuration under /config/openwebrx"
     mkdir -p /config/openwebrx
