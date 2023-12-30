@@ -38,7 +38,7 @@ if [ -z "$(ls -A /config/openwebrx/bookmarks.json 2>/dev/null)" ]; then
 fi
 
 if [ -z "$(ls -A /config/openwebrx/users.json 2>/dev/null)" ]; then
-    cp -u /configs/users.json /config/openwebrx/users.json
+    cp -u /var/lib/openwebrx/users.json /config/openwebrx/users.json
 fi
 
 
