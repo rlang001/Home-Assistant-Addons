@@ -1,11 +1,11 @@
 # Home Assistant Add-on: OpenWebRX
 
-_rtl-cmd addon - docker container to access rtl-sdr and rtl-433_
+OpenWebSX addon - docker container to run OpenWebRX
 
 ## About
 
 ## Included in the container:
-
+openwebrx
 
 
 ## Installation
