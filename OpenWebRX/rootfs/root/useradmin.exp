@@ -1,7 +1,7 @@
 #!/usr/bin/expect
 
 set USER [lindex argv 0]
-set PASSWORD [lindex argv 1]
+set PASS [lindex argv 1]
 
 
 # Add user/password
