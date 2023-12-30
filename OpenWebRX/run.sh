@@ -18,7 +18,7 @@ if [ -z "$(ls -A /config/openwebrx 2>/dev/null)" ]; then
 
     bashio::log.info "Please restart"
     exit 0
- i
+fi
 
 # These are when /config/openwebrx/ already exists
 if [ -z "$(ls -A /config/openwebrx/settings.json 2>/dev/null)" ]; then
