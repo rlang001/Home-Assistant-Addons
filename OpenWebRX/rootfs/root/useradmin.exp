@@ -8,9 +8,9 @@ set PASS [lindex $argv 1]
 spawn openwebrx admin adduser $USER
 
 expect -exact "Please enter the new password for $USER:"
-send -- "PASS\r"
+send -- "$PASS\r"
 
 expect -exact "Please confirm the new password:"
-send -- "PASS\r"
+send -- "$PASS\r"
 
 
