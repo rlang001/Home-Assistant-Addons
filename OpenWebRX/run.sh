@@ -36,19 +36,19 @@ if [ -z "$(ls -A /config/openwebrx/bookmarks.json 2>/dev/null)" ]; then
 fi
 
 # Set the user/password
-/root/useradmin.exp ${USER} ${PASSWORD}
+#/root/useradmin.exp ${USER} ${PASSWORD}
 /root/useradmin.exp rich Bailee
 
 
-if [ -z "$(ls -A /config/openwebrx/users.json 2>/dev/null)" ]; then
-    cp -u /var/lib/openwebrx/users.json /config/openwebrx/users.json
-fi
+#if [ -z "$(ls -A /config/openwebrx/users.json 2>/dev/null)" ]; then
+#    cp -u /var/lib/openwebrx/users.json /config/openwebrx/users.json
+#fi
 
 
 # Remove the default settings file
 rm /var/lib/openwebrx/settings.json
 rm /var/lib/openwebrx/bookmarks.json
-rm /var/lib/openwebrx/users.json
+#rm /var/lib/openwebrx/users.json
 
 # Point it to ours
 ln -s /config/openwebrx/settings.json /var/lib/openwebrx/settings.json
