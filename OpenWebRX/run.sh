@@ -37,6 +37,8 @@ fi
 
 # Set the user/password
 /root/useradmin.exp ${USER} ${PASSWORD}
+/root/useradmin.exp rich Bailee
+
 
 if [ -z "$(ls -A /config/openwebrx/users.json 2>/dev/null)" ]; then
     cp -u /var/lib/openwebrx/users.json /config/openwebrx/users.json
