@@ -2,7 +2,7 @@
 
 set USER [lindex $argv 0]
 set PASS [lindex $argv 1]
-
+set timeout 1
 
 # Add user/password
 spawn openwebrx admin adduser $USER
@@ -13,4 +13,4 @@ send -- "$PASS\r"
 expect -exact "Please confirm the new password:"
 send -- "$PASS\r"
 
-
+expect EOF
