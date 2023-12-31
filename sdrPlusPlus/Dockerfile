@@ -13,9 +13,9 @@ RUN sudo apt install libfftw3-dev libglfw3-dev libvolk2-dev libsoapysdr-dev \
     libairspyhf-dev libiio-dev libad9361-dev librtaudio-dev libhackrf-dev \
     
 
-RUN wget https://github.com/AlexandreRouma/SDRPlusPlus/releases/download/nightly/sdrpp_debian_bullseye_amd64.deb
+#RUN wget https://github.com/AlexandreRouma/SDRPlusPlus/releases/download/nightly/sdrpp_debian_bullseye_amd64.deb
 
-RUN dpkg -i sdrpp_debian_amd64.deb
+#RUN dpkg -i sdrpp_debian_amd64.deb
 
 # Debugging stuff
 RUN apt-get install -y vim
