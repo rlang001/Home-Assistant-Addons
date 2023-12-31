@@ -18,7 +18,7 @@ RUN wget https://github.com/AlexandreRouma/SDRPlusPlus/releases/download/nightly
 #RUN dpkg -i sdrpp_debian_amd64.deb
 
 # Debugging stuff
-RUN apt-get install -y vim
+$RUN apt-get install -y vim
 
 
 #########################################################
