@@ -10,7 +10,7 @@ RUN apt-get update && apt-get -y upgrade
 #########################################################
 RUN apt-get install -y wget gpg apt-transport-https expect
 RUN apt install -y libfftw3-dev libglfw3-dev libvolk2-dev libsoapysdr-dev \
-    libairspyhf-dev libiio-dev libad9361-dev librtaudio-dev libhackrf-dev \
+    libairspyhf-dev libiio-dev libad9361-dev librtaudio-dev libhackrf-dev
     
 
 #RUN wget https://github.com/AlexandreRouma/SDRPlusPlus/releases/download/nightly/sdrpp_debian_bullseye_amd64.deb
