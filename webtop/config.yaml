@@ -67,7 +67,7 @@ devices:
   - "/dev/nvme2"
 
 environment:
-  - FM_HOME: /share/webtop_kde
+  - FM_HOME:/share/webtop_kde
 
 host_dbus: true
 image: "ghcr.io/alexbelgium/webtop_kde-{arch}"
