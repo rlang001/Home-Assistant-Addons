@@ -2,20 +2,123 @@ name: webtop
 version: "0.0.1"
 slug: webtop
 description: Runs webtop
+
 url: "https://github.com/rlang001/Home-Assistant-Addons/webtop"
 arch:
-  - armhf
-  - armv7
   - aarch64
   - amd64
-  - i386
+
+tmpfs: true
+udev: true
+
+audio: true
+video: true
+
+devices:
+  - "/dev/dri"
+  - "/dev/dri/card0"
+  - "/dev/dri/card1"
+  - "/dev/dri/renderD128"
+  - "/dev/vchiq"
+  - "/dev/video10"
+  - "/dev/video11"
+  - "/dev/video12"
+  - "/dev/video13"
+  - "/dev/video14"
+  - "/dev/video15"
+  - "/dev/video16"
+  - "/dev/ttyUSB0"
+  - "/dev/sda"
+  - "/dev/sdb"
+  - "/dev/sdc"
+  - "/dev/sdd"
+  - "/dev/sde"
+  - "/dev/sdf"
+  - "/dev/sdg"
+  - "/dev/nvme"
+  - "/dev/nvme0n1p1"
+  - "/dev/nvme0n1p2"
+  - "/dev/mmcblk"
+  - "/dev/fuse"
+  - "/dev/sda1"
+  - "/dev/sdb1"
+  - "/dev/sdc1"
+  - "/dev/sdd1"
+  - "/dev/sde1"
+  - "/dev/sdf1"
+  - "/dev/sdg1"
+  - "/dev/sda2"
+  - "/dev/sdb2"
+  - "/dev/sdc2"
+  - "/dev/sdd2"
+  - "/dev/sde2"
+  - "/dev/sdf2"
+  - "/dev/sdg2"
+  - "/dev/sda3"
+  - "/dev/sdb3"
+  - "/dev/sda4"
+  - "/dev/sdb4"
+  - "/dev/sda5"
+  - "/dev/sda6"
+  - "/dev/sda7"
+  - "/dev/sda8"
+  - "/dev/nvme0"
+  - "/dev/nvme1"
+  - "/dev/nvme2"
+
+environment:
+  - "FM_HOME": "/share/webtop_kde"
+  - "HOME": "/share/webtop_kde"
+  - "PGID": "0"
+  - "PUID": "0"
+  - "START_DOCKER": "false"
+  - "TITLE": "Ubuntu XFCE webtop"
+  - "shm_size": "1gb"
+
+host_dbus: true
+image: "ghcr.io/alexbelgium/webtop_kde-{arch}"
+ingress: true
 init: false
+
+map: 
+  - config:rw
+  - media:rw
+  - share:rw
+  - ssl
+options:
+  - DNS_server: "8.8.8.8"
+  - PGID: 0
+  - PUID: 0
+  - additional_apps: "engrampa,libreoffice"
+
+
+schema: 
+  - DNS_server: str?
+  - DRINODE: list(/dev/dri/card0|/dev/dri/card1|/dev/dri/card2|/dev/dri/renderD128|/dev/dri/renderD129|)?
+  - KEYBOARD: list(da-dk-qwerty|de-de-qwertz|en-gb-qwerty|en-us-qwerty|es-es-qwerty|fr-ch-qwertz|fr-fr-azerty|it-it-qwerty|ja-jp-qwerty|pt-br-qwerty|sv-se-qwerty|tr-tr-qwerty)?
+  - PASSWORD: str?
+  - PGID: int
+  - PUID: int
+  - TZ: match([A-Z][a-z]*./[A-Z][a-z]*.)?
+  - additional_apps: str?
+  - cifsdomain: str?
+  - cifspassword: str?
+  - cifsusername: str?
+  - data_location: str?
+  - localdisks: str?
+  - networkdisks: str?
+  
+panel_icon: mdi:monitor
+
+privileged:
+  - SYS_ADMIN
+  - DAC_READ_SEARCH
+
 startup: application
-#usb: true
+
 
 ports:
   3000/tcp: 3000
-  3001/tcp: 3001
 ports_description:
-  3000/tcp: listen port
-  3001/tcp: listen port
+  3000/tcp: Web interface
+
