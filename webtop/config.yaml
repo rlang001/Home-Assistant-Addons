@@ -66,6 +66,15 @@ devices:
   - /dev/nvme1
   - /dev/nvme2
 
+environment:
+  "FM_HOME": "/share/webtop_kde"
+  "HOME": "/share/webtop_kde"
+  "PGID": "0"
+  "PUID": "0"
+  "START_DOCKER": "false"
+  "TITLE": "Ubuntu XFCE webtop"
+  "shm_size": "1gb"
+
 host_dbus: true
 image: "ghcr.io/alexbelgium/webtop_kde-{arch}"
 ingress: true
@@ -78,26 +87,26 @@ map:
   - ssl
 
 options:
-  - DNS_server: "8.8.8.8"
-  - PGID: 0
-  - PUID: 0
-  - additional_apps: "engrampa,libreoffice"
+  DNS_server: "8.8.8.8"
+  PGID: 0
+  PUID: 0
+  additional_apps: "engrampa,libreoffice"
 
 schema:
-  - DNS_server: str?
-  - DRINODE: list(/dev/dri/card0|/dev/dri/card1|/dev/dri/card2|/dev/dri/renderD128|/dev/dri/renderD129|)?
-  - KEYBOARD: list(da-dk-qwerty|de-de-qwertz|en-gb-qwerty|en-us-qwerty|es-es-qwerty|fr-ch-qwertz|fr-fr-azerty|it-it-qwerty|ja-jp-qwerty|pt-br-qwerty|sv-se-qwerty|tr-tr-qwerty)?
-  - PASSWORD: str?
-  - PGID: int
-  - PUID: int
-  - TZ: match([A-Z][a-z]*./[A-Z][a-z]*.)?
-  - additional_apps: str?
-  - cifsdomain: str?
-  - cifspassword: str?
-  - cifsusername: str?
-  - data_location: str?
-  - localdisks: str?
-  - networkdisks: str?
+  DNS_server: str?
+  DRINODE: list(/dev/dri/card0|/dev/dri/card1|/dev/dri/card2|/dev/dri/renderD128|/dev/dri/renderD129|)?
+  KEYBOARD: list(da-dk-qwerty|de-de-qwertz|en-gb-qwerty|en-us-qwerty|es-es-qwerty|fr-ch-qwertz|fr-fr-azerty|it-it-qwerty|ja-jp-qwerty|pt-br-qwerty|sv-se-qwerty|tr-tr-qwerty)?
+  PASSWORD: str?
+  PGID: int
+  PUID: int
+  TZ: match([A-Z][a-z]*./[A-Z][a-z]*.)?
+  additional_apps: str?
+  cifsdomain: str?
+  cifspassword: str?
+  cifsusername: str?
+  data_location: str?
+  localdisks: str?
+  networkdisks: str?
 
 panel_icon: mdi:monitor
 
