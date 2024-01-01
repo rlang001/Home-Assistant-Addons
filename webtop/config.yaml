@@ -1,5 +1,5 @@
 name: webtop
-version: "0.0.1"
+version: "0.0.2"
 slug: webtop
 description: Runs webtop
 
@@ -80,7 +80,7 @@ image: "ghcr.io/alexbelgium/webtop_kde-{arch}"
 ingress: true
 init: false
 
-map: 
+map:
   - config:rw
   - media:rw
   - share:rw
@@ -91,8 +91,7 @@ options:
   - PUID: 0
   - additional_apps: "engrampa,libreoffice"
 
-
-schema: 
+schema:
   - DNS_server: str?
   - DRINODE: list(/dev/dri/card0|/dev/dri/card1|/dev/dri/card2|/dev/dri/renderD128|/dev/dri/renderD129|)?
   - KEYBOARD: list(da-dk-qwerty|de-de-qwertz|en-gb-qwerty|en-us-qwerty|es-es-qwerty|fr-ch-qwertz|fr-fr-azerty|it-it-qwerty|ja-jp-qwerty|pt-br-qwerty|sv-se-qwerty|tr-tr-qwerty)?
@@ -107,7 +106,7 @@ schema:
   - data_location: str?
   - localdisks: str?
   - networkdisks: str?
-  
+
 panel_icon: mdi:monitor
 
 privileged:
@@ -116,9 +115,7 @@ privileged:
 
 startup: application
 
-
 ports:
   3000/tcp: 3000
 ports_description:
   3000/tcp: Web interface
-
