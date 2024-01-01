@@ -1,0 +1,21 @@
+name: webtop
+version: "0.0.1"
+slug: webtop
+description: Runs webtop
+url: "https://github.com/rlang001/Home-Assistant-Addons/webtop"
+arch:
+  - armhf
+  - armv7
+  - aarch64
+  - amd64
+  - i386
+init: false
+startup: application
+#usb: true
+
+ports:
+  3000/tcp: 3000
+  3001/tcp: 3001
+ports_description:
+  3000/tcp: listen port
+  3001/tcp: listen port
