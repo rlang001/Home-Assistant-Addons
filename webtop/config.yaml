@@ -67,13 +67,13 @@ devices:
   - "/dev/nvme2"
 
 environment:
-  - "FM_HOME": "/share/webtop_kde"
-  - "HOME": "/share/webtop_kde"
-  - "PGID": "0"
-  - "PUID": "0"
-  - "START_DOCKER": "false"
-  - "TITLE": "Ubuntu XFCE webtop"
-  - "shm_size": "1gb"
+  - FM_HOME: "/share/webtop_kde"
+  - HOME: "/share/webtop_kde"
+  - PGID: 0
+  - PUID: 0
+  - START_DOCKER: false
+  - TITLE: "Ubuntu XFCE webtop"
+  - shm_size: "1gb"
 
 host_dbus: true
 image: "ghcr.io/alexbelgium/webtop_kde-{arch}"
@@ -85,6 +85,7 @@ map:
   - media:rw
   - share:rw
   - ssl
+
 options:
   - DNS_server: "8.8.8.8"
   - PGID: 0
