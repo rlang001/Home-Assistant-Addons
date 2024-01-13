@@ -10,7 +10,7 @@ RUN apt-get update
 #########################################################
 RUN apt-get install -y sqlite3 wget sudo supervisor tzdata jq nginx
       
-@      python-is-python3 python3-pip python3-configobj python3-cheetah python3-pil python3-serial python3-usb python3-ephem python3-setuptools \
+#      python-is-python3 python3-pip python3-configobj python3-cheetah python3-pil python3-serial python3-usb python3-ephem python3-setuptools \
 
 #########################################################
 # Need for weewx-nws

@@ -1,5 +1,5 @@
-name: WeeWX-HA
-version: 0.0.02
+name: shinySDR
+version: 0.0.03
 slug: shinySDR
 description: shinySDR Add-on
 stage: experimental
@@ -30,7 +30,4 @@ usb: true
 map:
   - config:rw
 
-options:
-  "maintenance_mode": false
-schema:
-  "maintenance_mode": "bool?"
+
