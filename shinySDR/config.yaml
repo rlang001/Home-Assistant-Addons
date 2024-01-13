@@ -1,5 +1,5 @@
 name: shinySDR
-version: 0.0.04
+version: 0.0.06
 slug: shinySDR
 description: shinySDR Add-on
 stage: experimental
@@ -21,9 +21,6 @@ ports:
   80/tcp: 80
 ports_description:
   80/tcp: Web interface (Not required for Ingress)
-
-services:
-  - mqtt:want
 
 usb: true
 
