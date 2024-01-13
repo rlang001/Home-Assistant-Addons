@@ -8,7 +8,7 @@ RUN apt-get update
 #########################################################
 # Install prerequisites
 #########################################################
-RUN apt-get install -y sqlite3 wget sudo supervisor tzdata jq nginx
+#RUN apt-get install -y sqlite3 wget sudo supervisor tzdata jq nginx
 
 #      python-is-python3 python3-pip python3-configobj python3-cheetah python3-pil python3-serial python3-usb python3-ephem python3-setuptools \
 
@@ -20,7 +20,7 @@ RUN apt-get install -y sqlite3 wget sudo supervisor tzdata jq nginx
 #########################################################
 # Development stuff.  Not needed for operation
 #########################################################
-RUN apt-get install -y nano
+#RUN apt-get install -y nano
 
 #########################################################
 # Some python reqs
