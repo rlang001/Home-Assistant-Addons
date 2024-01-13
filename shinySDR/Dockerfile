@@ -8,14 +8,14 @@ RUN apt-get update
 #########################################################
 # Install prerequisites
 #########################################################
-RUN apt-get install -y sqlite3 wget sudo \
-      python-is-python3 python3-pip python3-configobj python3-cheetah python3-pil python3-serial python3-usb python3-ephem python3-setuptools \
-      supervisor tzdata jq nginx 
+RUN apt-get install -y sqlite3 wget sudo supervisor tzdata jq nginx
+      
+@      python-is-python3 python3-pip python3-configobj python3-cheetah python3-pil python3-serial python3-usb python3-ephem python3-setuptools \
 
 #########################################################
 # Need for weewx-nws
 #########################################################
-RUN apt-get install -y python3-dateutil
+#RUN apt-get install -y python3-dateutil
 
 #########################################################
 # Development stuff.  Not needed for operation
@@ -25,7 +25,7 @@ RUN apt-get install -y nano
 #########################################################
 # Some python reqs
 #########################################################
-RUN pip3 install pyserial requests
+#RUN pip3 install pyserial requests
 
 #RUN wget https://github.com/anastas78/weewx-mqtt/archive/refs/heads/ha-discovery-with-lwt.zip -O /tmp/weewx-mqtt.zip && \
 
