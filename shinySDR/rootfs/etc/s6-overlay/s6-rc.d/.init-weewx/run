@@ -1,0 +1,20 @@
+#!/command/with-contenv bashio
+# shellcheck shell=bash
+# ==============================================================================
+# Home Assistant Community Add-on: WeeWX-HA
+# This files sets up some required files
+# ==============================================================================
+#declare database
+
+#database="/config/home-assistant_v2.db"
+#if bashio::config.has_value 'database'; then
+#    database="$(bashio::config 'database')"
+#fi
+
+#if ! bashio::fs.file_exists "${database}"; then
+#    bashio::exit.nok "The database file '${database}' is not found"
+#fi
+
+# Made tables go wide!
+#sed -i "s#container#container-fluid#g" \
+#    /usr/lib/python3.10/site-packages/sqlite_web/templates/base.html
