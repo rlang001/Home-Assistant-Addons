@@ -1,6 +1,6 @@
 name: shinySDR
 version: 0.0.08
-slug: shinySDR
+slug: shinysdr
 description: shinySDR
 stage: experimental
 startup: application
