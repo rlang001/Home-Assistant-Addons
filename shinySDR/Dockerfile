@@ -8,6 +8,25 @@ RUN apt-get update && apt-get -y upgrade
 #########################################################
 # Install prerequisites
 #########################################################
+# python
+RUN apt-get install -y python-is-python2 pip git
+
+
+# GNU radio
+RUN apt-get install -y gnuradio
+
+RUN cd ~; git clone https://github.com/kpreid/shinysdr/
+
+#RUN pip install twisted
+#RUN pip install six
+#RUN pip install txws
+#RUN pip install pyephem
+#RUN pip install pyserial
+
+
+# gr-osmosdr
+# RUN apt-get install -y 
+
 #RUN apt-get install -y sqlite3 wget sudo supervisor tzdata jq nginx
 
 #      python-is-python3 python3-pip python3-configobj python3-cheetah python3-pil python3-serial python3-usb python3-ephem python3-setuptools \
