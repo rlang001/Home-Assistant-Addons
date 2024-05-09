@@ -1,5 +1,5 @@
 name: Aircraft Plotter
-version: 0.0.29c
+version: 0.1.0
 slug: aircraft_plotter
 description: Plots aircraft
 stage: experimental
@@ -15,12 +15,13 @@ arch:
 
 panel_icon: mdi:cloud
 panel_admin: false
+#ingress_port: 8099
 
 ingress: true
 ports:
-  80/tcp: 80
-ports_description:
-  80/tcp: Web interface (Not required for Ingress)
+  80/tcp: 8099
+#ports_description:
+#  8099/tcp: Web interface (Not required for Ingress)
 
 usb: true
 
@@ -28,6 +29,15 @@ map:
   - config:rw
 
 options:
+  device_port: 1
   message: "Aircraft Plotter..."
+  HTML_SITE_LAT: HOMEASSISTANT_LATITUDE
+  HTML_SITE_LON: HOMEASSISTANT_LONGITUDE
+  HTML_SITE_ALT: HOMEASSISTANT_ELEVATION
+
 schema:
+  device_port: int(0,3)
   message: "str?"
+  HTML_SITE_LAT: match([+-]?(([1-9][0-9]*)|(0))([.,][0-9]+)?|HOMEASSISTANT_LATITUDE)?
+  HTML_SITE_LON: match([+-]?(([1-9][0-9]*)|(0))([.,][0-9]+)?|HOMEASSISTANT_LONGITUDE)?
+  HTML_SITE_ALT: match([+-]?(([1-9][0-9]*)|(0))([.,][0-9]+)?|HOMEASSISTANT_ELEVATION)?

@@ -1,7 +1,7 @@
-name: shinySDR
-version: 0.0.24
-slug: shinysdr
-description: shinySDR
+name: stable-diffusion-webui
+version: 0.0.08
+slug: stable-diffusion-webui
+description: WeeWX stable-diffusion-webui Add-on
 stage: experimental
 startup: application
 init: false
@@ -22,4 +22,5 @@ ports:
 ports_description:
   80/tcp: Web interface (Not required for Ingress)
 
-usb: true
+map:
+  - config:rw
