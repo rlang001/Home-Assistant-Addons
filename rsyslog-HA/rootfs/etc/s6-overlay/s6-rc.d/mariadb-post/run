@@ -1,0 +1,346 @@
+#!/command/with-contenv bashio
+# shellcheck shell=bash
+# ==============================================================================
+# Post-start initialization of MariaDB service
+# ==============================================================================
+set -e
+
+CONFIG_PATH=/data/options.json
+
+# ADMIN_USERNAME=$(jq --raw-output 'admin_login.username // empty' $CONFIG_PATH)
+ADMIN_USERNAME="$(bashio::config 'sql.admin_name')"
+ADMIN_PASSWORD="$(bashio::config 'sql.admin_password')"
+
+USER_USERNAME="$(bashio::config 'sql.user_name')"
+USER_PASSWORD="$(bashio::config 'sql.user_password')"
+
+function execute_without_error_messages() {
+    local current_log_level="${__BASHIO_LOG_LEVELS[${__BASHIO_LOG_LEVEL}]}"
+    bashio::log.level fatal
+    local exit_code=0
+    $@ || exit_code=$?
+    bashio::log.level ${current_log_level}
+    return ${exit_code}
+}
+
+# Wait until DB is running
+while ! mysql -e "" 2> /dev/null; do
+    sleep 1
+done
+bashio::log.info "MariaDB started"
+
+# Delete service information, just in case the previous instance somehow did not cleanup
+execute_without_error_messages bashio::services.delete "mysql" || true
+
+# Init databases
+database="Syslog"
+
+bashio::log.info "Ensure databases exists"
+mysql <<-EOSQL
+    CREATE DATABASE IF NOT EXISTS Syslog;
+    USE Syslog;
+    CREATE TABLE IF NOT EXISTS SystemEvents
+    (
+        ID int unsigned not null auto_increment primary key,
+        CustomerID bigint,
+        ReceivedAt datetime NULL,
+        DeviceReportedTime datetime NULL,
+        Facility smallint NULL,
+        Priority smallint NULL,
+        FromHost varchar(63) NULL,
+        Message text,
+        NTSeverity int NULL,
+        Importance int NULL,
+        EventSource varchar(60),
+        EventUser varchar(60) NULL,
+        EventCategory int NULL,
+        EventID int NULL,
+        EventBinaryData text NULL,
+        MaxAvailable int NULL,
+        CurrUsage int NULL,
+        MinUsage int NULL,
+        MaxUsage int NULL,
+        InfoUnitID int NULL ,
+        SysLogTag varchar(60),
+        EventLogType varchar(60),
+        GenericFileName VarChar(60),
+        SystemID int NULL,
+        checksum int NOT NULL default 0
+    );
+
+    CREATE TABLE IF NOT EXISTS SystemEventsProperties
+    (
+        ID int unsigned not null auto_increment primary key,
+        SystemEventID int NULL ,
+        ParamName varchar(255) NULL ,
+        ParamValue text NULL
+    );
+
+EOSQL
+
+# Table structure for table logcon_config
+mysql <<-EOSQL
+    USE Syslog;
+    CREATE TABLE IF NOT EXISTS logcon_config
+    (
+        propname varchar(32) NOT NULL,
+        propvalue varchar(255) NULL,
+        propvalue_text text NULL,
+        is_global tinyint(1) NOT NULL,
+        userid int(11) default NULL,
+        groupid int(11) default NULL
+    ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Table to store global and user specific configurations';
+
+EOSQL
+
+# Table structure for table logcon_groupmembers
+mysql <<-EOSQL
+    USE Syslog;
+    CREATE TABLE IF NOT EXISTS logcon_groupmembers 
+    (
+        userid int(11) NOT NULL,
+        groupid int(11) NOT NULL,
+        is_member tinyint(1) NOT NULL default 1
+    ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Helpertable to store which users are in which group';
+EOSQL
+
+# Table structure for table logcon_groups
+# DROP TABLE IF EXISTS logcon_groups;
+mysql <<-EOSQL
+    USE Syslog;
+    CREATE TABLE IF NOT EXISTS logcon_groups
+    (
+        ID int(11) NOT NULL auto_increment,
+        groupname varchar(32) NOT NULL,
+        groupdescription varchar(255) NOT NULL,
+        grouptype int(11) NOT NULL,
+        PRIMARY KEY  (ID)
+    ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Table for phplogcon groups' AUTO_INCREMENT=1 ;
+EOSQL
+
+#Table structure for table logcon_searches
+# DROP TABLE IF EXISTS logcon_searches;
+mysql <<-EOSQL
+    USE Syslog;
+    CREATE TABLE IF NOT EXISTS logcon_searches
+    (
+        ID int(11) NOT NULL auto_increment,
+        DisplayName varchar(255) NOT NULL,
+        SearchQuery varchar(1024) NOT NULL,
+        userid int(11) default NULL,
+        groupid int(11) default NULL,
+        PRIMARY KEY  (ID)
+    ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Stores custom user searches' AUTO_INCREMENT=1 ;
+EOSQL
+
+# Table structure for table logcon_sources
+# DROP TABLE IF EXISTS logcon_sources;
+mysql <<-EOSQL
+    USE Syslog;
+    CREATE TABLE IF NOT EXISTS logcon_sources
+    (
+        ID int(11) NOT NULL auto_increment,
+        Name varchar(255) NOT NULL,
+        Description text NOT NULL,
+        SourceType tinyint(4) NOT NULL,
+        MsgParserList varchar(255) NOT NULL,
+        MsgNormalize tinyint(1) NOT NULL default 0,
+        MsgSkipUnparseable tinyint(1) NOT NULL default 0,
+        ViewID varchar(64) NOT NULL,
+        LogLineType varchar(64) default NULL,
+        DiskFile varchar(255) default NULL,
+        DBTableType varchar(64) default NULL,
+        DBType tinyint(4) default NULL,
+        DBServer varchar(255) default NULL,
+        DBName varchar(64) default NULL,
+        DBUser varchar(64) default NULL,
+        DBPassword varchar(255) default NULL,
+        DBTableName varchar(64) default NULL,
+        DBEnableRowCounting tinyint(1) default NULL,
+        DBRecordsPerQuery int(11) NOT NULL default 100,
+        defaultfilter VARCHAR(1024) NULL, 
+        userid int(11) default NULL,
+        groupid int(11) default NULL,
+        PRIMARY KEY  (ID)
+        ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Table to store datasources in phplogcon' AUTO_INCREMENT=1 ;
+EOSQL
+
+# Table structure for table logcon_users
+# DROP TABLE IF EXISTS logcon_users;
+mysql <<-EOSQL
+    USE Syslog;
+    CREATE TABLE IF NOT EXISTS logcon_users
+    (
+        ID int(11) NOT NULL auto_increment,
+        username varchar(32) NOT NULL,
+        password varchar(32) NOT NULL,
+        is_admin tinyint(1) NOT NULL default 0,
+        is_readonly tinyint(1) NOT NULL DEFAULT 0, 
+        last_login int(4) NOT NULL DEFAULT 0,
+        PRIMARY KEY  (ID)
+    ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Table for the phplogcon users' AUTO_INCREMENT=1 ;
+EOSQL
+
+# Table structure for table logcon_views
+# DROP TABLE IF EXISTS logcon_views;
+mysql <<-EOSQL
+    USE Syslog;
+    CREATE TABLE IF NOT EXISTS logcon_views
+    (
+    ID int(11) NOT NULL auto_increment,
+        DisplayName varchar(255) NOT NULL,
+        Columns text NOT NULL,
+        userid int(11) default NULL,
+        groupid int(11) default NULL,
+        PRIMARY KEY  (ID)
+    ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Stores custom defined user views.' AUTO_INCREMENT=1 ;
+EOSQL
+
+# Table structure for table logcon_charts
+# DROP TABLE IF EXISTS logcon_charts;
+mysql <<-EOSQL
+    USE Syslog;
+    CREATE TABLE IF NOT EXISTS logcon_charts
+    (
+        ID int(11) NOT NULL auto_increment,
+        DisplayName varchar(255) NOT NULL,
+        chart_enabled tinyint(1) NOT NULL default 1,
+        chart_type int(11) NOT NULL,
+        chart_width int(11) NOT NULL,
+        chart_field varchar(255) NOT NULL,
+        chart_defaultfilter VARCHAR(1024) NULL, 
+        maxrecords int(11) NOT NULL,
+        showpercent tinyint(1) NOT NULL,
+        userid int(11) default NULL,
+        groupid int(11) default NULL,
+        PRIMARY KEY  (ID)
+    ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='This table contains all configured charts' AUTO_INCREMENT=1 ;
+EOSQL
+
+# Table structure for table `logcon_fields`
+# DROP TABLE IF EXISTS logcon_fields;
+mysql <<-EOSQL
+    USE Syslog;
+    CREATE TABLE IF NOT EXISTS logcon_fields
+    (
+        FieldID varchar(64) NOT NULL,
+        FieldDefine varchar(64) NOT NULL,
+        FieldCaption varchar(255) NOT NULL,
+        FieldType int(11) NOT NULL,
+        Sortable tinyint(1) NOT NULL DEFAULT 0,
+        DefaultWidth int(11) NOT NULL,
+        FieldAlign varchar(32) NOT NULL,
+        SearchField varchar(64) NOT NULL,
+        SearchOnline tinyint(1) NOT NULL,
+        Trunscate int(11) NOT NULL,
+        PRIMARY KEY  (FieldID)
+    ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='This table stores custom fields';
+EOSQL
+
+# Table structure for table `logcon_dbmappings`
+# DROP TABLE IF EXISTS `logcon_dbmappings`;
+mysql <<-EOSQL
+    USE Syslog;
+    CREATE TABLE IF NOT EXISTS logcon_dbmappings
+    (
+        ID int(11) NOT NULL auto_increment,
+        DisplayName varchar(64) NOT NULL,
+        Mappings varchar(1024) NOT NULL,
+        PRIMARY KEY  (ID)
+    ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+EOSQL
+
+# Table structure for table `logcon_savedreports`
+# DROP TABLE IF EXISTS `logcon_savedreports`;
+mysql <<-EOSQL
+    USE Syslog;    
+    CREATE TABLE IF NOT EXISTS logcon_savedreports
+    (
+        ID int(11) NOT NULL auto_increment,
+        reportid varchar(255) NOT NULL,
+        sourceid varchar(11) NOT NULL,
+        customTitle varchar(255) NOT NULL,
+        customComment text NOT NULL,
+        filterString text NOT NULL,
+        customFilters text NOT NULL,
+        outputFormat varchar(64) NOT NULL,
+        outputTarget varchar(64) NOT NULL,
+        outputTargetDetails text NOT NULL,
+        scheduleSettings text NOT NULL,
+        PRIMARY KEY  (ID)
+    ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT = 'Table to store saved reports' AUTO_INCREMENT=1 ;
+EOSQL
+
+bashio::log.info "Check data integrity and fix corruptions"
+mysqlcheck --no-defaults --databases mysql --fix-db-names --fix-table-names || true
+mysqlcheck --no-defaults --databases mysql --check --check-upgrade --auto-repair || true
+mysqlcheck --no-defaults --all-databases --skip-database=mysql --fix-db-names --fix-table-names || true
+mysqlcheck --no-defaults --all-databases --skip-database=mysql --check --check-upgrade --auto-repair || true
+
+bashio::log.info "Ensuring internal database upgrades are performed"
+mysql_upgrade --silent
+
+# Set default secure values after initial setup
+if bashio::var.true "${NEW_INSTALL}"; then
+    # Secure the installation.
+    mysql <<-EOSQL
+        SET @@SESSION.SQL_LOG_BIN=0;
+        DELETE FROM
+            mysql.user
+        WHERE
+            user NOT IN ('mysql.sys', 'mariadb.sys', 'mysqlxsys', 'root', 'mysql', 'proxies_priv')
+                OR host NOT IN ('localhost');
+        DELETE FROM
+            mysql.proxies_priv
+        WHERE
+            user NOT IN ('mysql.sys', 'mariadb.sys', 'mysqlxsys', 'root', 'mysql', 'proxies_priv')
+                OR host NOT IN ('localhost');
+        DROP DATABASE IF EXISTS test;
+        FLUSH PRIVILEGES;
+EOSQL
+
+fi
+
+if ! (( $(grep -c "sysa" /etc/passwd) == 0 )) ; then
+    bashio::log.info "Create database ${database}"
+    mysql -e "CREATE DATABASE ${database};" 2> /dev/null || true
+
+fi
+
+# Init logins
+bashio::log.info "Ensure users exists and are updated"
+mysql -e "CREATE USER IF NOT EXISTS '${USER_USERNAME}' IDENTIFIED BY '${USER_PASSWORD}';"
+mysql -e "ALTER USER '${USER_USERNAME}' IDENTIFIED BY '${USER_PASSWORD}';"
+mysql -e "GRANT ALL PRIVILEGES ON *.* TO '${USER_USERNAME}';"
+
+mysql -e "CREATE USER IF NOT EXISTS '${ADMIN_USERNAME}' IDENTIFIED BY '${ADMIN_PASSWORD}';"
+mysql -e "ALTER USER '${ADMIN_USERNAME}' IDENTIFIED BY '${ADMIN_PASSWORD}';"
+mysql -e "GRANT ALL PRIVILEGES ON *.* TO '${ADMIN_USERNAME}';"
+
+
+# Generate service user
+if ! bashio::fs.file_exists "/data/secret"; then
+    pwgen 64 1 > /data/secret
+fi
+SECRET=$(</data/secret)
+mysql -e "CREATE USER 'service'@'172.30.32.%' IDENTIFIED BY '${SECRET}';" 2> /dev/null || true
+mysql -e "CREATE USER 'service'@'172.30.33.%' IDENTIFIED BY '${SECRET}';" 2> /dev/null || true
+mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'service'@'172.30.32.%' WITH GRANT OPTION;" 2> /dev/null || true
+mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'service'@'172.30.33.%' WITH GRANT OPTION;" 2> /dev/null || true
+
+
+
+
+# Flush privileges
+mysql -e "FLUSH PRIVILEGES;" 2> /dev/null || true
+
+# Send service information to the Supervisor
+PAYLOAD=$(\
+    bashio::var.json \
+    host "$(hostname)" \
+    port "^3306" \
+    username "service" \
+    password "${SECRET}"
+)
+bashio::log.info "Sending service information to Home Assistant"
+bashio::services.publish "mysql" "${PAYLOAD}"

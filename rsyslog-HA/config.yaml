@@ -1,0 +1,85 @@
+name: RSyslog-HA
+version: 0.5.78
+
+slug: rsyslog-ha
+description: RSyslog HA Add-on
+stage: experimental
+startup: application
+init: false
+
+services:
+  - mqtt:want
+  - mysql:provide
+
+legacy: true
+
+arch:
+  - i386
+  - armhf
+  - armv7
+  - aarch64
+  - amd64
+
+panel_icon: mdi:log
+panel_admin: false
+
+ingress: false
+ingress_port: 8099
+
+ports:
+  8096/tcp: 8096
+  514/udp: 514
+  514/tcp: 514
+
+ports_description:
+  8096/tcp: Web interface (Not required for Ingress)
+  514/udp: Syslog port
+  514/tcp: Syslog port
+
+#
+options:
+  ########################
+  File_Logging: true
+  file_syslog_level: error
+
+  ########################
+  MQTT_Logging: false
+  mqtt_syslog_level: error
+  mqtt:
+    host: localhost
+    username: mqtt
+    password: ""
+    port: 1883
+    topic: rsyslog
+
+  ########################
+  sql_syslog_level: info
+  sql:
+    user_name: loguser
+    user_password: ""
+    admin_name: logadmin
+    admin_password: ""
+
+schema:
+  MQTT_Logging: bool
+  mqtt_syslog_level: list(trace|debug|info|notice|warning|error|fatal)?
+  mqtt:
+    host: str
+    username: str
+    password: password
+    port: int
+    topic: str
+
+  File_Logging: bool
+  file_syslog_level: list(trace|debug|info|notice|warning|error|fatal)?
+
+  sql:
+    user_name: str
+    user_password: password
+    admin_name: str
+    admin_password: password
+  sql_syslog_level: list(trace|debug|info|notice|warning|error|fatal)?
+
+# Save the logs to a /addon_configs of the host
+map:
+  - addon_config:rw

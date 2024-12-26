@@ -1,0 +1,72 @@
+#!/command/with-contenv bashio
+# shellcheck shell=bash
+# ==============================================================================
+# Home Assistant Community Add-on: 
+# Configures rsyslog
+# ==============================================================================
+set -e
+
+CONFIG_PATH=/data/options.json
+
+MQTT_Logging="$(bashio::config 'MQTT_Logging')"
+MQTT_HOST="$(bashio::config 'mqtt.host')"
+MQTT_USER="$(bashio::config 'mqtt.username')"
+MQTT_PASSWORD="$(bashio::config 'mqtt.password')"
+MQTT_PORT="$(bashio::config 'mqtt.port')"
+MQTT_TOPIC="$(bashio::config 'mqtt.topic')"
+
+FILE_SYSLOG_LEVEL="$(bashio::config 'file_syslog_level')"
+MQTT_SYSLOG_LEVEL="$(bashio::config 'mqtt_syslog_level')"
+
+FILE_LOGGING="$(bashio::config 'File_Logging')"
+MQTT_LOGGING="$(bashio::config 'MQTT_Logging')"
+
+ADMIN_USERNAME="$(bashio::config 'sql.admin_name')"
+ADMIN_PASSWORD="$(bashio::config 'sql.admin_password')"
+USER_USERNAME="$(bashio::config 'sql.user_name')"
+USER_PASSWORD="$(bashio::config 'sql.user_password')"
+SQL_SYSLOG_LEVEL="$(bashio::config 'sql_syslog_level')"
+
+# Copy the config
+cp /root/ommysql.conf /etc/rsyslog.d
+
+bashio::log.info "SQL Logging enabled..."
+# # *.*  :ommysql:localhost,Syslog,database-userid,database-password
+
+# Add the the ommysql action
+#  sed -i "s|#SQL_STUB|*.${SQL_SYSLOG_LEVEL} :ommysql:localhost,Syslog,${USER_USERNAME},${USER_PASSWORD}|" /etc/rsyslog.d/ommysql.conf
+sed -i "s|#SQL_STUB|*.${SQL_SYSLOG_LEVEL} :ommysql:localhost,Syslog,${USER_USERNAME},${USER_PASSWORD}|" /etc/rsyslog.d/ommysql.conf
+
+
+# 
+if bashio::var.equals "${FILE_LOGGING}" true; then
+    # Copy the config
+    cp /root/file.conf /etc/rsyslog.d
+    sed -i "s|#FILE_STUB|*.${FILE_SYSLOG_LEVEL} /config/rsyslog.log;RSYSLOG_SyslogProtocol23Format|" /etc/rsyslog.d/file.conf
+fi
+
+
+if bashio::var.equals "${MQTT_Logging}" true; then
+    bashio::log.info "MQTT Logging enabled..."
+
+    # Copy the config
+    cp /root/ommqtt.conf /etc/rsyslog.d
+
+    MQTT_OPTIONS="mqtt://"${MQTT_USER}":"${MQTT_PASSWORD}"@"${MQTT_HOST}":"${MQTT_PORT}" --inflight 100 --qos 0 --topic "${MQTT_TOPIC}
+    MQTT_STRING="binary=\"/usr/bin/python3 /usr/libexec/rsyslog/ommqtt/ommqtt/ommqtt.py --url ${MQTT_OPTIONS} --messages 100\""
+
+    # Add the the omprog/ommqtt action
+    sed -i "s|#MQTT_STUB|*.${MQTT_SYSLOG_LEVEL} action(type=\"omprog\" template=\"json_syslog\" ${MQTT_STRING})|" /etc/rsyslog.d/ommqtt.conf
+
+
+fi 
+
+
+###############################
+# Create the syslog log
+touch /config/rsyslog.log
+
+# Set the proper owner/group/perms
+chown syslog /config/rsyslog.log
+chgrp adm /config/rsyslog.log
+chmod 644 /config/rsyslog.log

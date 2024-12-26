@@ -1,0 +1,14 @@
+/config/rsyslog.log
+{
+	missingok
+	hourly
+	rotate 4
+	notifempty
+	create 0644 syslog adm
+	compress
+	delaycompress
+	#sharedscripts
+	#postrotate
+	#	/usr/lib/rsyslog/rsyslog-rotate
+	#endscript
+}
