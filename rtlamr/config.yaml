@@ -1,0 +1,36 @@
+# https://github.com/rlang001/Home-Assistant-Addons/rtlamr
+name: RTL_AMR
+version: "0.0.4"
+slug: rtl_amr
+description: Runs rtlamr
+url: "https://github.com/rlang001/Home-Assistant-Addons/rtlamr"
+arch:
+  - armhf
+  - armv7
+  - aarch64
+  - amd64
+  - i386
+init: false
+startup: application
+usb: true
+
+#ports:
+#1234/tcp: 1234
+#ports_description:
+#1234/tcp: RTL_TCP listen port
+
+options:
+  device: 1
+#  frequency: 100000000
+#  gain: 0
+#  samplerate: 2048000
+#  buffers: 15
+#  message: "rtl_tcp"
+
+schema:
+  device: int(0,3)
+#  frequency: int(500000,1700000000)
+#  gain: int(0,100)
+#  samplerate: int(250000,2400000)
+#  buffers: int(0,10000)
+#  message: "str?"

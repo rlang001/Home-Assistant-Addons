@@ -1,6 +1,6 @@
 # https://github.com/rlang001/Home-Assistant-Addons/rtl_tcp
 name: RTL_TCP
-version: "0.1.6"
+version: "0.1.7"
 slug: rtl_tcp
 description: Runs rtl_tcp
 url: "https://github.com/rlang001/Home-Assistant-Addons/rtl_tcp"
@@ -25,6 +25,7 @@ options:
   gain: 0
   samplerate: 2048000
   buffers: 15
+  message: "rtl_tcp"
 
 schema:
   device: int(0,3)
@@ -32,3 +33,4 @@ schema:
   gain: int(0,100)
   samplerate: int(250000,2400000)
   buffers: int(0,10000)
+  message: "str?"

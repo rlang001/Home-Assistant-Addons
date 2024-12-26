@@ -1,0 +1,26 @@
+# https://developers.home-assistant.io/docs/add-ons/configuration#add-on-config
+name: Simple WebServer
+version: "0.1.0"
+slug: swebserver
+description: Simple Web Server add-on
+#url: "https://github.com/home-assistant/addons-example/tree/main/example"
+arch:
+  - armhf
+  - armv7
+  - aarch64
+  - amd64
+  - i386
+init: false
+
+panel_icon: mdi:cloud
+panel_admin: false
+
+map:
+  - addon_config:rw
+
+ingress: true
+ports:
+  80/tcp: 80
+
+ports_description:
+  80/tcp: Web interface (Not required for Ingress)

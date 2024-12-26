@@ -41,15 +41,15 @@ RUN wget http://weewx.com/downloads/released_versions/weewx-4.10.2.tar.gz -O /tm
 RUN wget https://github.com/eclipse/paho.mqtt.python/archive/v1.6.1.tar.gz -O /tmp/mqtt.tgz && \
       cd /tmp && \
       tar zxvf /tmp/mqtt.tgz && \
-      cd paho.mqtt.python-* ; sudo python3 setup.py build ; sudo python3 setup.py install
+      cd paho.mqtt.python-* ; python3 setup.py build ; python3 setup.py install
 
 #########################################################
 # WeewWX-MQTT with HA discovery
 #########################################################
 
 
-RUN wget https://github.com/anastas78/weewx-mqtt/archive/refs/heads/ha-discovery-with-lwt.zip -O /tmp/weewx-mqtt.zip && \
-
+#RUN wget https://github.com/anastas78/weewx-mqtt/archive/refs/heads/ha-discovery-with-lwt.zip -O /tmp/weewx-mqtt.zip && \
+RUN wget https://github.com/matthewwall/weewx-mqtt/archive/master.zip -O /tmp/weewx-mqtt.zip && \
       cd /tmp && \
       /home/weewx/bin/wee_extension --install weewx-mqtt.zip
 
@@ -118,6 +118,7 @@ RUN rm -fr \
 # Copy data for add-on to docker fs
 #########################################################
 COPY rootfs /
+
 
 #########################################################
 # Startup

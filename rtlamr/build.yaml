@@ -13,8 +13,8 @@ build_from:
 # i386: ghcr.io/hassio-addons/debian-base/i386:stable
 
 labels:
-  org.opencontainers.image.title: "Home Assistant Add-on:RTLTCP"
-  org.opencontainers.image.description: "RTLTCP
+  org.opencontainers.image.title: "Home Assistant Add-on:RTLAMR"
+  org.opencontainers.image.description: "RTLAMR"
   org.opencontainers.image.source: https://
   org.opencontainers.image.licenses: Apache License 2.0
 
