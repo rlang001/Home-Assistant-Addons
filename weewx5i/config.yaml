@@ -21,11 +21,11 @@ ingress_port: 8099
 
 ports:
   80/tcp: 80
-  5000/tcp: 5000
+  # 5000/tcp: 5000
 
 ports_description:
   80/tcp: Web interface (Not required for Ingress)
-  5000/tcp: Flask interface
+  # 5000/tcp: Flask interface
 
 usb: true
 
