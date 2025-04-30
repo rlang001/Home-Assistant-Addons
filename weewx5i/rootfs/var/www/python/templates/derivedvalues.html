@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Derived Values</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+
+  <body>
+    <!-- Header -->
+    <div class="p-1 bg-primary text-white text-center">
+      <h3>Derived Values</h3>
+    </div>
+    <div class="p-1 text-center">
+      <h4>This section controls the origin of derived values.</h4>
+    </div>
+
+    <br />
+    <!-- Choices -->
+    <div class="container">
+      <form name="station" method="post" id="derivedvalues-form">
+        <div class="row">
+          <!---->
+          <div class="col-sm-2">
+            <label for="pressure">Pressure:</label>
+          </div>
+
+          <div class="col-sm-2">
+            <select class="form-select" id="pressure" name="pressure">
+              <option value="hardware">Hardware</option>
+              <option value="software">Software</option>
+              <option value="prefer_hardware">Prefer Hardware</option>
+            </select>
+          </div>
+
+          <div class="col-sm-8">
+            <p></p>
+          </div>
+        </div>
+
+        <!---->
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="altimeter">Altimeter:</label>
+          </div>
+
+          <div class="col-sm-2">
+            <select class="form-select" id="altimeter" name="altimeter">
+              <option value="hardware">Hardware</option>
+              <option value="software">Software</option>
+              <option value="prefer_hardware">Prefer Hardware</option>
+            </select>
+          </div>
+          <div class="col-sm-8">
+            <p></p>
+          </div>
+        </div>
+
+        <!---->
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="appTemp">App Temp:</label>
+          </div>
+
+          <div class="col-sm-2">
+            <select class="form-select" id="appTemp" name="appTemp">
+              <option value="hardware">Hardware</option>
+              <option value="software">Software</option>
+              <option value="prefer_hardware">Prefer Hardware</option>
+            </select>
+          </div>
+          <div class="col-sm-8">
+            <p></p>
+          </div>
+        </div>
+
+        <!---->
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="barometer">Barometer:</label>
+          </div>
+
+          <div class="col-sm-2">
+            <select class="form-select" id="barometer" name="barometer">
+              <option value="hardware">Hardware</option>
+              <option value="software">Software</option>
+              <option value="prefer_hardware">Prefer Hardware</option>
+            </select>
+          </div>
+          <div class="col-sm-8">
+            <p></p>
+          </div>
+        </div>
+
+        <!---->
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="cloudbase">Cloud Base:</label>
+          </div>
+
+          <div class="col-sm-2">
+            <select class="form-select" id="cloudbase" name="cloudbase">
+              <option value="hardware">Hardware</option>
+              <option value="software">Software</option>
+              <option value="prefer_hardware">Prefer Hardware</option>
+            </select>
+          </div>
+          <div class="col-sm-8">
+            <p></p>
+          </div>
+        </div>
+
+        <!---->
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="dewpoint">Dew Point:</label>
+          </div>
+
+          <div class="col-sm-2">
+            <select class="form-select" id="dewpoint" name="dewpoint">
+              <option value="hardware">Hardware</option>
+              <option value="software">Software</option>
+              <option value="prefer_hardware">Prefer Hardware</option>
+            </select>
+          </div>
+          <div class="col-sm-8">
+            <p></p>
+          </div>
+        </div>
+
+        <!---->
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="ET">ET:</label>
+          </div>
+
+          <div class="col-sm-2">
+            <select class="form-select" id="ET" name="ET">
+              <option value="hardware">Hardware</option>
+              <option value="software">Software</option>
+              <option value="prefer_hardware">Prefer Hardware</option>
+            </select>
+          </div>
+          <div class="col-sm-8">
+            <p></p>
+          </div>
+        </div>
+
+        <!---->
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="heatindex">Heat Index:</label>
+          </div>
+
+          <div class="col-sm-2">
+            <select class="form-select" id="heatindex" name="heatindex">
+              <option value="hardware">Hardware</option>
+              <option value="software">Software</option>
+              <option value="prefer_hardware">Prefer Hardware</option>
+            </select>
+          </div>
+          <div class="col-sm-8">
+            <p></p>
+          </div>
+        </div>
+
+        <!---->
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="humidex">Humidity Index:</label>
+          </div>
+
+          <div class="col-sm-2">
+            <select class="form-select" id="humidex" name="humidex">
+              <option value="hardware">Hardware</option>
+              <option value="software">Software</option>
+              <option value="prefer_hardware">Prefer Hardware</option>
+            </select>
+          </div>
+          <div class="col-sm-8">
+            <p></p>
+          </div>
+        </div>
+
+        <!---->
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="inDewpoint">inDewpoint:</label>
+          </div>
+
+          <div class="col-sm-2">
+            <select class="form-select" id="inDewpoint" name="inDewpoint">
+              <option value="hardware">Hardware</option>
+              <option value="software">Software</option>
+              <option value="prefer_hardware">Prefer Hardware</option>
+            </select>
+          </div>
+          <div class="col-sm-8">
+            <p></p>
+          </div>
+        </div>
+
+        <!---->
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="maxSolarRad">maxSolarRad:</label>
+          </div>
+
+          <div class="col-sm-2">
+            <select class="form-select" id="maxSolarRad" name="maxSolarRad">
+              <option value="hardware">Hardware</option>
+              <option value="software">Software</option>
+              <option value="prefer_hardware">Prefer Hardware</option>
+            </select>
+          </div>
+          <div class="col-sm-8">
+            <p></p>
+          </div>
+        </div>
+
+        <!---->
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="rainRate">Rain Rate:</label>
+          </div>
+
+          <div class="col-sm-2">
+            <select class="form-select" id="rainRate" name="rainRate">
+              <option value="hardware">Hardware</option>
+              <option value="software">Software</option>
+              <option value="prefer_hardware">Prefer Hardware</option>
+            </select>
+          </div>
+          <div class="col-sm-8">
+            <p></p>
+          </div>
+        </div>
+
+        <!---->
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="windchill">Wind Chill:</label>
+          </div>
+
+          <div class="col-sm-2">
+            <select class="form-select" id="windchill" name="windchill">
+              <option value="hardware">Hardware</option>
+              <option value="software">Software</option>
+              <option value="prefer_hardware">Prefer Hardware</option>
+            </select>
+          </div>
+          <div class="col-sm-8">
+            <p></p>
+          </div>
+        </div>
+
+        <!---->
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="windrun">Wind Run:</label>
+          </div>
+
+          <div class="col-sm-2">
+            <select class="form-select" id="windrun" name="windrun">
+              <option value="hardware">Hardware</option>
+              <option value="software">Software</option>
+              <option value="prefer_hardware">Prefer Hardware</option>
+            </select>
+          </div>
+          <div class="col-sm-8">
+            <p></p>
+          </div>
+        </div>
+        <!-- 
+
+      <!---->
+        <div class="row">
+          <div class="col-sm-5"></div>
+          <div class="col-sm-2">
+            <button class="btn btn-primary" type="submit">submit</button>
+          </div>
+          <div class="col-sm-5"></div>
+        </div>
+      </form>
+    </div>
+    <!-- Modal popup -->
+    <!-- The Modal -->
+    <div class="modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Station Settings</h4>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">Settings saved...</div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn-primary" data-bs-dismiss="modal">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      window.onload = function () {
+        document.getElementById("pressure").value = "{{pressure}}";
+        document.getElementById("altimeter").value = "{{altimeter}}";
+        document.getElementById("appTemp").value = "{{appTemp}}";
+        document.getElementById("barometer").value = "{{barometer}}";
+        document.getElementById("cloudbase").value = "{{cloudbase}}";
+        document.getElementById("dewpoint").value = "{{dewpoint}}";
+        document.getElementById("ET").value = "{{ET}}";
+        document.getElementById("heatindex").value = "{{heatindex}}";
+        document.getElementById("humidex").value = "{{humidex}}";
+        document.getElementById("inDewpoint").value = "{{inDewpoint}}";
+        document.getElementById("maxSolarRad").value = "{{maxSolarRad}}";
+        document.getElementById("rainRate").value = "{{rainRate}}";
+        document.getElementById("windchill").value = "{{windchill}}";
+        document.getElementById("windrun").value = "{{windrun}}";
+      };
+    </script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+
+    <script type="text/javascript">
+      $(document).on("submit", "#derivedvalues-form", function (e) {
+        e.preventDefault();
+
+        $.ajax({
+          type: "POST",
+          url: "/configuration/derivedvalues",
+
+          data: {
+            pressure: $("#pressure").val(),
+            altimeter: $("#altimeter").val(),
+            appTemp: $("#appTemp").val(),
+            barometer: $("#barometer").val(),
+            cloudbase: $("#cloudbase").val(),
+            dewpoint: $("#dewpoint").val(),
+            ET: $("#ET").val(),
+            heatindex: $("#heatindex").val(),
+            humidex: $("#humidex").val(),
+            inDewpoint: $("#inDewpoint").val(),
+            maxSolarRad: $("#maxSolarRad").val(),
+            rainRate: $("#rainRate").val(),
+            windchill: $("#windchill").val(),
+            windrun: $("#windrun").val(),
+          },
+
+          success: function () {
+            myModal = new bootstrap.Modal(document.getElementById("myModal"), {
+              keyboard: false,
+            });
+
+            myModal.show();
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

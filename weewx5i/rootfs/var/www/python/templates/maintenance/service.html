@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>WeeWX Service Settings</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+
+    <div class="p-1 bg-primary text-white text-center">
+      <h3>Service Settings</h3>
+    </div>
+
+    <div class="p-1 text-center">
+      <h4>This section controls the WeeWX service.</h4>
+    </div>
+
+    <br />
+
+    <!-- Choices -->
+    <div class="container">
+      <form name="service" method="post" id="service-form">
+        <div class="row">
+          <div class="col-sm-4">
+            <label for="serviceaction">Start/Stop:</label>
+          </div>
+          <div class="col-sm-4">
+            <select class="form-select" id="serviceaction" name="serviceaction">
+              <option value="Start">Start</option>
+              <option value="Stop">Stop</option>
+              <option value="Restart">Restart</option>
+            </select>
+          </div>
+
+          <div class="col-sm-4">
+            <label></label>
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <button class="btn btn-primary" type="submit">Confirm</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Modal popup -->
+    <!-- The Modal -->
+    <div class="modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Overall Settings</h4>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">Settings saved..</div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn-success" data-bs-dismiss="modal">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+
+    <script type="text/javascript">
+      window.onload = function () {
+        status = "{{status}}";
+
+        // If true, weewx is running
+        if (status == "true") {
+          document.getElementById("serviceaction").value = "Stop";
+          jQuery("#serviceaction").children('option[value="Start"]').hide();
+          jQuery("#serviceaction").children('option[value="Stop"]').show();
+          jQuery("#serviceaction").children('option[value="Restart"]').show();
+        } else {
+          document.getElementById("serviceaction").value = "Start";
+          jQuery("#serviceaction").children('option[value="Start"]').show();
+          jQuery("#serviceaction").children('option[value="Stop"]').hide();
+          jQuery("#serviceaction").children('option[value="Restart"]').hide();
+        }
+      };
+    </script>
+
+    <script type="text/javascript">
+      $(document).on("submit", "#service-form", function (e) {
+        e.preventDefault();
+        $.ajax({
+          type: "POST",
+          url: "/configuration/service",
+          data: {
+            // Set the status based on the button value
+            serviceaction: $("#serviceaction").val(),
+          },
+          success: function () {
+            // Change the button value based on success
+            myModal = new bootstrap.Modal(document.getElementById("myModal"), {
+              keyboard: false,
+            });
+
+            myModal.show();
+
+            // Refresh page
+            window.location.reload(true);
+          },
+        });
+      });
+    </script>
+  </body>
+</html>
