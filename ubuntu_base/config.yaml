@@ -1,0 +1,39 @@
+name: Ubuntu_base
+version: 0.0.5
+slug: ubuntu_base
+description: ubuntu HA Add-on
+stage: experimental
+startup: application
+init: false
+
+legacy: true
+
+arch:
+  - i386
+
+#panel_icon: mdi:log
+panel_admin: false
+
+#ingress: true
+#ingress_port: 8099
+
+ports:
+  80/tcp: 80
+
+ports_description:
+  80/tcp: Web interface (Not required for Ingress)
+
+#ports:
+#  8099/tcp: 8011
+#  601/tcp: 601
+#  6514/tcp: 6514
+#  514/udp: 514
+
+#ports_description:
+#  80/tcp: Web interface (Not required for Ingress)
+#  601/tcp: Syslog port
+#  6514/tcp: Syslog port
+#  514/udp: Syslog port
+
+map:
+  - config:rw
