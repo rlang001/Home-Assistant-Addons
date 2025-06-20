@@ -1,0 +1,24 @@
+#!/command/with-contenv bashio
+# shellcheck shell=bash
+# ==============================================================================
+# Home Assistant Community Add-on: WeeWX Web
+# Runs Weewx
+# ==============================================================================
+set -e
+
+CONFIG_PATH=/data/options.json
+WEEWX_CFG=/config/weewx.conf
+MAINTENANCE_MODE="$(bashio::config 'maintenance_mode')"
+
+
+if [[ "${MAINTENANCE_MODE}" = "false" ]]; then
+    bashio::log.info 'WeeWX-HA...'
+    source ~/weewx-venv/bin/activate; weewxd --config=${WEEWX_CFG} 
+else
+    bashio::log.info "WARNING! - In maintenance mode."
+    bashio::log.info "No weather data will be collected"
+fi
+
+
+
+

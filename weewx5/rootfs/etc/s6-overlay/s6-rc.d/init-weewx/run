@@ -1,0 +1,31 @@
+#!/command/with-contenv bashio
+# shellcheck shell=bash
+# ==============================================================================
+# Home Assistant Community Add-on: WeeWX-HA
+# This files sets up some required files
+# ==============================================================================
+
+set -e
+
+CONFIG_PATH=/data/options.json
+RUN_ON_STARTUP="$(bashio::config 'run_on_startup')"
+WEEWX_CFG="/config/weewx.conf"
+WEEWX_USER="/config/bin"
+
+# Copy the skin files.  We put them in the config directory so the user can
+# make mods that persist through restarts
+cp -n -r /root/weewx-data/skins /config
+
+# Copy the station files.  We put them in the config directory so the user can
+# make mods that persist through restarts
+cp -n -r /root/weewx-data/stations /config
+
+# Copy the default config file if it doesn't exist
+cp -n /root/weewx-data/weewx.conf ${WEEWX_CFG}
+
+# Copy the user directory
+mkdir -p /config/bin/user
+cp -n -r /root/weewx-data/bin/user/*.py /config/bin/user
+
+# Make the database directory if needed
+mkdir -p /config/dbs

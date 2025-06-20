@@ -1,0 +1,42 @@
+#!/command/with-contenv bashio
+# shellcheck shell=bash
+# ==============================================================================
+# Home Assistant Community Add-on: WeeWX-HA
+# Configures NGINX for use with WeeWX
+# ==============================================================================
+set -e
+
+CONFIG_PATH=/data/options.json
+WEEWX_CFG=/config/weewx.conf
+
+
+SKIN="$(bashio::config 'skin')"
+declare -A skins
+skins["Amphibian"]="amphibian"
+skins["Belchertown"]="belchertown"
+skins["JAS"]="jas"
+skins["Mobile"]="mobile"
+skins["NeoWX-Material"]="neowx-material"
+skins["NWS"]="nws"
+skins["Seasons"]="seasons"
+skins["Simple"]="simple"
+skins["SmartPhone"]="smartphone"
+skins["Steel Series"]="ss"
+skins["Standard"]="standard"
+skins["WDC"]="wdc"
+#rm -f /var/www/html/index.html
+#ln -s /var/www/html/${skins["${SKIN}"]}/index.html /var/www/html/index.html
+
+# Generate Ingress configuration
+bashio::var.json \
+    interface "$(bashio::addon.ip_address)" \
+    | tempio \
+        -template /etc/nginx/templates/ingress.gtpl \
+        -out /etc/nginx/servers/ingress.conf
+    
+# Generate direct access configuration, if enabled.
+if bashio::var.has_value "$(bashio::addon.port 80)"; then
+    tempio \
+        -template /etc/nginx/templates/direct.gtpl \
+        -out /etc/nginx/servers/direct.conf
+fi  

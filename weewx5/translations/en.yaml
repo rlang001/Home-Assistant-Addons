@@ -1,0 +1,5 @@
+configuration:
+  run_on_startup:
+    name: Run WeeWX when addon starts
+    description: >-
+      Run WeeWX on container start.
