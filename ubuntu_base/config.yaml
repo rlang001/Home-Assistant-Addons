@@ -2,7 +2,7 @@ name: Ubuntu_base
 version: 0.0.5
 slug: ubuntu_base
 description: ubuntu HA Add-on
-stage: experimental
+stage: stable
 startup: application
 init: false
 
