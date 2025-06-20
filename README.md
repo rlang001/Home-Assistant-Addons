@@ -6,13 +6,15 @@ My repository with Add-ons for the [Home Assistant (former Hass.io) system](http
 ## Addons
 
 * Aircraft_Plotter - (alpha)
-* noaa - (alpha)
+* Debian_base - Denbian docker
 * OpenWebRX - OpenWebRX as an addon
 * rtl_cmd
 * rtl_tcp - Run RTL_TCP on a local SDR
 * tar1090 -
 * WebSDR - 
-* WeeWX-HA - WeeWX as an addon.  Currently tested with SDR
+* Ubuntu_base - Ubuntu docker
+* WeeWX5 - WeeWX 5 as an addon.  (Stable)
+* WeeWX-HA - WeeWX 4 as an addon.  Currently tested with SDR. (Stable)
 
 
 More about the Add-ons can be found in their folders.
@@ -26,5 +28,5 @@ Use the following URL to add this repository:
 
 ### License
 
-The licence of the repository is inherited by the plugins, if not stated different.
+The license of the repository is inherited by the plugins, if not stated different.
 
