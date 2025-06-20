@@ -1,0 +1,520 @@
+<!-- the navbar container -->
+
+<div id="menu" class="container-fluid">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">WeeWx 5</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#main_nav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        id="button"
+        data-name="{{ url_for('about') }}"
+        onClick="javascript:setFrame(this)"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="main_nav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+
+          <!-- Reports Top level menu -->
+          <li class="nav-item dropdown" id="reports">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              data-bs-toggle="dropdown"
+              >Reports</a
+            >
+            <!-- Reports Sub menu -->
+            <ul class="dropdown-menu">
+              {% if e_amphibian == "true": %}
+              <li>
+                {% if n_amphibian == "true" %}
+                <a
+                  href="#"
+                  class="dropdown-item"
+                  onClick="window.open('/reports/amphibian', '_blank', 'height=' + screen.height-50 + ',width=' + screen.width-50 + ',resizable=yes,scrollbars=yes,toolbar=yes,menubar=yes,location=yes'); return false"
+                  class="link"
+                >
+                  Amphibian *</a
+                >
+                {% else %}
+                <button
+                  type="button"
+                  class="btn text-nowrap"
+                  data-name="amphibian"
+                  onClick="javascript:setFrame(this)"
+                >
+                  Amphibian
+                </button>
+                {% endif %}
+              </li>
+              {% endif %} {% if e_belchertown == "true": %}
+              <li>
+                {% if n_belchertown == "true" %}
+                <a
+                  href="#"
+                  class="dropdown-item"
+                  onClick="window.open('/reports/belchertown', '_blank', 'height=' + screen.height-50 + ',width=' + screen.width-50 + ',resizable=yes,scrollbars=yes,toolbar=yes,menubar=yes,location=yes'); return false"
+                >
+                  Belchertown *</a
+                >
+                {% else %}
+                <button
+                  type="button"
+                  class="btn text-nowrap"
+                  data-name="belchertown"
+                  onClick="javascript:setFrame(this)"
+                >
+                  Belchertown
+                </button>
+                {% endif %}
+              </li>
+              {% endif %} {% if e_jas == "true": %}
+              <li>
+                <a
+                  href="#"
+                  class="dropdown-item"
+                  onClick="window.open('/reports/jas', '_blank', 'height=' + screen.height-50 + ',width=' + screen.width-50 + ',resizable=yes,scrollbars=yes,toolbar=yes,menubar=yes,location=yes'); return false"
+                >
+                  JAS *</a
+                >
+              </li>
+              {% endif %} {% if e_mobile == "true": %}
+              <li>
+                {% if n_mobile == "true" %}
+                <a
+                  href="#"
+                  class="dropdown-item"
+                  onClick="window.open('/reports/mobile', '_blank', 'height=' + screen.height-50 + ',width=' + screen.width-50 + ',resizable=yes,scrollbars=yes,toolbar=yes,menubar=yes,location=yes'); return false"
+                >
+                  Mobile *</a
+                >
+                {% else %}
+                <button
+                  type="button"
+                  class="btn text-nowrap"
+                  data-name="mobile"
+                  onClick="javascript:setFrame(this)"
+                >
+                  Mobile
+                </button>
+                {% endif %}
+              </li>
+              {% endif %} {% if e_neowxmaterial == "true": %}
+              <li>
+                {% if n_neowxmaterial == "true" %}
+                <a
+                  href="#"
+                  class="dropdown-item"
+                  onClick="window.open('/reports/neowxmaterial', '_blank', 'height=' + screen.height-50 + ',width=' + screen.width-50 + ',resizable=yes,scrollbars=yes,toolbar=yes,menubar=yes,location=yes'); return false"
+                >
+                  NeoWX Material *</a
+                >
+                {% else %}
+                <button
+                  type="button"
+                  class="btn text-nowrap"
+                  data-name="neowxmaterial"
+                  onClick="javascript:setFrame(this)"
+                >
+                  NeoWX Material
+                </button>
+                {% endif %}
+              </li>
+              {% endif %} {% if e_nws == "true": %}
+              <li>
+                {% if n_nws == "true" %}
+                <a
+                  href="#"
+                  class="dropdown-item"
+                  onClick="window.open('/reports/nws', '_blank', 'height=' + screen.height-50 + ',width=' + screen.width-50 + ',resizable=yes,scrollbars=yes,toolbar=yes,menubar=yes,location=yes'); return false"
+                >
+                  NWS *</a
+                >
+                {% else %}
+                <button
+                  type="button"
+                  class="btn text-nowrap"
+                  data-name="nws"
+                  onClick="javascript:setFrame(this)"
+                >
+                  NWS</button
+                >{% endif %}
+              </li>
+              {% endif %} {% if e_seasons == "true": %}
+              <li>
+                {% if n_seasons == "true": %}
+                <a
+                  href="#"
+                  class="dropdown-item"
+                  onClick="window.open('/reports/seasons', '_blank', 'height=' + screen.height-50 + ',width=' + screen.width-50 + ',resizable=yes,scrollbars=yes,toolbar=yes,menubar=yes,location=yes'); return false"
+                >
+                  Seasons *</a
+                >
+                {% else %}
+                <button
+                  type="button"
+                  class="btn text-nowrap"
+                  data-name="seasons"
+                  onClick="javascript:setFrame(this)"
+                >
+                  Seasons
+                </button>
+                {% endif %}
+              </li>
+              {% endif %} {% if e_simple == "true": %}
+              <li>
+                {% if n_simple == "true": %}
+                <a
+                  href="#"
+                  class="dropdown-item"
+                  onClick="window.open('/reports/simple', '_blank', 'height=' + screen.height-50 + ',width=' + screen.width-50 + ',resizable=yes,scrollbars=yes,toolbar=yes,menubar=yes,location=yes'); return false"
+                >
+                  Simple *</a
+                >
+                {% else %}
+                <button
+                  type="button"
+                  class="btn text-nowrap"
+                  data-name="simple"
+                  onClick="javascript:setFrame(this)"
+                >
+                  Simple</button
+                >{% endif %}
+              </li>
+              {% endif %} {% if e_smartphone == "true": %}
+              <li>
+                {% if n_smartphone == "true": %}
+                <a
+                  href="#"
+                  class="dropdown-item"
+                  onClick="window.open('/reports/smartphone', '_blank', 'height=' + screen.height-50 + ',width=' + screen.width-50 + ',resizable=yes,scrollbars=yes,toolbar=yes,menubar=yes,location=yes'); return false"
+                >
+                  Smartphone *</a
+                >
+                {% else %}
+                <button
+                  type="button"
+                  class="btn text-nowrap"
+                  data-name="smartphone"
+                  onClick="javascript:setFrame(this)"
+                >
+                  Smartphone</button
+                >{% endif %}
+              </li>
+              {% endif %} {% if e_ss == "true": %}
+              <li>
+                {% if n_ss == "true": %}
+                <a
+                  href="#"
+                  class="dropdown-item"
+                  onClick="window.open('/reports/ss', '_blank', 'height=' + screen.height-50 + ',width=' + screen.width-50 + ',resizable=yes,scrollbars=yes,toolbar=yes,menubar=yes,location=yes'); return false"
+                >
+                  Steel Series *</a
+                >
+                {% else %}
+                <button
+                  type="button"
+                  class="btn text-nowrap"
+                  data-name="ss"
+                  onClick="javascript:setFrame(this)"
+                >
+                  Steel Series</button
+                >{% endif %}
+              </li>
+              {% endif %} {% if e_wdc == "true": %}
+              <li>
+                {% if n_wdc == "true": %}
+                <a
+                  href="#"
+                  class="dropdown-item"
+                  onClick="window.open('/reports/wdc', '_blank', 'height=' + screen.height-50 + ',width=' + screen.width-50 + ',resizable=yes,scrollbars=yes,toolbar=yes,menubar=yes,location=yes'); return false"
+                >
+                  WDC *</a
+                >
+                {% else %}
+                <button
+                  type="button"
+                  class="btn text-nowrap"
+                  data-name="wdc"
+                  onClick="javascript:setFrame(this)"
+                >
+                  WDC</button
+                >{% endif %}
+              </li>
+              {% endif %}
+            </ul>
+          </li>
+
+          <!-- Configuration Top level menu -->
+          <li class="nav-item dropdown" id="configuration">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              data-bs-toggle="dropdown"
+              >Configuration</a
+            >
+            <!-- Configuration Sub menu -->
+            <ul class="dropdown-menu">
+              <!-- Configuration Sub menu - Overall  -->
+              <li>
+                <a class="dropdown-item" href="/configuration/c_overall"
+                  >Overall</a
+                >
+              </li>
+
+              <!-- Configuration Sub menu - Station   -->
+              <li>
+                <a class="dropdown-item" href="/configuration/c_station"
+                  >Station</a
+                >
+              </li>
+
+              <!-- Configuration Sub menu - >Logging   -->
+              <li>
+                <a class="dropdown-item" href="/configuration/c_logging"
+                  >Logging</a
+                >
+              </li>
+
+              <!-- Configuration Sub menu - >Derived Values   -->
+              <li>
+                <a class="dropdown-item" href="/configuration/c_derivedvalues"
+                  >Derived Values</a
+                >
+              </li>
+
+              <!-- Configuration Sub menu - >MQTT Subscribe Service   -->
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="/configuration/c_mqttsubscribeservice"
+                  >MQTT Subscribe</a
+                >
+              </li>
+
+              <!-- Configuration Sub menu - NWS   -->
+              <li>
+                <a class="dropdown-item" href="/configuration/c_nws">NWS</a>
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <!-- Configuration Sub menu RESTful-->
+              <li>
+                <a class="dropdown-item" href="#"> Restful &raquo;</a>
+                <ul class="submenu dropdown-menu">
+                  <!-- Configuration Sub menu RESTful - StationRegistry -->
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="/configuration/c_stationregistry"
+                      >Station Registry</a
+                    >
+                  </li>
+
+                  <!-- Configuration Sub menu RESTful - AWEKAS -->
+                  <li>
+                    <a class="dropdown-item" href="/configuration/c_awekas"
+                      >AWEKAS</a
+                    >
+                  </li>
+
+                  <!-- Configuration Sub menu RESTful - CWOP -->
+                  <li>
+                    <a class="dropdown-item" href="/configuration/c_cwop"
+                      >CWOP</a
+                    >
+                  </li>
+
+                  <!-- Configuration Sub menu RESTful - PWS Weather -->
+                  <li>
+                    <a class="dropdown-item" href="/configuration/c_pwsweather"
+                      >PWS Weather</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/configuration/c_wow">WOW</a>
+                  </li>
+
+                  <!-- Configuration Sub menu RESTful - Weather Underground -->
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="/configuration/c_wunderground"
+                      >Weather Underground</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/configuration/c_mqtt"
+                      >MQTT</a
+                    >
+                  </li>
+                </ul>
+              </li>
+
+              <!-- Configuration Sub menu reports-->
+              <li>
+                <a class="dropdown-item" href="#"> Reports &raquo; </a>
+                <ul class="submenu dropdown-menu">
+                  <!-- Configuration Sub menu Reports - Std Reports -->
+                  <li>
+                    <a class="dropdown-item" href="/configuration/c_stdreports"
+                      >Std Reports</a
+                    >
+                  </li>
+
+                  <!-- Configuration Sub menu Reports -->
+                  <li>
+                    <a class="dropdown-item" href="#"> Network &raquo; </a>
+                    <ul class="submenu dropdown-menu">
+                      <li>
+                        <a class="dropdown-item" href="/configuration/c_ftp"
+                          >FTP</a
+                        >
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="/configuration/c_rsync"
+                          >RSync</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#"> Stations &raquo; </a>
+                <ul class="submenu dropdown-menu">
+                  <!-- Configuration Sub menu Reports - Stations -->
+                  <li>
+                    <a class="dropdown-item" href="/configuration/s_acurite"
+                      >AcuRite</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/configuration/s_cc3000"
+                      >CC3000</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="/configuration/s_fineoffsetusb"
+                      >FineOffsetUSB</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="/configuration/s_mqttsubscribedriver"
+                      >MQTTSubscribeDriver</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/configuration/s_sdr">SDR</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/configuration/s_simulator"
+                      >Simulator</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/configuration/s_te923"
+                      >TE923</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/configuration/s_ultimeter"
+                      >Ultimeter</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/configuration/s_vantage"
+                      >Vantage</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/configuration/s_wmr100"
+                      >WMR100</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/configuration/s_wmr300"
+                      >WMR300</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/configuration/s_wmr9x8"
+                      >WMR9x8</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/configuration/s_ws1">WS1</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/configuration/s_ws23xx"
+                      >WS23xx</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/configuration/s_ws28xx"
+                      >WS28xx</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Maintenance Top level menu -->
+          <li class="nav-item dropdown" id="maintenance">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              data-bs-toggle="dropdown"
+            >
+              Maintenance
+            </a>
+            <!-- Configuration Sub menu -->
+            <ul class="dropdown-menu">
+              <!-- Configuration Sub menu - Service  -->
+              <li>
+                <a class="dropdown-item" href="/configuration/m_service"
+                  >Service</a
+                >
+              </li>
+
+              <!-- Configuration Sub menu - Defaults   -->
+              <li>
+                <a class="dropdown-item" href="/configuration/m_setdefaults"
+                  >Defaults</a
+                >
+              </li>
+
+              <!-- Configuration Sub menu - Run Reports -->
+              <li>
+                <a class="dropdown-item" href="/configuration/m_runreports"
+                  >Run Reports</a
+                >
+              </li>
+            </ul>
+          </li>
+
+          <!-- About Top level menu -->
+          <li class="nav-item active">
+            <a class="nav-link" href="/about">About</a>
+          </li>
+        </ul>
+      </div>
+      <!-- navbar-collapse.// -->
+    </div>
+    <!-- container-fluid.// -->
+  </nav>
+</div>

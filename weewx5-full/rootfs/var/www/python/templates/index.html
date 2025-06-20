@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>WeeWX</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    {% include 'static/bootstrap.inc' %}
+  </head>
+
+  <body>
+    {% include 'static/nav.html' %}
+
+    <!-- iframe container to hold main content -->
+    <div id="subframe" class="container-fluid" style="display: none">
+      <iframe
+        src="/reports/simple"
+        title="iframe"
+        name="iframe"
+        id="mainiframe"
+        width="100%"
+        height="2500"
+      ></iframe>
+    </div>
+
+    <script type="text/javascript">
+      function setFrame(e) {
+        var page = e.getAttribute("data-name");
+        //setCookie("mydefaultreport", page, 7);
+        window.location.replace("/");
+      }
+    </script>
+
+    <script type="text/javascript">
+      window.onload = function () {
+        mySubframe = document.getElementById("subframe");
+
+        mySubframe.style.display = "none";
+
+        x = getCookie("defaultreport");
+
+        if (x) {
+          document.getElementById("mainiframe").src =
+            "/reports/" + x + "/index.html";
+        } else {
+          // default to amphibian
+          document.getElementById("mainiframe").src =
+            "/reports/amphibian/index.html";
+        }
+
+        // Show iframe
+        mySubframe.style.display = "block";
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+server_name     $hostname;
+root            /var/www/html;
+
+index           index.html;
+
+add_header X-Content-Type-Options nosniff;
+#add_header X-XSS-Protection "0;";
+#add_header X-Frame-Options "SAMEORIGIN";
+#add_header 'Referrer-Policy' 'origin';
+add_header X-Robots-Tag none;
+
+client_max_body_size 64M;
+
+location ~* /\.html {
+    try_files $uri $uri/ ;
+}
+
+location ~* .(jpg|jpeg|png|gif|ico|css|js)$ {
+    expires 365d;
+}
+
+location ~ /\.ht {
+    deny all;
+
+}
+
+
+location /configuration {
+    #allow   127.0.0.1;
+    #allow   172.30.32.2;
+    #deny    all;
+        
+    proxy_headers_hash_max_size 512;
+    proxy_headers_hash_bucket_size 128; 
+
+    proxy_pass http://unix:/run/wsgi.sock;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header X-Forwarded-Host $host;
+    proxy_set_header X-Forwarded-Prefix /;
+}
+

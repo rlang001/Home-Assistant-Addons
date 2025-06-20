@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>WeeWX FineOffsetUSB Config</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    {% include 'static/bootstrap.inc' %}
+  </head>
+
+  <body>
+    {% include 'static/nav.html' %}
+
+    <!-- Header -->
+    <div id="main" class="container-fluid">
+      <div class="p-1 bg-primary text-white text-center">
+        <h3>FineOffsetUSB Settings</h3>
+      </div>
+
+      <br />
+      <div class="card">
+        <div class="card-body">
+          This section is for options relating to the
+          <a
+            href="https://weewx.com/docs/5.0/reference/weewx-options/stations/#fineoffsetusb"
+            target="_blank"
+            >Fine Offset series</a
+          >
+          of weather stations with USB connectors.
+        </div>
+      </div>
+      <br />
+
+      <div class="container">
+        <form name="station" method="post" id="station-form">
+          <div class="row">
+            <div class="col-sm-2">
+              <span class="label">Model:</span>
+            </div>
+            <div class="col-sm-2">
+              <input
+                class="form-control"
+                type="text"
+                id="model"
+                value="{{model}}"
+              />
+            </div>
+            <div class="col-sm-8">
+              <p>
+                Set to the station model. For example, WH1080, WS2080, WH3081,
+                etc.
+              </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-2">
+              <span class="label">Polling Mode:</span>
+            </div>
+            <div class="col-sm-2">
+              <select class="form-select" id="polling_mode" name="polling_mode">
+                <option value="PERIODIC">PERIODIC</option>
+                <option value="ADAPTIVE">ADAPTIVE</option>
+              </select>
+            </div>
+            <div class="col-sm-8">
+              <p>
+                In PERIODIC mode, WeeWX queries the console at regular intervals
+                determined by the polling_interval. In ADAPTIVE mode, WeeWX
+                attempts to query the console at times when it is not reading
+                data from the sensors or writing data to memory.
+              </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-2">
+              <span class="label">Polling Interval:</span>
+            </div>
+            <div class="col-sm-2">
+              <input
+                class="form-control"
+                type="text"
+                id="polling_interval"
+                value="{{polling_interval}}"
+              />
+            </div>
+            <div class="col-sm-8">
+              <p>
+                The frequency, in seconds, at which WeeWX will poll the console
+                for data. This setting applies only when the polling_mode is
+                PERIODIC. Default is 60.
+              </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-2">
+              <span class="label">Data Format:</span>
+            </div>
+            <div class="col-sm-2">
+              <select class="form-select" id="data_format" name="data_format">
+                <option value="1080">1080</option>
+                <option value="3080">3080</option>
+              </select>
+            </div>
+            <div class="col-sm-8">
+              <p>
+                There are two classes of hardware, the 10xx/20xx consoles and
+                the 30xx consoles. Unlike the 10xx/20xx consoles, the 30xx
+                consoles record luminosity and UV, so they have a different data
+                format. Use the data_format to indicate which type of hardware
+                you have. Possible values are 1080 (for the 10xx and 20xx
+                consoles) and 3080 (for the 30xx consoles). Default is 1080.
+              </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-5"></div>
+            <div class="col-sm-2">
+              <button class="btn btn-primary" type="submit">Save</button>
+            </div>
+            <div class="col-sm-5"></div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal popup -->
+    <div class="modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">FineOffsetUSB Settings</h4>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">Settings saved...</div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn-primary" data-bs-dismiss="modal">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      window.onload = function () {
+        document.getElementById("use_contraints").value = "{{use_contraints}}";
+        document.getElementById("model").value = "{{model}}";
+      };
+    </script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+
+    <script type="text/javascript">
+      $(document).on("submit", "#station-form", function (e) {
+        e.preventDefault();
+
+        $.ajax({
+          type: "POST",
+          url: "/configuration/s_fineoffsetusb",
+
+          data: {
+            model: $("#model").val(),
+            polling_mode: $("#polling_mode").val(),
+            polling_interval: $("#polling_interval").val(),
+            data_format: $("#data_format").val(),
+          },
+          success: function () {
+            myModal = new bootstrap.Modal(document.getElementById("myModal"), {
+              keyboard: false,
+            });
+
+            myModal.show();
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

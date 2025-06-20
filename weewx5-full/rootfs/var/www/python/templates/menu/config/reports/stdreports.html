@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>WeeWX Reports Config</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    {% include 'static/bootstrap.inc' %}
+  </head>
+
+  <body>
+    {% include 'static/nav.html' %}
+
+    <!-- Header -->
+    <div id="main" class="container-fluid">
+      <div class="p-1 bg-primary text-white text-center">
+        <h3>Reports Settings</h3>
+      </div>
+
+      <div class="p-1 text-center">
+        <h4>This section configures report generation and display.</h4>
+      </div>
+
+      <br />
+      <br />
+      <!-- Choices -->
+      <div class="container">
+        <form name="reports" method="post" id="reports-form">
+          <!--  -->
+
+          <div class="row">
+            <div class="col-sm-3">
+              <label for="defaultreport">Default Report:</label>
+            </div>
+            <div class="col-sm-3">
+              <select
+                class="form-select"
+                id="defaultreport"
+                name="defaultreport"
+              >
+                <option value="amphibian">Amphibian</option>
+                <option value="belchertown">Belchertown</option>
+                <option value="jas">JAS</option>
+                <option value="mobile">Mobile</option>
+                <option value="neowxmaterial">NeoWX-Material</option>
+                <option value="nws">NWS</option>
+                <option value="seasons">Seasons</option>
+                <option value="simple">Simple</option>
+                <option value="smartphone">Smartphone</option>
+                <option value="ss">Steel Series</option>
+                <option value="wdc">WDC</option>
+              </select>
+            </div>
+            <div class="col-sm-6">
+              <label for="defaultreport"></label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12"><br /></div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-2 text-center">
+              <label>Enable</label>
+            </div>
+            <div class="col-sm-2 text-center">
+              <label>New Window</label>
+            </div>
+            <div class="col-sm-4"></div>
+          </div>
+
+          <!-- Amphibian -->
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="e_amphibian"
+                ><a
+                  href="https://github.com/weewx/weewx/wiki/amphibian"
+                  target="_blank"
+                  >Amphibian Report</a
+                ></label
+              >
+            </div>
+            <div class="col-sm-2 text-center">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="e_amphibian"
+                name="e_amphibian"
+              />
+            </div>
+            <div class="col-sm-2 text-center">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="n_amphibian"
+                name="n_amphibian"
+              />
+            </div>
+            <div class="col-sm-4">
+              <label> </label>
+            </div>
+          </div>
+
+          <!-- Belchertown -->
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="e_belchertown"
+                ><a
+                  href="https://github.com/poblabs/weewx-belchertown"
+                  target="_blank"
+                  >Belchertown Report</a
+                ></label
+              >
+            </div>
+            <div class="col-sm-2 text-center">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="e_belchertown"
+                name="e_belchertown"
+              />
+            </div>
+            <div class="col-sm-2 text-center">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="n_belchertown"
+                name="n_belchertown"
+              />
+            </div>
+            <div class="col-sm-4">
+              <label> </label>
+            </div>
+          </div>
+
+          <!-- JAS -->
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="e_jas"
+                ><a
+                  href="https://github.com/bellrichm/weewx-jas"
+                  target="_blank"
+                  >JAS Report</a
+                ></label
+              >
+            </div>
+            <div class="col-sm-2 text-center">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="e_jas"
+                name="e_jas"
+              />
+            </div>
+            <div class="col-sm-2 text-center">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="n_jas"
+                name="n_jas"
+              />
+            </div>
+            <div class="col-sm-4">
+              <label> </label>
+            </div>
+          </div>
+
+          <!-- NeoWX-Material -->
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="e_neowxmaterial"
+                ><a
+                  href="https://neoground.com/projects/neowx-material"
+                  target="_blank"
+                  >NeoWX-Material Report</a
+                ></label
+              >
+            </div>
+            <div class="col-sm-2 text-center">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="e_neowxmaterial"
+                name="e_neowxmaterial"
+              />
+            </div>
+            <div class="col-sm-2 text-center">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="n_neowxmaterial"
+                name="n_neowxmaterial"
+              />
+            </div>
+            <div class="col-sm-4">
+              <label> </label>
+            </div>
+          </div>
+
+          <!-- NWS -->
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="e_nws"
+                ><a href="https://github.com/chaunceygardiner/weewx-nws"
+                  >NWS Report</a
+                >
+              </label>
+            </div>
+            <div class="col-sm-2 text-center">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="e_nws"
+                name="e_nws"
+              />
+            </div>
+            <div class="col-sm-2 text-center">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="n_nws"
+                name="n_nws"
+              />
+            </div>
+            <div class="col-sm-4">
+              <label> </label>
+            </div>
+          </div>
+          <!-- Seasons -->
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="e_seasons">
+                <a
+                  href="https://github.com/scottgrey/weewx-Seasons"
+                  target="_blank"
+                  >Seasons Report</a
+                >
+              </label>
+            </div>
+            <div class="col-sm-2 text-center">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="e_seasons"
+                name="e_seasons"
+              />
+            </div>
+            <div class="col-sm-2 text-center">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="n_seasons"
+                name="n_seasons"
+              />
+            </div>
+            <div class="col-sm-4">
+              <label> </label>
+            </div>
+          </div>
+
+          <!-- Simple -->
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="e_simple"
+                ><a
+                  href="https://github.com/matthewwall/weewx-simple"
+                  target="_blank"
+                  >Simple Report</a
+                ></label
+              >
+            </div>
+            <div class="col-sm-2 text-center">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="e_simple"
+                name="e_simple"
+              />
+            </div>
+            <div class="col-sm-2 text-center">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="n_simple"
+                name="n_simple"
+              />
+            </div>
+            <div class="col-sm-4">
+              <label> </label>
+            </div>
+          </div>
+
+          <!-- Smartphone -->
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="e_smartphone"
+                ><a href="http://www.weewx,com" target="_blank"
+                  >Smartphone Report</a
+                >
+              </label>
+            </div>
+            <div class="col-sm-2 text-center">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="e_smartphone"
+                name="e_smartphone"
+              />
+            </div>
+            <div class="col-sm-2 text-center">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="n_smartphone"
+                name="n_smartphone"
+              />
+            </div>
+            <div class="col-sm-4">
+              <label> </label>
+            </div>
+          </div>
+
+          <!-- Steel Series -->
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="e_ss"
+                ><a
+                  href="https://github.com/gjr80/weewx-steelseries"
+                  target="_blank"
+                  >Steel Series Report</a
+                >
+              </label>
+            </div>
+            <div class="col-sm-2 text-center">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="e_ss"
+                name="e_ss"
+              />
+            </div>
+            <div class="col-sm-2 text-center">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="n_ss"
+                name="n_ss"
+              />
+            </div>
+            <div class="col-sm-4">
+              <label> </label>
+            </div>
+          </div>
+
+          <!-- WDC -->
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="e_wdc">
+                <a href="https://github.com/Daveiano/weewx-wdc" target="_blank"
+                  >WDC Report</a
+                >
+              </label>
+            </div>
+            <div class="col-sm-2 text-center">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="e_wdc"
+                name="e_wdc"
+              />
+            </div>
+            <div class="col-sm-2 text-center">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="n_wdc"
+                name="n_wdc"
+              />
+            </div>
+            <div class="col-sm-4">
+              <label> </label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12"><br /></div>
+          </div>
+          <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-2">
+              <button class="btn btn-primary" type="submit">submit</button>
+            </div>
+            <div class="col-sm-3"></div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal popup -->
+    <div class="modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Station Settings</h4>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">Settings saved...</div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn-primary" data-bs-dismiss="modal">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      function setCookie(name, value, days) {
+        var expires = "";
+        if (days) {
+          var date = new Date();
+          date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+          expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "") + expires + "; path=/";
+      }
+      function getCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(";");
+        for (var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == " ") c = c.substring(1, c.length);
+          if (c.indexOf(nameEQ) == 0)
+            return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+      }
+      function eraseCookie(name) {
+        document.cookie =
+          name + "=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+      }
+    </script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+
+    <script type="text/javascript">
+      window.onload = function () {
+        x = getCookie("defaultreport");
+
+        if (x) {
+          document.getElementById("defaultreport").value = x;
+        } else {
+          document.getElementById("defaultreport").value = "simple";
+        }
+
+        document.getElementById("e_amphibian").checked =
+          "{{e_amphibian}}".toLowerCase() == "true" ? true : false;
+        document.getElementById("n_amphibian").checked =
+          "{{n_amphibian}}".toLowerCase() == "true" ? true : false;
+
+        document.getElementById("e_belchertown").checked =
+          "{{e_belchertown}}".toLowerCase() == "true" ? true : false;
+        document.getElementById("n_belchertown").checked =
+          "{{n_belchertown}}".toLowerCase() == "true" ? true : false;
+
+        document.getElementById("e_jas").checked =
+          "{{e_jas}}".toLowerCase() == "true" ? true : false;
+        document.getElementById("n_jas").checked =
+          "{{n_jas}}".toLowerCase() == "true" ? true : false;
+
+        document.getElementById("e_neowxmaterial").checked =
+          "{{e_neowxmaterial}}".toLowerCase() == "true" ? true : false;
+        document.getElementById("n_neowxmaterial").checked =
+          "{{n_neowxmaterial}}".toLowerCase() == "true" ? true : false;
+
+        document.getElementById("e_nws").checked =
+          "{{e_nws}}".toLowerCase() == "true" ? true : false;
+        document.getElementById("n_nws").checked =
+          "{{n_nws}}".toLowerCase() == "true" ? true : false;
+
+        document.getElementById("e_seasons").checked =
+          "{{e_seasons}}".toLowerCase() == "true" ? true : false;
+        document.getElementById("n_seasons").checked =
+          "{{n_seasons}}".toLowerCase() == "true" ? true : false;
+
+        document.getElementById("e_simple").checked =
+          "{{e_simple}}".toLowerCase() == "true" ? true : false;
+        document.getElementById("n_simple").checked =
+          "{{n_simple}}".toLowerCase() == "true" ? true : false;
+
+        document.getElementById("e_smartphone").checked =
+          "{{e_smartphone}}".toLowerCase() == "true" ? true : false;
+        document.getElementById("n_smartphone").checked =
+          "{{n_smartphone}}".toLowerCase() == "true" ? true : false;
+
+        document.getElementById("e_ss").checked =
+          "{{e_ss}}".toLowerCase() == "true" ? true : false;
+        document.getElementById("n_ss").checked =
+          "{{n_ss}}".toLowerCase() == "true" ? true : false;
+
+        document.getElementById("e_wdc").checked =
+          "{{e_wdc}}".toLowerCase() == "true" ? true : false;
+        document.getElementById("n_wdc").checked =
+          "{{n_wdc}}".toLowerCase() == "true" ? true : false;
+      };
+    </script>
+
+    <!-- -->
+    <script type="text/javascript">
+      $(document).on("submit", "#reports-form", function (e) {
+        e.preventDefault();
+
+        defaultreport = $("#defaultreport").val();
+
+        setCookie("defaultreport", defaultreport, 7);
+
+        $.ajax({
+          type: "POST",
+          url: "/configuration/c_stdreports",
+          data: {
+            defaultreport: $("#defaultreport").val(),
+            e_amphibian: $("input#e_amphibian").prop("checked")
+              ? "true"
+              : "false",
+            n_amphibian: $("input#n_amphibian").prop("checked")
+              ? "true"
+              : "false",
+
+            e_belchertown: $("input#e_belchertown").prop("checked")
+              ? "true"
+              : "false",
+            n_belchertown: $("input#n_belchertown").prop("checked")
+              ? "true"
+              : "false",
+
+            e_jas: $("input#e_jas").prop("checked") ? "true" : "false",
+            n_jas: $("input#n_jas").prop("checked") ? "true" : "false",
+
+            e_neowxmaterial: $("input#e_neowxmaterial").prop("checked")
+              ? "true"
+              : "false",
+            n_neowxmaterial: $("input#n_neowxmaterial").prop("checked")
+              ? "true"
+              : "false",
+
+            e_nws: $("input#e_nws").prop("checked") ? "true" : "false",
+            n_nws: $("input#n_nws").prop("checked") ? "true" : "false",
+
+            e_seasons: $("input#e_seasons").prop("checked") ? "true" : "false",
+            n_seasons: $("input#n_seasons").prop("checked") ? "true" : "false",
+
+            e_simple: $("input#e_simple").prop("checked") ? "true" : "false",
+            n_simple: $("input#n_simple").prop("checked") ? "true" : "false",
+            
+            e_smartphone: $("input#e_smartphone").prop("checked")
+              ? "true"
+              : "false",
+            n_smartphone: $("input#n_smartphone").prop("checked")
+              ? "true"
+              : "false",
+
+            e_ss: $("input#e_ss").prop("checked") ? "true" : "false",
+            n_ss: $("input#n_ss").prop("checked") ? "true" : "false",
+
+            e_wdc: $("input#e_wdc").prop("checked") ? "true" : "false",
+            n_wdc: $("input#n_wdc").prop("checked") ? "true" : "false",
+          },
+          success: function () {
+            myModal = new bootstrap.Modal(document.getElementById("myModal"), {
+              keyboard: false,
+            });
+
+            myModal.show();
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

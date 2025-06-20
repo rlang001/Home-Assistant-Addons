@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>WeeWX Station Config</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    {% include 'static/bootstrap.inc' %}
+  </head>
+
+  <body>
+    {% include 'static/nav.html' %}
+
+    <div id="main" class="container-fluid">
+      <div class="p-1 bg-primary text-white text-center">
+        <h3>MQTT Settings</h3>
+      </div>
+
+      <div class="p-1 text-center">
+        <h4>
+          This section configures the weewx extension that sends data to an MQTT
+          broker.
+        </h4>
+      </div>
+      <br />
+      <!-- Choices -->
+
+      <!--
+        ha_discovery = true
+        ha_device_name = atlas
+        ha_discovery_topic = homeassistant/sensor/weewx/
+        
+
+        -->
+      <div class="container">
+        <form name="mqtt" method="post" id="mqtt-form">
+          <!--      -->
+          <div class="row">
+            <div class="col-sm-2">
+              <label for="enable">Enable:</label>
+            </div>
+
+            <div class="col-sm-2">
+              <select class="form-select" id="enable" name="enable">
+                <option value="false">False</option>
+                <option value="true">True</option>
+              </select>
+            </div>
+
+            <div class="col-sm-8">
+              <p></p>
+            </div>
+          </div>
+
+          <!--   -->
+          <div class="row">
+            <div class="col-sm-2">
+              <label for="server_url">Server URL:</label>
+            </div>
+
+            <div class="col-sm-2">
+              <input
+                class="form-control"
+                type="text"
+                id="server_url"
+                value="{{server_url}}"
+              />
+            </div>
+
+            <div class="col-sm-8">
+              <p>
+                server_url format: mqtt://username:password@example.com:1883
+              </p>
+            </div>
+          </div>
+
+          <!--   -->
+          <div class="row">
+            <div class="col-sm-2">
+              <label for="topic">Topic:</label>
+            </div>
+
+            <div class="col-sm-2">
+              <input
+                class="form-control"
+                type="text"
+                id="topic"
+                value="{{topic}}"
+              />
+            </div>
+
+            <div class="col-sm-8">
+              <p></p>
+            </div>
+          </div>
+
+          <!--    -->
+          <div class="row">
+            <div class="col-sm-2">
+              <label for="binding">Binding:</label>
+            </div>
+
+            <div class="col-sm-2">
+              <select class="form-select" id="binding" name="binding">
+                <option value="loop">Loop</option>
+                <option value="archive">Archive</option>
+              </select>
+            </div>
+
+            <div class="col-sm-8">
+              <p>The binding, loop or archive. Default is: loop.</p>
+            </div>
+          </div>
+          <!--   -->
+          <div class="row">
+            <div class="col-sm-2">
+              <label for="unit_system">Unit System:</label>
+            </div>
+
+            <div class="col-sm-2">
+              <input
+                class="form-control"
+                type="text"
+                id="unit_system"
+                value="{{unit_system}}"
+              />
+            </div>
+
+            <div class="col-sm-8">
+              <p></p>
+            </div>
+          </div>
+
+          <!--      -->
+          <div class="row">
+            <div class="col-sm-2">
+              <label for="aggregation">Aggregation:</label>
+            </div>
+
+            <div class="col-sm-2">
+              <select class="form-select" id="aggregation" name="aggregation">
+                <option value="individual">Individual</option>
+                <option value="aggregate">Aggregate</option>
+                <option value="both">Both</option>
+              </select>
+            </div>
+
+            <div class="col-sm-8">
+              <p></p>
+            </div>
+          </div>
+
+          <!--      -->
+          <div class="row">
+            <div class="col-sm-2">
+              <label for="ha_discovery">HA Discovery:</label>
+            </div>
+
+            <div class="col-sm-2">
+              <select
+                class="form-select"
+                id="ha_discovery"
+                name="ha_discovery"
+                disabled
+              >
+                <option value="false">False</option>
+                <option value="true">True</option>
+              </select>
+            </div>
+
+            <div class="col-sm-8">
+              <p></p>
+            </div>
+          </div>
+
+          <!--   -->
+          <div class="row">
+            <div class="col-sm-2">
+              <label for="ha_device_name">HA Device Name:</label>
+            </div>
+
+            <div class="col-sm-2">
+              <input
+                class="form-control"
+                type="text"
+                id="ha_device_name"
+                value="{{ha_device_name}}"
+                disabled
+              />
+            </div>
+
+            <div class="col-sm-8">
+              <p></p>
+            </div>
+          </div>
+
+          <!--   -->
+          <div class="row">
+            <div class="col-sm-2">
+              <label for="ha_discovery_topic">HA Discovery Topic:</label>
+            </div>
+
+            <div class="col-sm-2">
+              <input
+                class="form-control"
+                type="text"
+                id="ha_discovery_topic"
+                value="{{ha_discovery_topic}}"
+                disabled
+              />
+            </div>
+
+            <div class="col-sm-8">
+              <p></p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-5"></div>
+            <div class="col-sm-2">
+              <button class="btn btn-primary" type="submit">submit</button>
+            </div>
+            <div class="col-sm-5"></div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- Modal popup -->
+
+    <div class="modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Overall Settings</h4>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">Settings saved..</div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn-success" data-bs-dismiss="modal">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      window.onload = function () {
+        document.getElementById("enable").value = "{{enable}}";
+        document.getElementById("server_url").value = "{{server_url}}";
+        document.getElementById("topic").value = "{{topic}}";
+        document.getElementById("binding").value = "{{binding}}";
+        document.getElementById("unit_system").value = "{{unit_system}}";
+        document.getElementById("aggregation").value = "{{aggregation}}";
+        //        document.getElementById("ha_discovery").value =
+        //          "{{ha_discovery}}";
+        //        document.getElementById("ha_device_name").value = "{{ha_device_name}}";
+        //        document.getElementById("ha_discovery_topic").value =
+        //          "{{ha_discovery_topic}}";
+      };
+
+      function toTitleCase(str) {
+        return str.replace(
+          /\w\S*/g,
+          (text) =>
+            text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
+        );
+      }
+    </script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+
+    <script type="text/javascript">
+      $(document).on("submit", "#mqtt-form", function (e) {
+        e.preventDefault();
+
+        $.ajax({
+          type: "POST",
+          url: "/configuration/c_mqtt",
+          data: {
+            enable: $("#enable").val(),
+            server_url: $("#server_url").val(),
+            topic: $("#topic").val(),
+            binding: $("#binding").val(),
+            unit_system: $("#unit_system").val(),
+            aggregation: $("#aggregation").val(),
+            //ha_discovery: $("#ha_discovery").val(),
+            //ha_device_name: $("#ha_device_name").val(),
+            //ha_discovery_topic: $("#ha_discovery_topic").val(),
+          },
+          success: function () {
+            myModal = new bootstrap.Modal(document.getElementById("myModal"), {
+              keyboard: false,
+            });
+
+            myModal.show();
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

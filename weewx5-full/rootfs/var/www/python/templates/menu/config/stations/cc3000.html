@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>WeeWX CC3000 Config</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    {% include 'static/bootstrap.inc' %}
+  </head>
+
+  <body>
+    {% include 'static/nav.html' %}
+
+    <!-- Header -->
+    <div id="main" class="container-fluid">
+      <div class="p-1 bg-primary text-white text-center">
+        <h3>CC3000 Settings</h3>
+      </div>
+
+      <br />
+      <div class="card">
+        <div class="card-body">
+          This section is for options relating to the
+          <a
+            href="https://weewx.com/docs/5.0/reference/weewx-options/stations/#cc3000"
+            target="_blank"
+            >RainWise Mark III weather stations and CC3000 data logger.</a
+          >
+        </div>
+      </div>
+      <br />
+
+      <div class="container">
+        <form name="station" method="post" id="station-form">
+          <div class="row">
+            <div class="col-sm-2">
+              <span class="label">Model:</span>
+            </div>
+            <div class="col-sm-2">
+              <input
+                class="form-control"
+                type="text"
+                id="model"
+                value="{{model}}"
+              />
+            </div>
+            <div class="col-sm-8">
+              <p>
+                Specifies the name of the hardware reported to WeeWX. The
+                default is CC3000.
+              </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-2">
+              <span class="label">Port:</span>
+            </div>
+            <div class="col-sm-2">
+              <input
+                class="form-control"
+                type="text"
+                id="port"
+                value="{{port}}"
+              />
+            </div>
+            <div class="col-sm-8">
+              <p>The serial port, e.g., /dev/ttyS0</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-2">
+              <span class="label">Debug Serial:</span>
+            </div>
+            <div class="col-sm-2">
+              <select class="form-select" id="debug_serial" name="debug_serial">
+                <option value="0">False</option>
+                <option value="1">True</option>
+              </select>
+            </div>
+            <div class="col-sm-8">
+              <p></p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-2">
+              <span class="label">Debug Open/Close:</span>
+            </div>
+            <div class="col-sm-2">
+              <select
+                class="form-select"
+                id="debug_openclose"
+                name="debug_openclose"
+              >
+                <option value="0">False</option>
+                <option value="1">True</option>
+              </select>
+            </div>
+            <div class="col-sm-8">
+              <p></p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-2">
+              <span class="label">Debug Checksum:</span>
+            </div>
+            <div class="col-sm-2">
+              <select
+                class="form-select"
+                id="debug_checksum"
+                name="debug_checksum"
+              >
+                <option value="0">False</option>
+                <option value="1">True</option>
+              </select>
+            </div>
+            <div class="col-sm-8">
+              <p></p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-2">
+              <span class="label">Logger Threshhold:</span>
+            </div>
+            <div class="col-sm-2">
+              <input
+                class="form-control"
+                type="text"
+                id="logger_threshold"
+                value="{{logger_threshold}}"
+              />
+            </div>
+            <div class="col-sm-8">
+              <p>
+                specifies the number of records in the CC3000 station's memory
+                at which the station memory's should be cleared.
+              </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-2">
+              <span class="label">Max Tries:</span>
+            </div>
+            <div class="col-sm-2">
+              <input
+                class="form-control"
+                type="text"
+                id="max_tries"
+                value="{{max_tries}}"
+              />
+            </div>
+            <div class="col-sm-8">
+              <p>
+                The max_tries option specifies how many times WeeWX should retry
+                communicating with the CC3000 station when a serial
+                communications error occurs. The default is 5.
+              </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-2">
+              <span class="label">Polling Interval:</span>
+            </div>
+            <div class="col-sm-2">
+              <input
+                class="form-control"
+                type="text"
+                id="polling_interval"
+                value="{{polling_interval}}"
+              />
+            </div>
+            <div class="col-sm-8">
+              <p>
+                Determines how often WeeWX will query the station for data in
+                seconds. The default is 2.
+              </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-2">
+              <span class="label">Use Station Time:</span>
+            </div>
+            <div class="col-sm-2">
+              <select
+                class="form-select"
+                id="use_station_time"
+                name="use_station_time"
+              >
+                <option value="true">True</option>
+                <option value="false">False</option>
+              </select>
+            </div>
+            <div class="col-sm-8">
+              <p>
+                Specifies whether the loop packets read by weewx should use the
+                time specified in the CC3000 station packet or the computer
+                time.
+              </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-5"></div>
+            <div class="col-sm-2">
+              <button class="btn btn-primary" type="submit">Save</button>
+            </div>
+            <div class="col-sm-5"></div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal popup -->
+    <div class="modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">CC3000 Settings</h4>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">Settings saved...</div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn-primary" data-bs-dismiss="modal">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      window.onload = function () {
+        document.getElementById("use_contraints").value = "{{use_contraints}}";
+        document.getElementById("model").value = "{{model}}";
+      };
+    </script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+
+    <script type="text/javascript">
+      $(document).on("submit", "#station-form", function (e) {
+        e.preventDefault();
+
+        $.ajax({
+          type: "POST",
+          url: "/configuration/s_cc3000",
+
+          data: {
+            model: $("#model").val(),
+            port: $("#port").val(),
+            debug_serial: $("#debug_serial").val(),
+            debug_openclose: $("#debug_openclose").val(),
+            debug_checksum: $("#debug_checksum").val(),
+            logger_threshold: $("#logger_threshold").val(),
+            max_tries: $("#max_tries").val(),
+            polling_interval: $("#polling_interval").val(),
+            use_station_time: $("#use_station_time").val(),
+          },
+          success: function () {
+            myModal = new bootstrap.Modal(document.getElementById("myModal"), {
+              keyboard: false,
+            });
+
+            myModal.show();
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

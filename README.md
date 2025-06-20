@@ -6,13 +6,13 @@ My repository with Add-ons for the [Home Assistant (former Hass.io) system](http
 ## Addons
 
 * Aircraft_Plotter - (alpha)
-* Debian_base - Denbian docker
+* debian_base - Debian docker image
 * OpenWebRX - OpenWebRX as an addon
 * rtl_cmd
 * rtl_tcp - Run RTL_TCP on a local SDR
 * tar1090 -
 * WebSDR - 
-* Ubuntu_base - Ubuntu docker
+* ubuntu_base - Ubuntu docker image
 * WeeWX5 - WeeWX 5 as an addon.  (Stable)
 * WeeWX-HA - WeeWX 4 as an addon.  Currently tested with SDR. (Stable)
 

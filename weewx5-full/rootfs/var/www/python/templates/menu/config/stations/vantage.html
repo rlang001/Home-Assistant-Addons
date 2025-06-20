@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>WeeWX Vantage Config</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    {% include 'static/bootstrap.inc' %}
+  </head>
+
+  <body>
+    {% include 'static/nav.html' %}
+
+    <!-- Header -->
+    <div id="main" class="container-fluid">
+      <div class="p-1 bg-primary text-white text-center">
+        <h3>Vantage Settings</h3>
+      </div>
+
+      <br />
+      <div class="card">
+        <div class="card-body">
+          This section is for options relating to the
+          <a
+            href="https://weewx.com/docs/5.0/reference/weewx-options/stations/#vantage"
+            target="_blank"
+            >Davis Vantage series</a
+          >
+          of hardware (VantagePro, VantagePro2 or VantageVue).
+        </div>
+      </div>
+      <br />
+
+      <div class="container">
+        <form name="station" method="post" id="station-form">
+          <div class="row">
+            <div class="col-sm-2">
+              <span class="label">Type:</span>
+            </div>
+            <div class="col-sm-2">
+              <select class="form-select" id="type" name="type">
+                <option value="serial">Serial</option>
+                <option value="ethernet ">Ethernet</option>
+              </select>
+            </div>
+            <div class="col-sm-8">
+              <p>
+                Set to either serial, for a serial or USB connection to the
+                VantagePro (by far the most common), or to ethernet for the
+                WeatherLinkIP. No default.
+              </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-2">
+              <span class="label">Port:</span>
+            </div>
+            <div class="col-sm-2">
+              <input
+                class="form-control"
+                type="text"
+                id="port"
+                value="{{port}}"
+              />
+            </div>
+            <div class="col-sm-8">
+              <p>
+                If you chose serial, for type, then set to the serial port name
+                used by the station. For example, /dev/ttyUSB0 is a common
+                location for USB ports, /dev/ttyS0 for serial ports. Otherwise,
+                not required. No default.
+              </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-2">
+              <span class="label">Host:</span>
+            </div>
+            <div class="col-sm-2">
+              <input
+                class="form-control"
+                type="text"
+                id="host"
+                value="{{host}}"
+              />
+            </div>
+            <div class="col-sm-8">
+              <p>
+                If you chose ethernet, then specify either the IP address (e.g.,
+                192.168.0.1) or hostname (e.g., console.mydomain.com) to the
+                console. Otherwise, not required. No default.
+              </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-2">
+              <span class="label">Baud Rate:</span>
+            </div>
+            <div class="col-sm-2">
+              <input
+                class="form-control"
+                type="text"
+                id="baudrate"
+                value="{{baudrate}}"
+              />
+            </div>
+            <div class="col-sm-8">
+              <p>Set to the baudrate of the station. The default is 19200.</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-2">
+              <span class="label">TCP Port:</span>
+            </div>
+            <div class="col-sm-2">
+              <input
+                class="form-control"
+                type="text"
+                id="tcp_port"
+                value="{{tcp_port}}"
+              />
+            </div>
+            <div class="col-sm-8">
+              <p>
+                The port where WeatherLinkIP will be listening. Default is
+                22222.
+              </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-2">
+              <span class="label">TCP Send Delay:</span>
+            </div>
+            <div class="col-sm-2">
+              <input
+                class="form-control"
+                type="text"
+                id="tcp_send_delay"
+                value="{{tcp_send_delay}}"
+              />
+            </div>
+            <div class="col-sm-8">
+              <p>
+                How long to wait in seconds after sending a socket packet to the
+                WeatherLinkIP before looking for input. Default is 0.5.
+              </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-2">
+              <span class="label">Loop Request:</span>
+            </div>
+            <div class="col-sm-2">
+              <select class="form-select" id="loop_request" name="loop_request">
+                <option value="1">LOOP1</option>
+                <option value="2 ">LOOP2</option>
+                <option value="3 ">LOOP3</option>
+              </select>
+            </div>
+            <div class="col-sm-8">
+              <p>
+                The type of LOOP packet to use for LOOP data. Options are 1
+                (type LOOP1); 2 (type LOOP2); or 3 (alternate between).
+              </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-2">
+              <span class="label">ISSID:</span>
+            </div>
+            <div class="col-sm-2">
+              <input
+                class="form-control"
+                type="text"
+                id="iss_id"
+                value="{{iss_id}}"
+              />
+            </div>
+            <div class="col-sm-8">
+              <p>
+                Set to the ID number of the Integrated Sensor Suite (ISS). This
+                is used in the formula to calculate reception quality for
+                wireless stations. Default is 1.
+              </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-2">
+              <span class="label">Timeout:</span>
+            </div>
+            <div class="col-sm-2">
+              <input
+                class="form-control"
+                type="text"
+                id="timeout"
+                value="{{timeout}}"
+              />
+            </div>
+            <div class="col-sm-8">
+              <p>
+                How many seconds to wait for a response from the station before
+                giving up. Default is 4.
+              </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-2">
+              <span class="label">Wait Before Retry:</span>
+            </div>
+            <div class="col-sm-2">
+              <input
+                class="form-control"
+                type="text"
+                id="wait_before_retry"
+                value="{{wait_before_retry}}"
+              />
+            </div>
+            <div class="col-sm-8">
+              <p>
+                How many seconds to wait before retrying. Unless you have a good
+                reason to change it, this value should be left at the default,
+                as it is long enough for the station to offer new data, but not
+                so long as to go into a new loop packet (which arrive every 2
+                seconds). Default is 1.2.
+              </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-2">
+              <span class="label">Max Tries:</span>
+            </div>
+            <div class="col-sm-2">
+              <input
+                class="form-control"
+                type="text"
+                id="max_tries"
+                value="{{max_tries}}"
+              />
+            </div>
+            <div class="col-sm-8">
+              <p>How many times to try again before giving up. Default is 4.</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-2">
+              <span class="label">Model Type:</span>
+            </div>
+            <div class="col-sm-2">
+              <select class="form-select" id="model_type" name="model_type">
+                <option value="1">Vantage Pro</option>
+                <option value="2 ">Vantage Pro2</option>
+              </select>
+            </div>
+            <div class="col-sm-8">
+              <p>Vantage model Type: Vantage Pro; Vantage Pro2.</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-5"></div>
+            <div class="col-sm-2">
+              <button class="btn btn-primary" type="submit">Save</button>
+            </div>
+            <div class="col-sm-5"></div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal popup -->
+    <div class="modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Station Settings</h4>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">Settings saved...</div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn-primary" data-bs-dismiss="modal">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      window.onload = function () {
+        document.getElementById("model").value = "{{model}}";
+      };
+    </script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+
+    <script type="text/javascript">
+      $(document).on("submit", "#station-form", function (e) {
+        e.preventDefault();
+
+        $.ajax({
+          type: "POST",
+          url: "/configuration/s_vantage",
+
+          data: {
+            type: $("#type").val(),
+            port: $("#port").val(),
+            host: $("#host").val(),
+            baudrate: $("#baudrate").val(),
+            tcp_port: $("#tcp_port").val(),
+            tcp_send_delay: $("#tcp_send_delay").val(),
+            loop_request: $("#loop_request").val(),
+            iss_id: $("#iss_id").val(),
+            timeout: $("#timeout").val(),
+            wait_before_retry: $("#wait_before_retry").val(),
+            max_tries: $("#max_tries").val(),
+            model_type: $("#model_type").val(),
+          },
+          success: function () {
+            myModal = new bootstrap.Modal(document.getElementById("myModal"), {
+              keyboard: false,
+            });
+
+            myModal.show();
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>WeeWX Rsync Config</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    {% include 'static/bootstrap.inc' %}
+  </head>
+
+  <body>
+    {% include 'static/nav.html' %}
+
+    <!-- Header -->
+    <div id="main" class="container-fluid">
+      <div class="p-1 bg-primary text-white text-center">
+        <h3>RSync Settings</h3>
+      </div>
+
+      <div class="p-1 text-center">
+        <h4>This section is for Rsync reports generation.</h4>
+      </div>
+      <br />
+
+      <div class="container">
+        <form name="ftp" method="post" id="rsync-form">
+          <div class="row">
+            <div class="col-sm-2">
+              <label for="enable">Enable:</label>
+            </div>
+            <div class="col-sm-2">
+              <select class="form-select" id="enable" name="enable">
+                <option value="true">True</option>
+                <option value="false">False</option>
+              </select>
+            </div>
+            <div class="col-sm-8">
+              <p>
+                If you wish to use rsync, set "enable" to "true", then fill out
+                server, user, and path.
+              </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-2">
+              <label for="server">Server:</label>
+            </div>
+            <div class="col-sm-2">
+              <input
+                class="form-control"
+                type="text"
+                id="server"
+                value="{{server}}"
+              />
+            </div>
+            <div class="col-sm-8">
+              <p>The ftp server name, e.g, www.myserver.org</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-2">
+              <label for="user">User:</label>
+            </div>
+            <div class="col-sm-2">
+              <input
+                class="form-control"
+                type="text"
+                id="user"
+                value="{{user}}"
+              />
+            </div>
+            <div class="col-sm-8">
+              <p>FTP user name</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-2">
+              <label for="path">Path:</label>
+            </div>
+            <div class="col-sm-2">
+              <input
+                class="form-control"
+                type="text"
+                id="path"
+                value="{{path}}"
+              />
+            </div>
+            <div class="col-sm-8">
+              <p>The destination directory, such as /var/www/html/weather</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-2">
+              <label for="delete">Delete:</label>
+            </div>
+            <div class="col-sm-2">
+              <select class="form-select" id="delete" name="delete">
+                <option value="1">True</option>
+                <option value="0">False</option>
+              </select>
+            </div>
+            <div class="col-sm-8">
+              <p>
+                Set to 1 to enable remote file deletion, zero to allow files to
+                accumulate remotely
+              </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-5"></div>
+            <div class="col-sm-2">
+              <button class="btn btn-primary" type="submit">submit</button>
+            </div>
+            <div class="col-sm-5"></div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal popup -->
+    <div class="modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">RSync Settings</h4>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">Settings saved...</div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn-primary" data-bs-dismiss="modal">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      window.onload = function () {
+        document.getElementById("enable").value = "{{enable}}";
+        document.getElementById("server").value = "{{server}}";
+        document.getElementById("user").value = "{{user}}";
+        document.getElementById("path").value = "{{path}}";
+        document.getElementById("delete").value = "{{delete}}";
+      };
+    </script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+
+    <script type="text/javascript">
+      $(document).on("submit", "#rsync-form", function (e) {
+        e.preventDefault();
+
+        $.ajax({
+          type: "POST",
+          url: "/configuration/rsync",
+
+          data: {
+            enable: $("#enable").val(),
+            server: $("#server").val(),
+            user: $("#user").val(),
+            path: $("#path").val(),
+            delete: $("#delete").val(),
+          },
+          success: function () {
+            myModal = new bootstrap.Modal(document.getElementById("myModal"), {
+              keyboard: false,
+            });
+
+            myModal.show();
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

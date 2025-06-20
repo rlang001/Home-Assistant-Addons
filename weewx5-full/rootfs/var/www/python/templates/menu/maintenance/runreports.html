@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>WeeWX - Run Reports</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    {% include 'static/bootstrap.inc' %}
+  </head>
+
+  <body>
+    {% include 'static/nav.html' %}
+
+    <!-- Header -->
+    <div id="main" class="container-fluid">
+      <div class="p-1 bg-primary text-white text-center">
+        <h3>Reports</h3>
+      </div>
+
+      <div class="p-1 text-center">
+        <h4>Run Reports Manually</h4>
+      </div>
+
+      <br />
+      <br />
+      <!-- Choices -->
+      <div class="container">
+        <form name="runreports" method="post" id="runreports-form">
+          <!-- all  -->
+          <div class="row">
+            <div class="col-sm-3">
+              <label for="chk_all">Run all reports:</label>
+            </div>
+            <div class="col-sm-1">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="chk_all"
+                name="chk_all"
+              />
+            </div>
+            <div class="col-sm-8">
+              <p>Run all reports</p>
+            </div>
+          </div>
+
+          <!-- Amphibian -->
+          <div class="row">
+            <div class="col-sm-3">
+              <label for="chk_amphibian">Amphibian:</label>
+            </div>
+            <div class="col-sm-1">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="chk_amphibian"
+                name="chk_amphibian"
+              />
+            </div>
+            <div class="col-sm-8">
+              <p>Run the Amphibian Report</p>
+            </div>
+          </div>
+
+          <!-- Belchertown -->
+          <div class="row">
+            <div class="col-sm-3">
+              <label for="chk_belchertown">Belchertown:</label>
+            </div>
+            <div class="col-sm-1">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="chk_belchertown"
+                name="chk_belchertown"
+              />
+            </div>
+            <div class="col-sm-8">
+              <p>Run the Belchertown Report</p>
+            </div>
+          </div>
+
+          <!-- JAS -->
+          <div class="row">
+            <div class="col-sm-3">
+              <label for="chk_jas">JAS:</label>
+            </div>
+            <div class="col-sm-1">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="chk_jas"
+                name="chk_jas"
+              />
+            </div>
+            <div class="col-sm-8">
+              <p>Run the JAS Report</p>
+            </div>
+          </div>
+
+          <!-- neowxmaterial -->
+          <div class="row">
+            <div class="col-sm-3">
+              <label for="chk_neowxmaterial">NeoWX-material:</label>
+            </div>
+            <div class="col-sm-1">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="chk_neowxmaterial"
+                name="chk_neowxmaterial"
+              />
+            </div>
+            <div class="col-sm-8">
+              <p>Run the NeoWX-Material Report</p>
+            </div>
+          </div>
+
+          <!-- NWS -->
+          <div class="row">
+            <div class="col-sm-3"><label for="chk_nws">NWS:</label></div>
+            <div class="col-sm-1">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="chk_nws"
+                name="chk_nws"
+              />
+            </div>
+            <div class="col-sm-8">
+              <p>Run the NWS Report</p>
+            </div>
+          </div>
+
+          <!-- Seasons -->
+          <div class="row">
+            <div class="col-sm-3">
+              <label for="chk_seasons">Seasons:</label>
+            </div>
+            <div class="col-sm-1">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="chk_seasons"
+                name="chk_seasons"
+              />
+            </div>
+            <div class="col-sm-8">
+              <p>Run the Seasons Report</p>
+            </div>
+          </div>
+
+          <!-- Simple -->
+          <div class="row">
+            <div class="col-sm-3"><label for="chk_simple">Seasons:</label></div>
+            <div class="col-sm-1">
+              <input
+                class="form-check-input"
+                type="chk_simple"
+                id="chk_simple"
+                name="chk_simple"
+              />
+            </div>
+            <div class="col-sm-8">
+              <p>Run the Simple Report</p>
+            </div>
+          </div>
+
+          <!-- smartphone -->
+          <div class="row">
+            <div class="col-sm-3">
+              <label for="chk_smartphone">Smartphone:</label>
+            </div>
+            <div class="col-sm-1">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="chk_smartphone"
+                name="chk_smartphone"
+              />
+            </div>
+            <div class="col-sm-8">
+              <p>Run the Smartphone Report</p>
+            </div>
+          </div>
+
+          <!-- Steel Series -->
+          <div class="row">
+            <div class="col-sm-3">
+              <label for="chk_ss">Steel Series:</label>
+            </div>
+            <div class="col-sm-1">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="chk_ss"
+                name="chk_ss"
+              />
+            </div>
+            <div class="col-sm-8">
+              <p>Run the Steel Series Report</p>
+            </div>
+          </div>
+
+          <!-- WDC -->
+          <div class="row">
+            <div class="col-sm-3">
+              <label for="chk_wdc">WDC:</label>
+            </div>
+            <div class="col-sm-1">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="chk_wdc"
+                name="chk_wdc"
+              />
+            </div>
+            <div class="col-sm-8">
+              <p>Run the WDC Report</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-5"></div>
+            <div class="col-sm-3">
+              <button class="btn btn-primary" type="submit">submit</button>
+            </div>
+            <div class="col-sm-5"></div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal popup -->
+    <div class="modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Report Settings</h4>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">Reports being generated...</div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn-primary" data-bs-dismiss="modal">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      window.onload = function () {
+        document.getElementById("all").checked =
+          "{{all}}".toLowerCase() == "true" ? true : false;
+
+        document.getElementById("chk_amphibian").checked =
+          "{{amphibian}}".toLowerCase() == "true" ? true : false;
+
+        document.getElementById("chk_belchertown").checked =
+          "{{belchertown}}".toLowerCase() == "true" ? true : false;
+
+        document.getElementById("chk_jas").checked =
+          "{{jas}}".toLowerCase() == "true" ? true : false;
+
+        document.getElementById("chk_neowxmaterial").checked =
+          "{{neowxmaterial}}".toLowerCase() == "true" ? true : false;
+
+        document.getElementById("chk_nws").checked =
+          "{{nws}}".toLowerCase() == "true" ? true : false;
+
+        document.getElementById("chk_seasons").checked =
+          "{{seasons}}".toLowerCase() == "true" ? true : false;
+
+        document.getElementById("chk_simple").checked =
+          "{{simple}}".toLowerCase() == "true" ? true : false;
+
+        document.getElementById("chk_smartphone").checked =
+          "{{smartphone}}".toLowerCase() == "true" ? true : false;
+
+        document.getElementById("chk_ss").checked =
+          "{{ss}}".toLowerCase() == "true" ? true : false;
+
+        document.getElementById("chk_wdc").checked =
+          "{{wdc}}".toLowerCase() == "true" ? true : false;
+      };
+    </script>
+
+    <!-- jQuery JavaScript Library v3.5.1 -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- # Form Submit Handler -->
+    <script type="text/javascript">
+      $(document).on("submit", "#runreports-form", function (e) {
+        e.preventDefault();
+
+        $.ajax({
+          type: "POST",
+          url: "/configuration/m_runreports",
+          data: {
+            // all: "true",
+            // seasons: "false",
+            // nws: "false",
+            // smartphone: "false",
+            // neowxmaterial: "false",
+            // belchertown: "false",
+
+            all: $("input#chk_all").prop("checked") ? "true" : "false",
+
+            amphibian: $("input#chk_amphibian").prop("checked")
+              ? "true"
+              : "false",
+            belchertown: $("input#chk_belchertown").prop("checked")
+              ? "true"
+              : "false",
+            jas: $("input#chk_jas").prop("checked") ? "true" : "false",
+            neowxmaterial: $("input#chk_neowxmaterial").prop("checked")
+              ? "true"
+              : "false",
+            nws: $("input#chk_nws").prop("checked") ? "true" : "false",
+            seasons: $("input#chk_seasons").prop("checked") ? "true" : "false",
+            simple: $("input#chk_simple").prop("checked") ? "true" : "false",
+            smartphone: $("input#chk_smartphone").prop("checked")
+              ? "true"
+              : "false",
+            ss: $("input#chk_ss").prop("checked") ? "true" : "false",
+            wdc: $("input#chk_wdc").prop("checked") ? "true" : "false",
+          },
+          success: function () {
+            myModal = new bootstrap.Modal(document.getElementById("myModal"), {
+              keyboard: false,
+            });
+
+            myModal.show();
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

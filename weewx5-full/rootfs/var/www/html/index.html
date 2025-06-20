@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>WeeWX</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    {% include 'static/bootstrap.inc' %}
+  </head>
+
+  <body>
+    {% include 'static/nav.html' %}
+
+    <!-- iframe container to hold main content -->
+    <div class="container-fluid">
+      <iframe
+        src="/about.html"
+        title="iframe"
+        name="iframe"
+        id="mainiframe"
+        width="100%"
+        height="2500"
+      ></iframe>
+    </div>
+  </body>
+</html>

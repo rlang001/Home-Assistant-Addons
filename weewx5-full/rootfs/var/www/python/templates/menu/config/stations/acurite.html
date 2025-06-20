@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>WeeWX Acurite Config</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    {% include 'static/bootstrap.inc' %}
+  </head>
+
+  <body>
+    {% include 'static/nav.html' %}
+
+    <!-- Header -->
+    <div id="main" class="container-fluid">
+      <div class="p-1 bg-primary text-white text-center">
+        <h3>AcuRite Settings</h3>
+      </div>
+
+      <br />
+      <div class="card">
+        <div class="card-body">
+          This section is for options relating to the
+          <a
+            href="https://weewx.com/docs/5.0/reference/weewx-options/stations/#acurite"
+            target="_blank"
+            >Acurite 5-in-1 series</a
+          >
+          of weather stations with USB connectors.
+        </div>
+      </div>
+      <br />
+
+      <div class="container">
+        <form name="station" method="post" id="station-form">
+          <div class="row">
+            <div class="col-sm-2">
+              <span class="label">Model:</span>
+            </div>
+            <div class="col-sm-2">
+              <select class="form-select" id="model" name="model">
+                <option value="AcuRite 01035">AcuRite 01035</option>
+                <option value="AcuRite 01036">AcuRite 01036</option>
+                <option value="AcuRite 02032C">AcuRite 02032C</option>
+              </select>
+            </div>
+            <div class="col-sm-8">
+              <p>Set to the station model</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-2">
+              <span class="label">Use constants:</span>
+            </div>
+            <div class="col-sm-2">
+              <select class="form-select" id="use_contants" name="use_contants">
+                <option value="false">False</option>
+                <option value="true">True</option>
+              </select>
+            </div>
+            <div class="col-sm-8">
+              <p>
+                When use_constants=True, the driver will use the constants to
+                determine which type of sensor is in the station and will adjust
+                the calculation accordingly. A value of False causes the driver
+                to use a linear approximation, regardless of the type of
+                sensors.
+              </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-5"></div>
+            <div class="col-sm-2">
+              <button class="btn btn-primary" type="submit">Save</button>
+            </div>
+            <div class="col-sm-5"></div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal popup -->
+    <div class="modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Station Settings</h4>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">Settings saved...</div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn-primary" data-bs-dismiss="modal">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      window.onload = function () {
+        document.getElementById("use_constants").value = "{{use_constants}}";
+        document.getElementById("model").value = "{{model}}";
+      };
+    </script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+
+    <script type="text/javascript">
+      $(document).on("submit", "#station-form", function (e) {
+        e.preventDefault();
+
+        $.ajax({
+          type: "POST",
+          url: "/configuration/s_acurite",
+
+          data: {
+            model: $("#model").val(),
+            use_constants: $("#use_constants").val(),
+          },
+          success: function () {
+            myModal = new bootstrap.Modal(document.getElementById("myModal"), {
+              keyboard: false,
+            });
+
+            myModal.show();
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

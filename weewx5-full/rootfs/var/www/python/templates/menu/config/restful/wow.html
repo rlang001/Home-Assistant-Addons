@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>WeeWX Station Config</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    {% include 'static/bootstrap.inc' %}
+  </head>
+
+  <body>
+    {% include 'static/nav.html' %}
+
+    <!-- Header -->
+    <div id="main" class="container-fluid">
+      <div class="p-1 bg-primary text-white text-center">
+        <h3>WOW Settings</h3>
+      </div>
+      <div class="p-1 text-center">
+        <h4>
+          This section is for configuring posts to WOW. If you wish to post to
+          WOW, set the option 'enable' to true, then specify a station and
+          password.
+        </h4>
+      </div>
+      <br />
+      <!-- Choices -->
+      <div class="container">
+        <form name="wow" method="post" id="wow-form">
+          <div class="row">
+            <div class="col-sm-2">
+              <label for="enable">Enable:</label>
+            </div>
+
+            <div class="col-sm-2">
+              <select class="form-select" id="enable" name="enable">
+                <option value="false">False</option>
+                <option value="true">True</option>
+              </select>
+            </div>
+
+            <div class="col-sm-8">
+              <p></p>
+            </div>
+          </div>
+
+          <!--   -->
+          <div class="row">
+            <div class="col-sm-2">
+              <label for="station">Station:</label>
+            </div>
+
+            <div class="col-sm-2">
+              <input
+                class="form-control"
+                type="text"
+                id="station"
+                value="{{station}}"
+              />
+            </div>
+
+            <div class="col-sm-8">
+              <p></p>
+            </div>
+          </div>
+
+          <!--   -->
+          <div class="row">
+            <div class="col-sm-2">
+              <label for="password">Password:</label>
+            </div>
+
+            <div class="col-sm-2">
+              <input
+                class="form-control"
+                type="text"
+                id="password"
+                value="{{password}}"
+              />
+            </div>
+
+            <div class="col-sm-8">
+              <p></p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-5"></div>
+            <div class="col-sm-2">
+              <button class="btn btn-primary" type="submit">submit</button>
+            </div>
+            <div class="col-sm-5"></div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal popup -->
+
+    <div class="modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Overall Settings</h4>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">Settings saved..</div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn-success" data-bs-dismiss="modal">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script></script>
+
+    <script type="text/javascript">
+      window.onload = function () {
+        document.getElementById("enable").value = "{{enable}}";
+        document.getElementById("station").value = "{{station}}";
+        document.getElementById("password").value = "{{password}}";
+      };
+    </script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+
+    <script type="text/javascript">
+      $(document).on("submit", "#wow-form", function (e) {
+        e.preventDefault();
+
+        $.ajax({
+          type: "POST",
+          url: "/configuration/c_wow",
+          data: {
+            enable: $("#enable").val(),
+            station: $("#station").val(),
+            password: $("#password").val(),
+          },
+          success: function () {
+            myModal = new bootstrap.Modal(document.getElementById("myModal"), {
+              keyboard: false,
+            });
+
+            myModal.show();
+          },
+        });
+      });
+    </script>
+  </body>
+</html>
