@@ -4,7 +4,7 @@ weewx.units.obs_group_dict['soilMoist1'] = 'group_percent'
 weewx.units.obs_group_dict['soilMoist2'] = 'group_percent'
 weewx.units.obs_group_dict['soilMoist3'] = 'group_percent'
 weewx.units.obs_group_dict['soilMoist4'] = 'group_percent'
-
+weewx.units.obs_group_dict['soilMoist5'] = 'group_percent'
 
 # CPU Mon for WDC skin
 weewx.units.obs_group_dict['pop'] = 'group_percent'
