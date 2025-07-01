@@ -1,8 +1,8 @@
 name: WeeWX 5
-version: 0.7.1
+version: 0.7.3
 slug: weewx5
 description: WeeWX 5 HA Add-on
-stage: stable
+stage: experimental
 startup: application
 init: false
 

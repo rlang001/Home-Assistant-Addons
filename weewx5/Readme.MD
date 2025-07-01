@@ -8,4 +8,3 @@ Run WeeWX 5 as an addon.
 
 [WeeWX]: https://www.weewx.com/
 
-
