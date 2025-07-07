@@ -17,6 +17,8 @@ panel_admin: false
 #ingress: true
 #ingress_port: 8099
 
+usb: true
+
 ports:
   80/tcp: 80
 
