@@ -1,5 +1,5 @@
 name: rtl433_2_mqtt
-version: 0.0.6
+version: 0.0.7
 slug: rtl433_2_mqtt
 description: rtl433_2_mqtt Add-on
 stage: experimental
@@ -38,7 +38,13 @@ schema:
     sleep_for: "int?"
     verbosity: "list(debug|info|warning|critical|none)?"
     device_id: "match(^[0-9]{3}:[0-9]{3})?"
-   
+  sdr1:
+    parameters: "str?"
+  sdr2:
+    parameters: "str?"
+  sdr3:
+    parameters: "str?"
+    
   mqtt:
     host: "str?"
     port: "int?"
