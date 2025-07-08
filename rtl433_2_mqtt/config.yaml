@@ -1,5 +1,5 @@
 name: rtl433_2_mqtt
-version: 0.0.8
+version: 0.0.9
 slug: rtl433_2_mqtt
 description: rtl433_2_mqtt Add-on
 stage: experimental
