@@ -16,6 +16,36 @@ arch:
 #panel_icon: mdi:log
 panel_admin: false
 
+options:
+  general:
+    sleep_for: 60
+    verbosity: info
+  custom_parameters: {}
+  mqtt:
+    ha_autodiscovery_topic: homeassistant
+    ha_status_topic: homeassistant/status
+    base_topic: "rtlamr"
+schema:
+  general:
+    sleep_for: "int?"
+    verbosity: "list(debug|info|warning|critical|none)?"
+    device_id: "match(^[0-9]{3}:[0-9]{3})?"
+    rtltcp_host: match(([\w\d\.]+):(\d+))?
+  mqtt:
+    host: "str?"
+    port: "int?"
+    user: "str?"
+    password: str?
+    tls_enabled: "bool?"
+    tls_insecure: "bool?"
+    tls_ca: "str?"
+    tls_cert: "str?"
+    tls_keyfile: "str?"
+    ha_autodiscovery_topic: "str?"
+    ha_status_topic: "str?"
+    base_topic: "str?"
+
+    
 services:
   - mqtt:want
 
