@@ -21,16 +21,24 @@ options:
     sleep_for: 60
     verbosity: info
   custom_parameters: {}
+  sdr1:
+    parameters: -d 0 -f 433.92Mhz -C si -F "mqtt://192.168.10.12,user=mqtt,pass=Sadi3Bail33,retain=1,devices=rtl_433/localhost/devices[/type][/model][/subtype]/id[id],events=rtl_433/localhost/events"
+
+  sdr2:
+    parameters: -d 0 -f 915 Mhz -C si -F "mqtt://192.168.10.12,user=mqtt,pass=Sadi3Bail33,retain=1,devices=rtl_433/localhost/devices[/type][/model][/subtype]/id[id],events=rtl_433/localhost/events"
+
+  sdr3:
+    parameters:
   mqtt:
     ha_autodiscovery_topic: homeassistant
     ha_status_topic: homeassistant/status
-    base_topic: "rtlamr"
+    base_topic: "rtl-433"
 schema:
   general:
     sleep_for: "int?"
     verbosity: "list(debug|info|warning|critical|none)?"
     device_id: "match(^[0-9]{3}:[0-9]{3})?"
-    rtltcp_host: match(([\w\d\.]+):(\d+))?
+   
   mqtt:
     host: "str?"
     port: "int?"
