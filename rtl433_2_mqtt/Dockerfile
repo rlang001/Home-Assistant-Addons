@@ -23,7 +23,7 @@ RUN apt-get install -y software-properties-common rtl-sdr
 #########################################################
 # Copy data for add-on to docker fs
 #########################################################
-# COPY rootfs /
+#COPY rootfs /
 
 ########################################################
 # Modify the existing /run.sh file
