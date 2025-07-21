@@ -1,5 +1,5 @@
 name: rtl433_2_mqtt
-version: 0.0.15
+version: 0.3.7
 slug: rtl433_2_mqtt
 description: rtl433_2_mqtt Add-on
 stage: experimental
@@ -13,35 +13,39 @@ arch:
   - amd64
   - i386
 
-#panel_icon: mdi:log
+panel_icon: mdi-antenna
 panel_admin: false
 
 options:
-  general:
-    sleep_for: 60
-    verbosity: info
-  mqtt:
-    host: 127.0.0.1
-    port: 1833
-    user: "user"
-    password: "password"
-    base_topic: "rtl-433"
-    retain: "false"
-    
+  sdr0_enable: true
+  rtl_433_sdr0_conf_file: "rtl_433.sdr0.conf"
+
+  sdr1_enable: false
+  rtl_433_sdr1_conf_file: "rtl_433.sdr1.conf"
+
+  sdr2_enable: false
+  rtl_433_sdr2_conf_file: "rtl_433.sdr2.conf"
+
+  ha_discovery: false
+  discovery_log_level: "warning"
+
 schema:
-  general:
-    sleep_for: "int?"
-    verbosity: "list(debug|info|warning|critical|none)?"
-  mqtt:
-    host: "str?"
-    port: "int?"
-    user: "str?"
-    password: str?
-    base_topic: "str?"
-    retain: "bool?"
-    
+  sdr0_enable: bool
+  rtl_433_sdr0_conf_file: "str"
+
+  sdr1_enable: bool
+  rtl_433_sdr1_conf_file: "str"
+
+  sdr2_enable: bool
+  rtl_433_sdr2_conf_file: "str"
+
+  ha_discovery: bool
+  discovery_log_level: "list(debug|info|warning|error|critical)"
+
 services:
   - mqtt:want
 
 usb: true
 
+map:
+  - addon_config:rw
