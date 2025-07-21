@@ -1,1 +1,39 @@
+configuration:
+  message:
+    name: Message
+    description: The message that will be printed to the log when starting this example add-on.
 
+  sdr0_enable:
+    name: Radio 0 Enable
+    description: Enable/disable radio 0
+
+  rtl_433_sdr0_conf_file:
+    name: Radio 0 Configuration File
+    description: Config file (/located in adddon-config).  All rtl_433 options are set here.  If file not found, auto configuration is done.
+
+  sdr1_enable:
+    name: Radio 1 Enable
+    description: Enable/disable radio 1
+
+  rtl_433_sdr1_conf_file:
+    name: Radio 1 Configuration File
+    description: Config file (/located in adddon-config).  All rtl_433 options are set here.  If file not found, auto configuration is done.
+
+  sdr2_enable:
+    name: Radio 2 Enable
+    description: Enable/disable radio 2
+
+  rtl_433_sdr2_conf_file:
+    name: Radio 2 Configuration File
+    description: Config file (/located in adddon-config).  All rtl_433 options are set here.  If file not found, auto configuration is done.
+
+  ha_discovery:
+    name: Home Assistant Discovery
+    description: Publish to Home Assistant
+
+  mqtt:
+    name: MQTT Server info
+    description: MQTT Server info to publish to Home Assistant
+
+  discovery_log_level:
+    name: Home Assistant Discovery Log Level
