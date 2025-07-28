@@ -1,5 +1,5 @@
 name: OpenWebRX-Plus
-version: 0.0.26
+version: 0.0.27
 slug: openwebrx-plus
 description: OpenWebRX-Plus HA Add-on
 stage: stable
@@ -18,8 +18,8 @@ arch:
 panel_icon: mdi:radio-tower
 panel_admin: false
 
-#ingress: true
-#ingress_port: 8099
+ingress: true
+ingress_port: 8073
 
 ports:
   8073/tcp: 8073
