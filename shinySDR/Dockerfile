@@ -6,8 +6,9 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV MAKEFLAGS='-j 8'
 
 # Ensure that we always use UTF-8, US English locale and UTC time
-RUN apt-get update && apt-get install 
+RUN apt-get update 
 
+# && apt-get install 
 # -y locales && \
 #      localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 && \
 #      echo "UTC" > /etc/timezone && \
@@ -19,14 +20,12 @@ ENV LANGUAGE=en_US:en
 ENV PYTHONIOENCODING=utf-8
 
 
-RUN apt-get update
-
 
 #########################################################
 # Install prerequisites
 #########################################################
 # python
-#RUN apt-get install -y python-is-python3 python3-pip\
+# RUN apt-get install -y python-is-python3 python3-pip\
 #      gnuradio gnuradio-dev \ 
 #      gr-osmosdr \
 #      git
