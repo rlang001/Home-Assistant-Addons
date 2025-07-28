@@ -1,5 +1,5 @@
 name: RTL_CMD
-version: 0.0.16
+version: 0.0.17
 slug: rtl_cmd
 description: rtl_cmd
 stage: stable
@@ -17,16 +17,8 @@ panel_icon: mdi:radio-tower
 panel_admin: false
 
 ingress: false
-#ports:
-#  80/tcp: 80
-#ports_description:
-#  80/tcp: Web interface (Not required for Ingress)
+
 
 usb: true
-#map:
-#  - config:rw
-
-#options:
-#  message: "rtl_cmd"
-#schema:
-#  message: "str?"
+map:
+  - config:rw
