@@ -17,21 +17,10 @@ panel_admin: false
 #ingress: true
 #ingress_port: 8099
 
-ports:
-  601/tcp: 601
-  6514/tcp: 6514
-  514/udp: 514
-
-ports_description:
-  #  80/tcp: Web interface (Not required for Ingress)
-  601/tcp: Syslog port
-  6514/tcp: Syslog port
-  514/udp: Syslog port
-
-map:
-  - addon_config:rw
-  - share
-  - ssl
+#map:
+#  - addon_config:rw
+#  - share
+#  - ssl
 # - homeassistant_config
 # - addon_config
 # - ssl
