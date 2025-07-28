@@ -19,31 +19,30 @@ ENV PYTHONIOENCODING=utf-8
 
 RUN apt-get update
 
-# && apt-get -y upgrade
 
 #########################################################
 # Install prerequisites
 #########################################################
 # python
-RUN apt-get install -y python-is-python3 python3-pip\
-      gnuradio gnuradio-dev \ 
-      gr-osmosdr \
-      git
+#RUN apt-get install -y python-is-python3 python3-pip\
+#      gnuradio gnuradio-dev \ 
+#      gr-osmosdr \
+#      git
 
 
 #RUN pip install setuptools
 
-RUN pip install twisted
+#RUN pip install twisted
 #RUN pip install six
-RUN pip install txws
-RUN pip install pyephem
-RUN pip install pyserial
+#RUN pip install txws
+#RUN pip install pyephem
+#RUN pip install pyserial
 
-WORKDIR /root
-RUN git clone https://github.com/kpreid/shinysdr/
+#WORKDIR /root
+#RUN git clone https://github.com/kpreid/shinysdr/
 
-WORKDIR /root/shinysdr
-RUN z
+#WORKDIR /root/shinysdr
+#RUN 
 
 #RUN python setup.py install
 
