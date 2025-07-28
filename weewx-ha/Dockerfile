@@ -56,9 +56,12 @@ RUN wget https://github.com/matthewwall/weewx-mqtt/archive/master.zip -O /tmp/we
 #########################################################
 # install MQTT-Subscribe
 #########################################################
+#RUN wget https://github.com/bellrichm/WeeWX-MQTTSubscribe/archive/refs/tags/v2.2.2.zip -O /tmp/WeeWX-MQTTSubscribe.zip && \
 RUN wget https://github.com/bellrichm/WeeWX-MQTTSubscribe/archive/refs/tags/v2.2.2.zip -O /tmp/WeeWX-MQTTSubscribe.zip && \
       cd /tmp && \
       MQTTSubscribe_install_type=SERVICE /home/weewx/bin/wee_extension --install WeeWX-MQTTSubscribe.zip
+
+      #MQTTSubscribe_install_type=SERVICE /home/weewx/bin/wee_extension --install WeeWX-MQTTSubscribe.zip
 
 
 #########################################################

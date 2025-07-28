@@ -1,5 +1,5 @@
 name: WeeWX-HA
-version: 0.7.69
+version: 1.0.1
 slug: weewx-ha
 description: WeeWX HA Add-on
 stage: experimental
@@ -17,6 +17,8 @@ panel_icon: mdi:cloud
 panel_admin: false
 
 ingress: true
+
+
 ports:
   80/tcp: 80
 ports_description:
@@ -28,7 +30,8 @@ services:
 usb: true
 
 map:
-  - config:rw
+#  - config:rw
+  - addon_config:rw
 
 options:
   "maintenance_mode": false
