@@ -1,6 +1,6 @@
 # Required configuration options
 name: NOAA
-version: 0.0.4a
+version: 0.0.5
 slug: noaa
 description: NOAA HA Add-on
 arch:
