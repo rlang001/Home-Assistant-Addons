@@ -2,7 +2,7 @@ name: RTL_CMD
 version: 0.0.16
 slug: rtl_cmd
 description: rtl_cmd
-stage: experimental
+stage: stable
 startup: application
 init: false
 
