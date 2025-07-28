@@ -5,7 +5,7 @@ My repository with Add-ons for the [Home Assistant (former Hass.io) system](http
 
 ## Addons
 
-* Aircraft_Plotter - (alpha)
+* Aircraft_Plotter - *(alpha)*
 
 * OpenWebRX - OpenWebRX as an addon
 * SDRMR -
