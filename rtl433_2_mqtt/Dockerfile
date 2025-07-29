@@ -21,6 +21,7 @@ WORKDIR /root
 # Copy data for add-on to docker fs
 #########################################################
 COPY rootfs /
+RUN chmod 777 /usr/local/bin/rtl_433
 
 ########################################################
 # Modify the existing /run.sh file
