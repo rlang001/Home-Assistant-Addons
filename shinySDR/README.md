@@ -27,15 +27,15 @@ Jump to favorite stations; catalog signals you hear; import published tables of 
 You can zoom, pan, and retune without losing any of the displayed history, whereas many other programs will discard anything which is temporarily offscreen, or the whole thing if the window is resized. If you zoom in to get a look at one signal, you can zoom out again.
 
 ## Supported modes
-### Analog audio: AM, FM narrowband, FM broadcast, SSB, CW.
-### Digital audio: All those supported by gr-dsd.
-### Text: RTTY, PSK31.
-### Telemetry: APRS, Mode S/ADS-B, WSPR, all those supported by rtl_433.
+- Analog audio: AM, FM narrowband, FM broadcast, SSB, CW.
+- Digital audio: All those supported by gr-dsd.
+- Text: RTTY, PSK31.
+- Telemetry: APRS, Mode S/ADS-B, WSPR, all those supported by rtl_433.
 
 
 ## Installation
 
-- If not already done, add the Add-on repostitory ([see](https://github.com/rlang001/Home-Assistant-Addons))
+- If not already done, add the Add-on repostitory ((https://github.com/rlang001/Home-Assistant-Addons))
 
 ## TODO
 
