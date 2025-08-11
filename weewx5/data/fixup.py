@@ -35,32 +35,32 @@ config['StdReport']['SKIN_ROOT'] = "/config/skins"
 config['StdReport']['enable'] = "false"
 
 config['StdReport']['SeasonsReport']['HTML_ROOT'] = "/var/www/html/seasons"
-config['StdReport']['SeasonsReport']['enable'] = "true"
+config['StdReport']['SeasonsReport']['enable'] = "false"
 
 config['StdReport']['SmartphoneReport']['HTML_ROOT'] = "/var/www/html/smartphone"
-config['StdReport']['SmartphoneReport']['enable'] = "true"
+config['StdReport']['SmartphoneReport']['enable'] = "false"
 
 config['StdReport']['MobileReport']['HTML_ROOT'] = "/var/www/html/mobile"
-config['StdReport']['MobileReport']['enable'] = "true"
+config['StdReport']['MobileReport']['enable'] = "false"
 
 config['StdReport']['NWSReport']['HTML_ROOT'] = "/var/www/html/nws"
-config['StdReport']['NWSReport']['enable'] = "true"
+config['StdReport']['NWSReport']['enable'] = "false"
 
 config['StdReport']['Belchertown']['HTML_ROOT'] = "/var/www/html/belchertown"
-config['StdReport']['Belchertown']['enable'] = "true"
+config['StdReport']['Belchertown']['enable'] = "false"
 
 config['StdReport']['amphibian']['HTML_ROOT'] = "/var/www/html/amphibian"
-config['StdReport']['amphibian']['enable'] = "true"
+config['StdReport']['amphibian']['enable'] = "false"
 
-config['StdReport']['WdcReport']['HTML_ROOT'] = "/var/www/html/wdc"
+config['StdReport']['WdcReport']['HTML_ROOT'] = "/var/www/html"
 config['StdReport']['WdcReport']['enable'] = "true"
 
 config['StdReport']['simple']['HTML_ROOT'] = "/var/www/html/simple"
-config['StdReport']['simple']['enable'] = "true"
+config['StdReport']['simple']['enable'] = "false"
 
 config['StdReport']['Me.teo']['HTML_ROOT'] = "/var/www/html/meteo"
 config['StdReport']['Me.teo']['HTML_SUBDIR'] = "meteo"
-config['StdReport']['Me.teo']['enable'] = "true"
+config['StdReport']['Me.teo']['enable'] = "false"
 
 # config['StdReport']['forecast']['HTML_ROOT'] = "/var/www/html/forecast"
 
@@ -73,9 +73,9 @@ config['StdReport']['Me.teo']['enable'] = "true"
 #config['StdReport']['OBWX']['enable'] = "true"
 
 #config['StdReport']['Me.teo']['HTML_ROOT'] = "/var/www/html/meteo"
-#config['StdReport']['Me.teo']['enable'] = "true"
+#config['StdReport']['Me.teo']['enable'] = "false"
 
-#config['StdReport']['AllTimeSeasons']['enable'] = "true"
+#config['StdReport']['AllTimeSeasons']['enable'] = "false"
 #config['StdReport']['AllTimeSeasons']['HTML_ROOT'] = "/var/www/html/alltimeseasons"
 
 
