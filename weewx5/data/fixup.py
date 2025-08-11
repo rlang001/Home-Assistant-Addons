@@ -66,12 +66,12 @@ config['StdReport']['Me.teo']['enable'] = "false"
 # config['StdReport']['forecast']['HTML_ROOT'] = "/var/www/html/forecast"
 
 #config['StdReport']['Bootstrap']['HTML_ROOT'] = "/var/www/html/bootstrap"
-#config['StdReport']['Bootstrap']['enable'] = "true"
+#config['StdReport']['Bootstrap']['enable'] = "false"
 #config['StdReport']['Bootstrap']['lang'] = "en"
 
 
 #config['StdReport']['OBWX']['HTML_ROOT'] = "/var/www/html/obwx"
-#config['StdReport']['OBWX']['enable'] = "true"
+#config['StdReport']['OBWX']['enable'] = "false"
 
 #config['StdReport']['Me.teo']['HTML_ROOT'] = "/var/www/html/meteo"
 #config['StdReport']['Me.teo']['enable'] = "false"
