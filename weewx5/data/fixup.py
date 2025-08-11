@@ -106,7 +106,7 @@ if stdPrint in reportServices:
     config['Engine']['Services']['report_services'] = s
 
 # Fix the WDC html location
-wdc['Extras']['base_path'] = "/wdc/"
+wdc['Extras']['base_path'] = "/"
 wdc.write()
 
 

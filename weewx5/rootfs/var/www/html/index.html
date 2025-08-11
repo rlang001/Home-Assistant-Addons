@@ -1,143 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <title>WeeWX Default Page</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css" />
+  </head>
 
-    <style>
-        /* Add a black background color to the top navigation */
-        .topnav {
-            background-color: #1d1b1b;
-            overflow: hidden;
-            position: sticky;
-            top: 0;
-        }
-
-        /* Change the color of the buttons on hover */
-        .topnav button:hover {
-            background-color: #ddd;
-            color: black;
-        }
-
-        .topnav form {
-            float: left;
-            color: #f2f2f2;
-            text-align: center;
-            padding: 14px 10px;
-            text-decoration: none;
-            font-size: 17x;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        .topnav button {
-            float: left;
-            background-color: black;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            font-size: 17px;
-        }
-
-        .topnav select {
-            background-color: black;
-            color: white;
-            text-align: left;
-            padding: 4px 4px;
-            text-decoration: none;
-            font-size: 17px;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-    </style>
-</head>
-
-<body>
-    <div class="topnav">
-        <button onclick="document.getElementById('youriframe').src = 'home.html'">
-            Home
-        </button>
-        <button onclick="document.getElementById('youriframe').src = document.getElementById('options').value" ;>
-            Skin
-        </button>
-        <form name="change">
-            <select name="options" id="options" style="font-size: 17px" ONCHANGE="setReport(this.options[this.selectedIndex].value)">
-                <option value="./amphibian/index.html">Amphibian</option>
-                <option value="./belchertown/index.html">Belchertown</option>
-                <option value="./meteo/en/index.html">Me.teo</option>
-                <option value="./mobile/index.html">Mobile</option>
-                <option value="/neowxmaterial/index.html">NeoWX-Material</option>
-                <option value="./nws/index.html">NWS Forecast</option>
-                <option value="./simple/index.html">Simple</option>
-                <option value="./smartphone/index.html">Smartphone</option>
-                <option value="./standard/index.html">Standard</option>
-                <option value="./wdc/index.html">WDC</option>
-                <option value="./wdc-halo/index.html">WDC-Halo</option>
-            </select>
-        </form>
-        <button onclick="document.getElementById('youriframe').src = 'about.html'" ;>
-            About
-        </button>
+  <body>
+    <div class="container-fluid">
+      <div class="w3-bar w3-dark-grey">
+        <br />
+        NWS: No data generated yet or report not enabled...
+        <br />
+      </div>
     </div>
-
-    <section>
-        <iframe name="iframe" id="youriframe" frameborder="0" style="overflow: hidden; width: 100%" height="2500" width="100%" src="./about.html"></iframe>
-    </section>
-
-    <footer>
-        <p>Footer</p>
-    </footer>
-
-    <script type="text/javascript">
-        window.onload = function() {
-            report = getCookie("defaultReport");
-            if (report != null) {
-                document.getElementById("youriframe").src = report;
-                document.getElementById("options").value = report;
-            } else {
-                document.getElementById("youriframe").src = "./wdc/index.html";
-                document.getElementById("options").value = "/wdc/index.html";
-            }
-        };
-    </script>
-
-    <script type="text/javascript">
-        // Set the current report based on the selection
-        function setReport(value) {
-            // Set the cookie
-            setCookie("defaultReport", value, 7);
-            // Set the report
-            document.getElementById("youriframe").src = value;
-        }
-
-        function setCookie(name, value, days) {
-            var expires = "";
-            if (days) {
-                var date = new Date();
-                date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-                expires = "; expires=" + date.toUTCString();
-            }
-            document.cookie = name + "=" + (value || "") + expires + "; path=/";
-        }
-
-        function getCookie(name) {
-            var nameEQ = name + "=";
-            var ca = document.cookie.split(";");
-            for (var i = 0; i < ca.length; i++) {
-                var c = ca[i];
-                while (c.charAt(0) == " ") c = c.substring(1, c.length);
-                if (c.indexOf(nameEQ) == 0)
-                    return c.substring(nameEQ.length, c.length);
-            }
-            return null;
-        }
-
-        function eraseCookie(name) {
-            document.cookie =
-                name + "=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
-        }
-    </script>
-</body>
-
+  </body>
 </html>
