@@ -3,6 +3,7 @@
 # Fix up some weewx.conf file entries
 #
 
+
 import fileinput
 from configobj import ConfigObj
 from os import system
