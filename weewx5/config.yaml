@@ -1,5 +1,5 @@
 name: WeeWX 5
-version: 0.7.10
+version: 0.8.0
 slug: weewx5
 description: WeeWX 5 HA Add-on
 stage: stable
