@@ -28,56 +28,56 @@ config['USER_ROOT'] = "/config/bin/user"
 
 
 # Point to html  directory
-config['StdReport']['HTML_ROOT'] = "/var/www/html"
+config['StdReport']['HTML_ROOT'] = "/config/html"
 
 # Fix skin stuff
 config['StdReport']['SKIN_ROOT'] = "/config/skins"
 
 config['StdReport']['enable'] = "false"
 
-config['StdReport']['SeasonsReport']['HTML_ROOT'] = "/var/www/html/seasons"
+config['StdReport']['SeasonsReport']['HTML_ROOT'] = "/config/html/seasons"
 config['StdReport']['SeasonsReport']['enable'] = "false"
 
-config['StdReport']['SmartphoneReport']['HTML_ROOT'] = "/var/www/html/smartphone"
+config['StdReport']['SmartphoneReport']['HTML_ROOT'] = "/config/html/smartphone"
 config['StdReport']['SmartphoneReport']['enable'] = "false"
 
-config['StdReport']['MobileReport']['HTML_ROOT'] = "/var/www/html/mobile"
+config['StdReport']['MobileReport']['HTML_ROOT'] = "/config/html/mobile"
 config['StdReport']['MobileReport']['enable'] = "false"
 
-config['StdReport']['NWSReport']['HTML_ROOT'] = "/var/www/html/nws"
+config['StdReport']['NWSReport']['HTML_ROOT'] = "/config/html/nws"
 config['StdReport']['NWSReport']['enable'] = "false"
 
-config['StdReport']['Belchertown']['HTML_ROOT'] = "/var/www/html/belchertown"
+config['StdReport']['Belchertown']['HTML_ROOT'] = "/config/html/belchertown"
 config['StdReport']['Belchertown']['enable'] = "false"
 
-config['StdReport']['amphibian']['HTML_ROOT'] = "/var/www/html/amphibian"
+config['StdReport']['amphibian']['HTML_ROOT'] = "/config/html/amphibian"
 config['StdReport']['amphibian']['enable'] = "false"
 
-config['StdReport']['WdcReport']['HTML_ROOT'] = "/var/www/html"
+config['StdReport']['WdcReport']['HTML_ROOT'] = "/config/html/wdc"
 config['StdReport']['WdcReport']['enable'] = "true"
 
-config['StdReport']['simple']['HTML_ROOT'] = "/var/www/html/simple"
+config['StdReport']['simple']['HTML_ROOT'] = "/config/html/simple"
 config['StdReport']['simple']['enable'] = "false"
 
-config['StdReport']['Me.teo']['HTML_ROOT'] = "/var/www/html/meteo"
+config['StdReport']['Me.teo']['HTML_ROOT'] = "/config/html/meteo"
 config['StdReport']['Me.teo']['HTML_SUBDIR'] = "meteo"
 config['StdReport']['Me.teo']['enable'] = "false"
 
-# config['StdReport']['forecast']['HTML_ROOT'] = "/var/www/html/forecast"
+# config['StdReport']['forecast']['HTML_ROOT'] = "/config/html/forecast"
 
-#config['StdReport']['Bootstrap']['HTML_ROOT'] = "/var/www/html/bootstrap"
+#config['StdReport']['Bootstrap']['HTML_ROOT'] = "/config/html/bootstrap"
 #config['StdReport']['Bootstrap']['enable'] = "false"
 #config['StdReport']['Bootstrap']['lang'] = "en"
 
 
-#config['StdReport']['OBWX']['HTML_ROOT'] = "/var/www/html/obwx"
+#config['StdReport']['OBWX']['HTML_ROOT'] = "/config/html/obwx"
 #config['StdReport']['OBWX']['enable'] = "false"
 
-#config['StdReport']['Me.teo']['HTML_ROOT'] = "/var/www/html/meteo"
+#config['StdReport']['Me.teo']['HTML_ROOT'] = "/config/html/meteo"
 #config['StdReport']['Me.teo']['enable'] = "false"
 
 #config['StdReport']['AllTimeSeasons']['enable'] = "false"
-#config['StdReport']['AllTimeSeasons']['HTML_ROOT'] = "/var/www/html/alltimeseasons"
+#config['StdReport']['AllTimeSeasons']['HTML_ROOT'] = "/config/html/alltimeseasons"
 
 
 config['StdRESTful']['MQTT']['enable'] = "false"
@@ -90,7 +90,7 @@ config['StdRESTful']['MQTT']['aggregation'] = "individual"
 config.merge(neowx)
 config.merge(logging)
 
-config['StdReport']['NeoWX-Material']['HTML_ROOT'] = "/var/www/html/neowxmaterial"
+config['StdReport']['NeoWX-Material']['HTML_ROOT'] = "/config/html"
 config['StdReport']['NeoWX-Material']['enable'] = "true"
 
 
@@ -110,10 +110,15 @@ wdc['Extras']['base_path'] = "/"
 wdc.write()
 
 
+# CMon
+config['StdReport']['cmon']['HTML_ROOT'] = "/config/html/cmon"
+
+# Forecast
+config['StdReport']['forecast']['HTML_ROOT'] = "/config/html/forecast"
+
 
 ######################################################################################################
 # Database location fixups
-
 config['Databases']['archive_sqlite']['database_name'] = "dbs/weewx.sdb"
 config['Databases']['archive_mysql']['database_name'] = "dbs/weewx"
 config['Databases']['nws_sqlite']['database_name'] = "dbs/nws.sdb"

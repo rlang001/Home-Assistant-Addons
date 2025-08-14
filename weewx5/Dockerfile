@@ -18,15 +18,6 @@ RUN apt-get update && apt-get upgrade -y && \
     apt-get install -y software-properties-common wget gnupg sqlite3 unzip rtl-sdr rtl-433 nginx vim procps \
         xtide python3.8 python3-pip python3.8-venv
 
-# Install/upgrade python 3.13
-# Need this to read/write weewx.conf correctly 
-#RUN add-apt-repository -y ppa:deadsnakes/ppa 
-#RUN apt-get install -y python3.13 python3.13-venv 
-#RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.13 1
-#RUN curl -sS https://bootstrap.pypa.io/get-pip.py | python3.13
-
-# COPY /data/weewx-data /root/weewx-data
-
 WORKDIR /root
 
 ### Weewx ###########################
@@ -37,6 +28,10 @@ WORKDIR /root
 # 4. Create the weewx.conf - Don't set HTML_ROOT here
 # 5. Install extensions
 
+
+# Download/unzip some skins
+# Create the python venv
+# Install WeeWX, pyserial requests, paho-mqtt, and python-dateutil
 RUN wget -O "/tmp/weewx-wdc.zip" https://github.com/Daveiano/weewx-wdc/releases/download/v3.5.1/weewx-wdc-v3.5.1.zip && \
     wget -O "/tmp/weewx-jas.zip" https://github.com/bellrichm/weewx-jas/archive/refs/tags/v1.1.1.zip && \
     wget -O "/tmp/weewx-forecast.zip" https://github.com/chaunceygardiner/weewx-forecast/releases/download/v3.5/weewx-forecast-3.5.zip && \
@@ -52,11 +47,13 @@ RUN wget -O "/tmp/weewx-wdc.zip" https://github.com/Daveiano/weewx-wdc/releases/
     pip3 install paho-mqtt && \
     pip3 install python-dateutil
     
-    
+# Copy our database extension schema to the virtual env
 COPY /data/weewx-data/wview_extended.py /root/weewx-venv/lib/python3.8/site-packages/schemas
 
+# 
+# Create the weewx.conf using default data
+# Install some extensions
 RUN source ~/weewx-venv/bin/activate && \
-    python3 -m pip install weewx && \
     weectl station create --no-prompt --driver=weewx.drivers.simulator --location="My Station" \
         --altitude="0, foot" --latitude=40.7129822 --longitude=-74.007205  \
         --register=n --units=us  --skin-root=/root/weewx-data/skins \
@@ -87,13 +84,14 @@ RUN source ~/weewx-venv/bin/activate && \
     #weectl extension install https://github.com/glennmckechnie/alltimeSeasons/archive/refs/heads/master.zip --config=${INITIAL_CONFIG_FILE} -y
 
 ########################################################################
+# Copy the conf files 
 # Fix up the weewx.conf file
-# 1. Add the logging section as we are not using syslog
-# 2. Set the HTML_ROOT to the Standard directort so as not to overwrite our pages
-# 3. Set the skins html roots
-# 4. Point the database directories to /config
-# 5. Remove the StdPrint service (it is really chatty)
-# 6. Add the entry for NeoWX-material t
+#   1. Add the logging section as we are not using syslog
+#   2. Set the HTML_ROOT to the Standard directory so as not to overwrite our pages
+#   3. Set the skins html roots
+#   4. Point the database directories to /config
+#   5. Remove the StdPrint service (it is really chatty)
+#   6. Add the entry for NeoWX-material 
 #
 COPY /data/weewx-data/logging.conf /root/weewx-data/logging.conf
 COPY /data/weewx-data/neowx-material.conf /root/weewx-data/neowx-material.conf
@@ -101,6 +99,7 @@ COPY /data/weewx-data/jas.conf /root/weewx-data/jas.conf
 COPY /data/weewx-data/sdr.conf /root/weewx-data/sdr.conf
 COPY /data/weewx-data/extensions.py /root/weewx-data/extensions.py
 COPY /data/fixup.py /root/fixup.py
+
 COPY /data/weewx-data/stations /root/weewx-data/stations
 
 RUN source ~/weewx-venv/bin/activate && \
@@ -111,14 +110,17 @@ RUN source ~/weewx-venv/bin/activate && \
 #########################################################
 RUN rm -fr \
 /etc/nginx \
-/var/www/html
-# /tmp/*
+/var/www/html \
+/tmp/*
 
 
 #########################################################
 # Copy data for add-on to docker 
 #########################################################
 COPY rootfs /
+
+
+# WeeWX and NGinx are started by the s6-overlay
 
 ########################################################
 # Modify the existing /run.sh file

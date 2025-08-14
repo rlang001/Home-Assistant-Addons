@@ -7,8 +7,9 @@
 
 set -e
 
-CONFIG_PATH=/data/options.json
-RUN_ON_STARTUP="$(bashio::config 'run_on_startup')"
+#CONFIG_PATH=/data/options.json
+#RUN_ON_STARTUP="$(bashio::config 'run_on_startup')"
+
 WEEWX_CFG="/config/weewx.conf"
 WEEWX_USER="/config/bin"
 
