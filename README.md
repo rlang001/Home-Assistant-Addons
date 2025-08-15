@@ -28,7 +28,7 @@ My repository with Add-ons for the [Home Assistant (former Hass.io) system](http
 * WebSDR -
 * WeeWX-HA - WeeWX 4 as an addon **(Stable)**
 * WeeWX5 - WeeWX 5 as an addon.  **(Stable)**
-* WeeWX-HA - WeeWX 4 as an addon.  Currently tested with SDR. **(Stable)**
+
 
 More about the Add-ons can be found in their folders.
 
