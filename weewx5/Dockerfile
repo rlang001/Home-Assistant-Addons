@@ -53,6 +53,9 @@ COPY /data/weewx-data/wview_extended.py /root/weewx-venv/lib/python3.8/site-pack
 # 
 # Create the weewx.conf using default data
 # Install some extensions
+# weectl extension install https://neoground.com/neowx-material/download/latest --config=${INITIAL_CONFIG_FILE} -y && \
+
+
 RUN source ~/weewx-venv/bin/activate && \
     weectl station create --no-prompt --driver=weewx.drivers.simulator --location="My Station" \
         --altitude="0, foot" --latitude=40.7129822 --longitude=-74.007205  \
@@ -64,7 +67,7 @@ RUN source ~/weewx-venv/bin/activate && \
     weectl extension install https://github.com/bellrichm/WeeWX-MQTTSubscribe/archive/refs/tags/v${MQTTSUBSCRIBE_VERSION}.zip --config=${INITIAL_CONFIG_FILE} -y && \
     weectl extension install https://github.com/chaunceygardiner/weewx-nws/releases/download/v${NWS_VERSION}/weewx-nws.zip --config=${INITIAL_CONFIG_FILE} -y && \
     weectl extension install https://github.com/poblabs/weewx-belchertown/releases/download/weewx-belchertown-1.3.1/weewx-belchertown-release.1.3.1.tar.gz --config=${INITIAL_CONFIG_FILE} -y  && \
-    weectl extension install https://neoground.com/neowx-material/download/latest --config=${INITIAL_CONFIG_FILE} -y && \
+    weectl extension install https://github.com/seehase/neowx-material/archive/refs/heads/master.zip  --config=${INITIAL_CONFIG_FILE} -y  && \
     weectl extension install https://github.com/matthewwall/weewx-amphibian/archive/master.zip --config=${INITIAL_CONFIG_FILE} -y && \
     weectl extension install https://github.com/matthewwall/weewx-simple/archive/master.zip  --config=${INITIAL_CONFIG_FILE} -y && \
     weectl extension install https://github.com/bourquep/weewx-me.teo/releases/latest/download/weewx-me.teo.zip --config=${INITIAL_CONFIG_FILE} -y && \
