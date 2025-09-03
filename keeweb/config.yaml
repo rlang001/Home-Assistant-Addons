@@ -1,5 +1,5 @@
 name: Keeweb
-version: 0.0.8
+version: 0.0.9
 slug: keeweb
 description: Keeweb Add-on
 stage: experimental
@@ -31,5 +31,5 @@ ports_description:
   80/tcp: Web interface (Not required for Ingress)
   1443/tcp: Secure Web interface (Not required for Ingress)
 
-map:
-  - addon_config:rw
+# map:
+#  - addon_config:rw
