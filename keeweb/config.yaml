@@ -1,5 +1,5 @@
 name: Keeweb
-version: 0.0.5
+version: 0.0.6
 slug: keeweb
 description: Keeweb Add-on
 stage: experimental
@@ -14,7 +14,7 @@ arch:
 #panel_icon: mdi:cloud
 panel_admin: false
 
-ingress: true
+# ingress: true
 # ingress_port: 8099
 
 options:
@@ -29,12 +29,4 @@ ports:
 
 ports_description:
   80/tcp: Web interface (Not required for Ingress)
-  443/tcp: Web interface (Not required for Ingress)
-
-#services:
-#  - mqtt:want
-
-#usb: true
-
-#map:
-#  - addon_config:rw
+  443/tcp: Secure Web interface (Not required for Ingress)
