@@ -14,14 +14,14 @@ arch:
 #panel_icon: mdi:cloud
 panel_admin: false
 
-# ingress: true
-# ingress_port: 8099
+ingress: true
+ingress_port: 8099
 
-options:
-  "maintenance_mode": false
+#options:
+#  "maintenance_mode": false
 
-schema:
-  "maintenance_mode": "bool?"
+#schema:
+#  "maintenance_mode": "bool?"
 
 ports:
   80/tcp: 80
