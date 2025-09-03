@@ -1,5 +1,5 @@
 name: Keeweb
-version: 0.0.6
+version: 0.0.7
 slug: keeweb
 description: Keeweb Add-on
 stage: experimental
@@ -25,7 +25,7 @@ schema:
 
 ports:
   80/tcp: 80
-  443/tcp: 443
+  1443/tcp: 443
 
 ports_description:
   80/tcp: Web interface (Not required for Ingress)
