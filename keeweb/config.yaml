@@ -1,6 +1,6 @@
 name: Keeweb
 version: 0.0.1
-slug: weewx5
+slug: keeweb
 description: Keeweb Add-on
 stage: experimental
 startup: application
