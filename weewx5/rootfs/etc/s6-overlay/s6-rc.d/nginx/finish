@@ -1,6 +1,6 @@
 #!/command/with-contenv bashio
 # ==============================================================================
-# Home Assistant Community Add-on: SQLite Web
+# Home Assistant Community Add-on: weewx-ha
 # Take down the S6 supervision tree when NGINX fails
 # ==============================================================================
 declare exit_code
