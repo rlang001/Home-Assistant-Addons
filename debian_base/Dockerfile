@@ -5,8 +5,8 @@ ENV TZ=UTC
 
 
 RUN apt-get update && apt-get upgrade -y
-RUN apt-get install -y software-properties-common telnet vim 
-# syslog-ng=3.38.1-5 vim
+RUN apt-get install -y software-properties-common vim 
+
 
 #########################################################
 # Copy data for add-on to docker fs
