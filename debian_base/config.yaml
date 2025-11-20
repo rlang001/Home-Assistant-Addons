@@ -14,7 +14,7 @@ arch:
 #panel_icon: mdi:log
 panel_admin: false
 
-# full_access: true
+full_access: true
 
 #ingress: true
 #ingress_port: 8099
