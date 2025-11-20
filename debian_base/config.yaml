@@ -1,5 +1,5 @@
 name: Debian_base
-version: 0.0.22
+version: 0.0.23
 slug: debian_base
 description: Debian HA Add-on
 stage: stable
