@@ -1,5 +1,5 @@
 name: Debian_base
-version: 0.0.29
+version: 0.0.30
 slug: debian_base
 description: Debian HA Add-on
 stage: stable
@@ -14,7 +14,10 @@ arch:
 #panel_icon: mdi:log
 panel_admin: false
 
-full_access: true
+# full_access: true
+devices:
+  - /dev/ttyS0
+  - /dev/ttyS1
 
 #ingress: true
 #ingress_port: 8099
