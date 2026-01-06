@@ -1,0 +1,32 @@
+#!/command/with-contenv bashio
+# ==============================================================================
+# Home Assistant Add-on: 
+# Runs Openobserve
+# ==============================================================================
+set -e
+CONFIG_PATH=/data/options.json
+
+
+export ZO_LOCAL_MODE=true
+export ZO_LOCAL_MODE_STORAGE=disk
+export ZO_NODE_ROLE=all
+export ZO_ROOT_USER_EMAIL="$(bashio::config 'username')"
+export ZO_ROOT_USER_PASSWORD="$(bashio::config 'password')"
+export ZO_DATA_DIR=/config/openobserve
+export ZO_DATA_DB_DIR=/config/openobserve/db
+export ZO_DATA_STREAM_DIR=/config/openobserve/stream
+#export ZO_BASE_URI=/openobserve
+
+
+
+# disabling OpenObserve's telemetry to their server
+export ZO_TELEMETRY=false
+
+# error, warn, info, debug, trace.
+export RUST_LOG=error
+
+
+
+
+bashio::log.info "Starting OpenObserve..."
+/root/openobserve

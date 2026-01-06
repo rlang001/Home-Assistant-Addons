@@ -1,0 +1,61 @@
+#!/command/with-contenv bashio
+# shellcheck shell=bash
+# ==============================================================================
+# Home Assistant Community Add-on: 
+# Configures rsyslog
+# ==============================================================================
+set -e
+
+declare -A mylevel
+
+CONFIG_PATH=/data/options.json
+
+OPENOBSERVE_LOG_LEVEL="$(bashio::config 'openobserve_log_level')"
+
+FILE_LOGGING="$(bashio::config 'file_logging')"
+FILE_ROTATION="$(bashio::config 'file_rotation')"
+FILE_ROTATION_COUNT="$(bashio::config 'file_rotation_count')"
+FILE_ROTATION_SIZE="$(bashio::config 'file_rotation_size')"
+FILE_LOG_LEVEL="$(bashio::config 'file_log_level')"
+
+
+
+# Table to convert config file entries to syslog=ng.conf entries
+
+mylevel[Emergency]='emerg'
+mylevel[Alert]='emerg'
+mylevel[Critical]='crit'
+mylevel[Error]='err'
+mylevel[Warning]='warning'
+mylevel[Notice]='notice'
+mylevel[Informational]='info'
+mylevel[Debug]='debug'
+
+
+# 
+if bashio::var.equals "${FILE_LOGGING}" true; then
+#    # Update the syslog-ng.conf
+    # Add the destination
+    sed -i "s|^#log { source(s_net_udp); source(s_net_tcp); filter(f_file_output); destination(d_file_logs); };| log { source(s_net_udp); source(s_net_tcp); filter(f_file_output); destination(d_file_logs); };|" /etc/syslog-ng/syslog-ng.conf
+else
+    # Comment if out
+    sed -i "s|^log { source(s_net_udp); source(s_net_tcp); filter(f_file_output); destination(d_file_logs); };| #log { source(s_net_udp); source(s_net_tcp); filter(f_file_output); destination(d_file_logs); };|" /etc/syslog-ng/syslog-ng.conf
+fi
+
+# Set the rotation
+
+if bashio::var.equals "${FILE_ROTATION}" true; then
+    sed -i "s|file(\"/config/syslog.log\"|file(\"/config/syslog.log\", logrotate(enable(yes), size(${FILE_ROTATION_SIZE}), rotations(${FILE_ROTATION_COUNT})) |" /etc/syslog-ng/syslog-ng.conf
+fi
+
+
+file_level=${mylevel[${FILE_LOG_LEVEL}]}
+openobserve_level=${mylevel[${OPENOBSERVE_LOG_LEVEL}]}
+
+# Set the file logging level
+sed -i -E "s|filter f_file_output \{ level\(\w+..emerg\) \};|filter f_file_output { level\(${file_level}..emerg\) \};|g" /etc/syslog-ng/syslog-ng.conf
+
+
+# Set the openoberve logging level
+sed -i -E "s|filter f_openobserve_output \{ level\(\w+..emerg\) \};|filter f_openobserve_output { level\(${openobserve_level}..emerg\) \};|g" /etc/syslog-ng/syslog-ng.conf
+

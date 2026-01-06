@@ -1,0 +1,31 @@
+#!/command/with-contenv bashio
+# shellcheck shell=bash
+# ==============================================================================
+# Home Assistant Community Add-on: WeeWX-HA
+# Configures NGINX for use with WeeWX
+# ==============================================================================
+set -e
+CONFIG_PATH=/data/options.json
+WEEWX_CFG=/config/weewx.conf
+
+declare admin_port
+
+# Generate Ingress configuration
+#bashio::var.json \
+#    interface "$(bashio::addon.ip_address)" \
+#    port "^$(bashio::addon.ingress_port)" \
+#    | tempio \
+#        -template /etc/nginx/templates/ingress.gtpl \
+#        -out /etc/nginx/servers/ingress.conf
+    
+# Generate direct access configuration, if enabled.
+admin_port=$(bashio::addon.port 80)
+
+if bashio::var.has_value "${admin_port}"; then
+    #bashio::config.require.ssl
+    bashio::var.json \
+        port "^${admin_port}" \
+        | tempio \
+            -template /etc/nginx/templates/direct.gtpl \
+            -out /etc/nginx/servers/direct.conf
+fi 

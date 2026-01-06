@@ -1,0 +1,33 @@
+configuration:
+  username:
+    name: User name
+    description: admin username for openobserve
+
+  password: 
+    name: Password
+    description: admin password for openobserve
+
+  openobserve_log_level:
+    name: OpenObserve logging Level
+    description: Lowest level of syslog to send to OpenObserve
+
+  file_logging:
+    name: File Logging
+    description: Enable/Disable file logging
+
+  file_rotation:
+    name: File Rotation
+    description: Enable log file rotation
+
+  file_rotation_count:
+    name: File Rotations
+    description: The number of files to maintain in rotation
+
+  file_rotation_size:
+    name: File Rotation Size
+    description: The maxumum allowed file size in the rotation
+
+  file_log_level:
+      name: File Log Level
+      description: The syslog message level to log to the file
+
