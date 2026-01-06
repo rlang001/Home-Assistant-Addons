@@ -54,14 +54,14 @@ RUN rm -fr \
 #########################################################
 COPY rootfs /
 
-RUN chmod 755 /etc/s6-overlay/s6-rc.d/init-nginx/run && \
-    chmod 755 /etc/s6-overlay/s6-rc.d/init-syslog-ng/run && \
-    chmod 755 /etc/s6-overlay/s6-rc.d/nginx/run && \
-    chmod 755 /etc/s6-overlay/s6-rc.d/nginx/finish && \
-    chmod 755 /etc/s6-overlay/s6-rc.d/openobserve/run && \
-    chmod 755 /etc/s6-overlay/s6-rc.d/openobserve/finish && \
-    chmod 755 /etc/s6-overlay/s6-rc.d/syslog-ng/run && \
-    chmod 755 /etc/s6-overlay/s6-rc.d/syslog-ng/finish
+#RUN chmod 755 /etc/s6-overlay/s6-rc.d/init-nginx/run && \
+#    chmod 755 /etc/s6-overlay/s6-rc.d/init-syslog-ng/run && \
+#    chmod 755 /etc/s6-overlay/s6-rc.d/nginx/run && \
+#    chmod 755 /etc/s6-overlay/s6-rc.d/nginx/finish && \
+#    chmod 755 /etc/s6-overlay/s6-rc.d/openobserve/run && \
+#    chmod 755 /etc/s6-overlay/s6-rc.d/openobserve/finish && \
+#    chmod 755 /etc/s6-overlay/s6-rc.d/syslog-ng/run && \
+#    chmod 755 /etc/s6-overlay/s6-rc.d/syslog-ng/finish
     
     
     
