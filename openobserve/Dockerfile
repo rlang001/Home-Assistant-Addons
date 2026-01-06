@@ -54,13 +54,13 @@ RUN rm -fr \
 #########################################################
 COPY rootfs /
 
-RUN chmod +x /etc/s6-overlay/s6-rc.d/init-nginx/run \
-    chmod +x /etc/s6-overlay/s6-rc.d/init-syslog-ng/run \
-    chmod +x /etc/s6-overlay/s6-rc.d/nginx/run \
-    chmod +x /etc/s6-overlay/s6-rc.d/nginx/finish \
-    chmod +x /etc/s6-overlay/s6-rc.d/openobserve/run \
-    chmod +x /etc/s6-overlay/s6-rc.d/openobserve/finish \
-    chmod +x /etc/s6-overlay/s6-rc.d/syslog-ng/run \
+RUN chmod +x /etc/s6-overlay/s6-rc.d/init-nginx/run && \
+    chmod +x /etc/s6-overlay/s6-rc.d/init-syslog-ng/run && \
+    chmod +x /etc/s6-overlay/s6-rc.d/nginx/run && \
+    chmod +x /etc/s6-overlay/s6-rc.d/nginx/finish && \
+    chmod +x /etc/s6-overlay/s6-rc.d/openobserve/run && \
+    chmod +x /etc/s6-overlay/s6-rc.d/openobserve/finish && \
+    chmod +x /etc/s6-overlay/s6-rc.d/syslog-ng/run && \
     chmod +x /etc/s6-overlay/s6-rc.d/syslog-ng/finish
     
     
