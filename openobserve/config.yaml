@@ -1,1 +1,66 @@
+name: OpenObserve
+version: 0.2.15
+slug: openobserve
+description: OpenObserve HA Add-on
+stage: experimental
+startup: application
+# startup: services
+init: false
+
+legacy: true
+
+arch:
+  - i386
+  - armhf
+  - armv7
+  - amd64
+
+panel_icon: mdi:math-log
+panel_admin: false
+
+ingress: false
+ingress_port: 8099
+#ingress_root
+ingress_stream: true
+
+# hassio_api: true
+# hassio_role: manager
+# homeassistant_api: true
+# host_network: true
+# auth_api: true
+
+ports:
+  80/tcp: 1882
+  514/udp: 514
+  514/tcp: 514
+
+ports_description:
+  80/tcp: Web interface (Not required for Ingress)
+  514/udp: Syslog port
+  514/tcp: Syslog port
+
+options:
+  username: root@example.com
+  password: "Complexpass#123"
+  openobserve_log_level: Warning
+
+  file_logging: false
+  file_rotation: false
+  file_rotation_count: 5
+  file_rotation_size: 20MB
+  file_log_level: Warning
+
+schema:
+  username: email
+  password: password
+  openobserve_log_level: list(Debug|Informational|Notice|Warning|Error|Critical|Alert|Emergency)?
+
+  file_logging: bool
+  file_rotation: bool
+  file_rotation_count: "int(5,20)"
+  file_rotation_size: list(5MB|20MB|50MB|100MB|500MB|1GB)?
+  file_log_level: list(Debug|Informational|Notice|Warning|Error|Critical|Alert|Emergency)?
+
+map:
+  - addon_config:rw
 
