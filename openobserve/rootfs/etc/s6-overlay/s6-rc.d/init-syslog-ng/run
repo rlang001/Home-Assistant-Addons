@@ -17,7 +17,8 @@ FILE_ROTATION="$(bashio::config 'file_rotation')"
 FILE_ROTATION_COUNT="$(bashio::config 'file_rotation_count')"
 FILE_ROTATION_SIZE="$(bashio::config 'file_rotation_size')"
 FILE_LOG_LEVEL="$(bashio::config 'file_log_level')"
-
+USER="$(bashio::config 'username')"
+PASSWORD="$(bashio::config 'password')"
 
 
 # Table to convert config file entries to syslog=ng.conf entries
@@ -58,4 +59,9 @@ sed -i -E "s|filter f_file_output \{ level\(\w+..emerg\) \};|filter f_file_outpu
 
 # Set the openoberve logging level
 sed -i -E "s|filter f_openobserve_output \{ level\(\w+..emerg\) \};|filter f_openobserve_output { level\(${openobserve_level}..emerg\) \};|g" /etc/syslog-ng/syslog-ng.conf
+
+
+# Set the user/password
+sed -i -E "s|user\(\"\S+|user(\"${USER}\")|g" /etc/syslog-ng/syslog-ng.conf
+sed -i -E "s|password\(\"\S+|password(\"${PASSWORD}\")|g" /etc/syslog-ng/syslog-ng.conf
 
