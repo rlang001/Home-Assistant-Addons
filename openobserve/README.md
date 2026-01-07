@@ -11,7 +11,7 @@
 
 ## About
 
-[openobserve](https://openobserve.ai/) Fast, scalable and cost-effective open source observability platform. Monitor logs, metrics & traces with 140x lower storage costs than Elasticsearch.
+[openobserve](https://openobserve.ai/) A fast, scalable and cost-effective open source observability platform. Monitor logs, metrics & traces with 140x lower storage costs than Elasticsearch.
 
 Syslog-ng built in to collect syslog data from your devices for ingestion into OpenObserve
 
@@ -19,5 +19,8 @@ Syslog-ng built in to collect syslog data from your devices for ingestion into O
 
 ### Options
 
+User name:  Admin user
+Password: Admin password
+Open
 Webui can be found at `<your-ip>:8096` or through the sidebar using Ingress.
 
