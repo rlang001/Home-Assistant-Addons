@@ -21,6 +21,6 @@ Syslog-ng built in to collect syslog data from your devices for ingestion into O
 
 User name:  Admin user
 Password: Admin password
-Open
+Log Level: 
 Webui can be found at `<your-ip>:8096` or through the sidebar using Ingress.
 
