@@ -10,9 +10,6 @@ init: false
 legacy: true
 
 arch:
-  #- i386
-  #- armhf
-  #- armv7
   - amd64
 
 panel_icon: mdi:math-log
