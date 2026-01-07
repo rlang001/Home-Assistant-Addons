@@ -15,11 +15,6 @@ RUN   apt-get install -y \
     gpg \
     vim
 
-    #libdbd-mysql \
-    #mariadb-server \
-    
-
-
 # syslog-ng - get a specific version
 RUN \
     wget -qO - https://ose-repo.syslog-ng.com/apt/syslog-ng-ose-pub.asc |  gpg --dearmor -o /etc/apt/keyrings/syslog-ng-ose.gpg && \
