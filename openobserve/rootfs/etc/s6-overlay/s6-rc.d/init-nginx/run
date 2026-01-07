@@ -20,16 +20,15 @@ declare admin_port
     
 # Generate direct access configuration, if enabled.
 admin_port=$(bashio::addon.port 80)
-bashio::var.json \
-    port "^${admin_port}" \
-    | tempio \
-    -template /etc/nginx/templates/direct.gtpl \
-    -out /etc/nginx/servers/direct.conf
 
-#if bashio::var.has_value "${admin_port}"; then
-#bashio::config.require.
-#fi 
-
+if bashio::var.has_value "${admin_port}"; then
+    #bashio::config.require.ssl
+    bashio::var.json \
+        port "^${admin_port}" \
+        | tempio \
+            -template /etc/nginx/templates/direct.gtpl \
+            -out /etc/nginx/servers/direct.conf
+fi 
 
 
 
