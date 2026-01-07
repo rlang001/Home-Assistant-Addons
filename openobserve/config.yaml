@@ -1,5 +1,5 @@
 name: OpenObserve
-version: 0.2.22
+version: 0.2.19
 slug: openobserve
 description: OpenObserve HA Add-on
 stage: experimental
@@ -63,4 +63,3 @@ schema:
 
 map:
   - addon_config:rw
-
