@@ -8,7 +8,7 @@ configuration:
     description: admin password for openobserve
 
   openobserve_log_level:
-    name: OpenObserve logging Level
+    name: Log Level
     description: Lowest level of syslog to send to OpenObserve
 
   file_logging:
