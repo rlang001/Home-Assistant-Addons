@@ -35,9 +35,9 @@ ports:
   514/tcp: 514
 
 ports_description:
-  80/tcp: Web interface (Not required for Ingress)
-  514/udp: Syslog port
-  514/tcp: Syslog port
+  80/tcp: Web interface
+  514/udp: Syslog UDP port
+  514/tcp: Syslog TCP port
 
 options:
   username: root@example.com
