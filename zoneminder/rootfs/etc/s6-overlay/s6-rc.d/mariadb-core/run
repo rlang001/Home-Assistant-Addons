@@ -1,0 +1,15 @@
+#!/command/with-contenv bashio
+# shellcheck shell=bash
+# ==============================================================================
+# Start MariaDB service
+# ==============================================================================
+set -e
+
+CONFIG_PATH=/data/options.json
+
+MARIADB_DATA=/config/database
+
+# Start mariadb
+bashio::log.info "Starting MariaDB"
+mkdir -p /run/mysqld
+exec mysqld --datadir="${MARIADB_DATA}" --user=root < /dev/null

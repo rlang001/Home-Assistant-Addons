@@ -1,0 +1,12 @@
+#!/command/with-contenv bashio
+# ==============================================================================
+# Home Assistant Add-on: 
+# Runs the daemon
+# ==============================================================================
+
+# Wait for  to start
+#bashio::net.wait_for 8080
+
+# bashio::log.info "Starting Apache...
+exec apachectl -D FOREGROUND
+
