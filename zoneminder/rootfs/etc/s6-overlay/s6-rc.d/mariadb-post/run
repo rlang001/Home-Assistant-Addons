@@ -431,7 +431,7 @@ mysql <<-EOSQL
 		GroupId int(10) unsigned NOT NULL,
 		FOREIGN KEY (GroupId) REFERENCES Groups (Id) ON DELETE CASCADE,
 		MonitorId int(10) unsigned NOT NULL,
-		FOREIGN KEY (MonitorId) REFERENCES Monitors (Id) ON DELETE CASCADE,
+		# FOREIGN KEY (MonitorId) REFERENCES Monitors (Id) ON DELETE CASCADE,
 		PRIMARY KEY (Id)
 	) ENGINE=InnoDB;
 
