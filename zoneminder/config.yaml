@@ -1,0 +1,78 @@
+name: Zoneminder
+version: 0.1.0
+slug: zoneminder
+description: A full-featured, open source, state-of-the-art video surveillance software system
+stage: experimental
+startup: application
+init: false
+legacy: true
+
+#url: https://github.com/alexbelgium/hassio-addons
+#webui: "[PROTO:ssl]://[HOST]:[PORT:80]/zm"
+
+arch:
+  - amd64
+
+backup_post: unlock-tables-for-backup
+backup_pre: lock-tables-for-backup
+
+options:
+  env_vars: []
+  Images_location: /config/addons_config/zoneminder/images
+
+  databases:
+    - homeassistant
+
+  logins:
+    - password: null
+      username: homeassistant
+
+  rights:
+    - database: homeassistant
+      username: homeassistant
+
+schema:
+  env_vars:
+    - name: match(^[A-Za-z0-9_]+$)
+      value: str?
+  Images_location: str
+
+  databases:
+    - str
+  logins:
+    - username: str
+      password: password
+  rights:
+    - database: str
+      privileges:
+        - "list(ALTER|CREATE|CREATE ROUTINE|CREATE TEMPORARY TABLES|\
+          CREATE VIEW|DELETE|DELETE HISTORY|DROP|EVENT|GRANT OPTION|INDEX|\
+          INSERT|LOCK TABLES|SELECT|SHOW VIEW|TRIGGER|UPDATE)?"
+      username: str
+
+  mariadb_server_args:
+    - str?
+
+ports:
+  80/tcp: 3778
+  3306/tcp: null
+
+ports_description:
+  80/tcp: web interface
+
+services:
+  - mysql:provide
+
+udev: true
+
+environment:
+  DIR_IMAGES: /var/cache/zoneminder/images2
+  DIR_SOUNDS: /var/cache/zoneminder/sounds2
+  DZM_CONFIG_DIR: /config/addons_config/zoneminder
+  ZM_DIR_EVENTS: /var/cache/zoneminder/events2
+
+map:
+  - config:rw
+  - media:rw
+  - share:rw
+  - ssl
