@@ -15,7 +15,7 @@ My repository with Add-ons for the [Home Assistant (former Hass.io) system](http
 * example - addon example
 * keeweb - 
 * noaa -
-* * openwebrx-plus **(Stable)**
+* openwebrx-plus **(Stable)**
 * openobserve - Openobserve Observabilty platform with syslog-ng built-in. **(Stable)** 
 * openwebrx -
 * rsyslog-HA - Experimental syslog server. **(Experimental)**
