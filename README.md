@@ -30,7 +30,7 @@ My repository with Add-ons for the [Home Assistant (former Hass.io) system](http
 * WebSDR -
 * WeeWX-HA - WeeWX 4 as an addon **(Stable)**
 * WeeWX5 - WeeWX 5 as an addon.  **(Stable)**
-* zonemindder - Zoneminder as an addon
+* zonemindder - Zoneminder as an addon.  **(Experimental)**
 
 More about the Add-ons can be found in their folders.
 
