@@ -83,4 +83,6 @@ tempio \
     -template /usr/share/tempio/openobserve_filters.config \
     -out "${CONFIG}"
 
+# Generate the log outputs
+
 
