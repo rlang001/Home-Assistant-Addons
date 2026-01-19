@@ -75,4 +75,7 @@ tempio \
     -template /usr/share/tempio/openobserve_destinations.config \
     -out "${CONFIG}"
 
+sed -i -E "s|user\(\"\S+|user(\"${USER}\")|g" /etc/syslog-ng/includes/destinations/hosts.conf
+sed -i -E "s|password\(\"\S+|password(\"${PASSWORD}\")|g" /etc/syslog-ng/includes/destinations/hosts.conf
+
 
