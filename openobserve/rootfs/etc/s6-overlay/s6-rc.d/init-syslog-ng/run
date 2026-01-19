@@ -74,8 +74,9 @@ sed -i -E "s|password\(\"\S+|password(\"${PASSWORD}\")|g" /etc/syslog-ng/include
 sed -i -E "s|user\(\"\S+|user(\"${USER}\")|g" /etc/syslog-ng/includes/destinations/hosts.conf
 sed -i -E "s|password\(\"\S+|password(\"${PASSWORD}\")|g" /etc/syslog-ng/includes/destinations/hosts.conf
 
-
+#
 # Generate the openobserve filters
+#
 CONFIG="//etc/syslog-ng/includes/filters/hosts.conf"
 bashio::log.info "Configuring openobserve filters..."
 tempio \
@@ -83,7 +84,11 @@ tempio \
     -template /usr/share/tempio/openobserve_filters.config \
     -out "${CONFIG}"
 
+
+
+#
 # Generate the log outputs
+#
 CONFIG="//etc/syslog-ng/includes/logs/hosts.conf"
 bashio::log.info "Configuring openobserve logs..."
 tempio \
