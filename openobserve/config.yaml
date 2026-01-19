@@ -1,5 +1,5 @@
 name: OpenObserve
-version: 0.2.23
+version: 0.2.24
 slug: openobserve
 description: OpenObserve HA Add-on
 stage: experimental
@@ -41,6 +41,8 @@ options:
   password: "Complexpass#123"
   openobserve_log_level: Warning
 
+  hosts: []
+  
   file_logging: false
   file_rotation: false
   file_rotation_count: 5
@@ -51,7 +53,11 @@ schema:
   username: email
   password: password
   openobserve_log_level: list(Debug|Informational|Notice|Warning|Error|Critical|Alert|Emergency)?
-
+  
+  hosts:
+    - host: str
+      host_level: str
+      
   file_logging: bool
   file_rotation: bool
   file_rotation_count: "int(5,20)"
