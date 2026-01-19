@@ -71,7 +71,7 @@ CONFIG="//etc/syslog-ng/includes/destiantions/openobserve.conf"
 bashio::log.info "Configuring openobserve destinations..."
 tempio \
     -conf /data/options.json \
-    -template /usr/share/tempio/openobserve_detinations.config \
+    -template /usr/share/tempio/openobserve_destinations.config \
     -out "${CONFIG}"
 
 
