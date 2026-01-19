@@ -64,6 +64,6 @@ sed -i -E "s|filter f_openobserve_output \{ level\(\w+..emerg\) \};|filter f_ope
 # Set the user/password
 #sed -i -E "s|user\(\"\S+|user(\"${USER}\")|g" /etc/syslog-ng/syslog-ng.conf
 #sed -i -E "s|password\(\"\S+|password(\"${PASSWORD}\")|g" /etc/syslog-ng/syslog-ng.conf
-sed -i -E "s|user\(\"\S+|user(\"${USER}\")|g" /etc/syslog-ng/includes/credentials.conf
-sed -i -E "s|password\(\"\S+|password(\"${PASSWORD}\")|g" /etc/syslog-ng/includes/credentials.conf
+sed -i -E "s|user\(\"\S+|user(\"${USER}\")|g" /etc/syslog-ng/includes/destinations/base.conf
+sed -i -E "s|password\(\"\S+|password(\"${PASSWORD}\")|g" /etc/syslog-ng/includes/destinations/base.conf
 
