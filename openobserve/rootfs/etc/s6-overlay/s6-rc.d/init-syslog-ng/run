@@ -53,6 +53,7 @@ fi
 file_level=${mylevel[${FILE_LOG_LEVEL}]}
 openobserve_level=${mylevel[${OPENOBSERVE_LOG_LEVEL}]}
 
+# Can probably cat the line to the file and not use sed
 # Set the file logging level
 sed -i -E "s|filter f_file_output \{ level\(\w+..emerg\) \};|filter f_file_output { level\(${file_level}..emerg\) \};|g" /etc/syslog-ng/includes/filters/file.conf
 
