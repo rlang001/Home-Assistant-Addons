@@ -67,7 +67,7 @@ sed -i -E "s|user\(\"\S+|user(\"${USER}\")|g" /etc/syslog-ng/includes/destinatio
 sed -i -E "s|password\(\"\S+|password(\"${PASSWORD}\")|g" /etc/syslog-ng/includes/destinations/base.conf
 
 # Generate the openobeserve destinations
-CONFIG="//etc/syslog-ng/includes/destinations/openobserve.conf"
+CONFIG="//etc/syslog-ng/includes/destinations/hosts.conf"
 bashio::log.info "Configuring openobserve destinations..."
 tempio \
     -conf /data/options.json \
