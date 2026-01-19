@@ -84,5 +84,10 @@ tempio \
     -out "${CONFIG}"
 
 # Generate the log outputs
-
+CONFIG="//etc/syslog-ng/includes/logs/hosts.conf"
+bashio::log.info "Configuring openobserve logs..."
+tempio \
+    -conf /data/options.json \
+    -template /usr/share/tempio/openobserve_logs.config \
+    -out "${CONFIG}"
 
