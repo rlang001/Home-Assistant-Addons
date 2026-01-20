@@ -15,6 +15,10 @@ configuration:
     name: File Logging
     description: Enable/Disable file logging
 
+  hosts:
+    name: Hosts
+    description:  Create seperate input streams for a particular host
+    
   file_rotation:
     name: File Rotation
     description: Enable log file rotation
