@@ -17,7 +17,7 @@ configuration:
 
   hosts:
     name: Hosts
-    description:  Create seperate input streams for a particular host
+    description:  Create separate input stream for a particular host
     
   file_rotation:
     name: File Rotation
