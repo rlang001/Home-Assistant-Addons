@@ -62,7 +62,7 @@ sed -i -E "s|filter f_openobserve_output \{ level\(\w+..emerg\) \};|filter f_ope
 # Generate the openobeserve destinations
 CONFIG="//etc/syslog-ng/includes/destinations/hosts.conf"
 bashio::log.info "Configuring openobserve destinations..."
-echo '{"hostname": `hostname -I`}' | 
+echo '{".hostname": `hostname -I`}' | 
     tempio \
         -conf /data/options.json \
         -template /usr/share/tempio/openobserve_destinations.config \
