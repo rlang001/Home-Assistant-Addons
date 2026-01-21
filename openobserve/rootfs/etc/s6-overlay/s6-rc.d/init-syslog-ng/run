@@ -66,7 +66,7 @@ bashio::log.info "Configuring openobserve destinations..."
 
 # Add the host ip
 jq --arg hostname $hostname '. + {"hostname": $hostname}' /data/options.json > /data/options.json.tmp
-mv /data/options.json.tmp /data/options.json`.
+#mv /data/options.json.tmp /data/options.json`.
 
 tempio \
     -conf /data/options.json \
