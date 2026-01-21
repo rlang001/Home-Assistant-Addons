@@ -64,7 +64,7 @@ CONFIG="//etc/syslog-ng/includes/destinations/hosts.conf"
 bashio::log.info "Configuring openobserve destinations..."
 
 # Add the host ip
-jq '. + {"hostname": "`hostname =I`"}' /data/options.json > /data/options.json.tmpi
+jq '. + {"hostname": `hostname -I`}' /data/options.json > /data/options.json.tmpi
 
 # && mv /data/options.json.tmp /data/options.json`.
 
