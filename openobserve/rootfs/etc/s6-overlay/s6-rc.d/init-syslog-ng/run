@@ -65,9 +65,8 @@ CONFIG="//etc/syslog-ng/includes/destinations/hosts.conf"
 bashio::log.info "Configuring openobserve destinations..."
 
 # Add the host ip
-jq --arg hostname $hostname '. + {"hostname": $hostname}' /data/options.json > /data/options.json.tmpi
-
-# && mv /data/options.json.tmp /data/options.json`.
+jq --arg hostname $hostname '. + {"hostname": $hostname}' /data/options.json > /data/options.json.tmp
+mv /data/options.json.tmp /data/options.json`.
 
 tempio \
     -conf /data/options.json \
@@ -90,9 +89,6 @@ tempio \
     -conf /data/options.json \
     -template /usr/share/tempio/openobserve_filters.config \
     -out "${CONFIG}"
-
-
-
 #
 # Generate the log outputs
 #
