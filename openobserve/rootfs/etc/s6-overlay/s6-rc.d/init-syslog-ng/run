@@ -20,7 +20,7 @@ FILE_LOG_LEVEL="$(bashio::config 'file_log_level')"
 USER="$(bashio::config 'username')"
 PASSWORD="$(bashio::config 'password')"
 
-hostname=`hostname-I`
+hostname=`hostname -I`
 
 # Table to convert config file entries to syslog=ng.conf entries
 
