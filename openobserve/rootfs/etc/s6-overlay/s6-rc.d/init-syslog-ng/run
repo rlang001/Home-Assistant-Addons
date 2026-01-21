@@ -20,6 +20,7 @@ FILE_LOG_LEVEL="$(bashio::config 'file_log_level')"
 USER="$(bashio::config 'username')"
 PASSWORD="$(bashio::config 'password')"
 
+hostname=`hostname-I`
 
 # Table to convert config file entries to syslog=ng.conf entries
 
@@ -64,7 +65,7 @@ CONFIG="//etc/syslog-ng/includes/destinations/hosts.conf"
 bashio::log.info "Configuring openobserve destinations..."
 
 # Add the host ip
-#jq '. + {"hostname": `hostname -I`}' /data/options.json > /data/options.json.tmpi
+jq --arg hostname $hostname '. + {"hostname": $hostname}' /data/options.json > /data/options.json.tmpi
 
 # && mv /data/options.json.tmp /data/options.json`.
 
