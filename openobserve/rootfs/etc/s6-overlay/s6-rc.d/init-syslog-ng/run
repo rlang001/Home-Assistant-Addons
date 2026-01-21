@@ -64,7 +64,9 @@ CONFIG="//etc/syslog-ng/includes/destinations/hosts.conf"
 bashio::log.info "Configuring openobserve destinations..."
 
 # Add the host ip
-jq '. + {"new_key": "new_value"}' /data/options.json > /data/options.json.tmp && mv /data/options.json.tmp /data/options.json`.
+jq '. + {"new_key": "new_value"}' /data/options.json > /data/options.json.tmpi
+
+# && mv /data/options.json.tmp /data/options.json`.
 
 tempio \
     -conf /data/options.json \
