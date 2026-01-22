@@ -19,14 +19,22 @@ Syslog-ng built in to collect syslog data from your devices for ingestion into O
 
 ### Options
 
-**User name:**  Admin user 
+**User name:**  Admin user
+
 **Password:** Admin password 
+
 **Log Level:** Default syslog log level 
+
 **Hosts:** 
+
 **File Logging:** 
+
 **File Rotation:** 
+
 ***Fuile Rotations:*** 
+
 **File Rotation Size:** 
+
 **File Log level:** 
 
 
