@@ -61,12 +61,12 @@ sed -i -E "s|filter f_file_output \{ level\(\w+..emerg\) \};|filter f_file_outpu
 sed -i -E "s|filter f_openobserve_output \{ level\(\w+..emerg\) \};|filter f_openobserve_output { level\(${openobserve_level}..emerg\) \};|g" /etc/syslog-ng/includes/filters/base.conf
 
 # Generate the openobeserve destinations
-CONFIG="//etc/syslog-ng/includes/destinations/hosts.conf"
+CONFIG="/etc/syslog-ng/includes/destinations/hosts.conf"
 bashio::log.info "Configuring openobserve destinations..."
 
-# Add the host ip
+# Add the host ip to the options
 jq --arg hostname $hostname '. + {"hostname": $hostname}' /data/options.json > /data/options.json.tmp
-mv /data/options.json.tmp /data/options.json
+cp /data/options.json.tmp /data/options.json
 
 tempio \
     -conf /data/options.json \
@@ -83,7 +83,7 @@ sed -i -E "s|password\(\"\S+|password(\"${PASSWORD}\")|g" /etc/syslog-ng/include
 #
 # Generate the openobserve filters
 #
-CONFIG="//etc/syslog-ng/includes/filters/hosts.conf"
+CONFIG="/etc/syslog-ng/includes/filters/hosts.conf"
 bashio::log.info "Configuring openobserve filters..."
 tempio \
     -conf /data/options.json \
@@ -92,7 +92,7 @@ tempio \
 #
 # Generate the log outputs
 #
-CONFIG="//etc/syslog-ng/includes/logs/hosts.conf"
+CONFIG="/etc/syslog-ng/includes/logs/hosts.conf"
 bashio::log.info "Configuring openobserve logs..."
 tempio \
     -conf /data/options.json \
