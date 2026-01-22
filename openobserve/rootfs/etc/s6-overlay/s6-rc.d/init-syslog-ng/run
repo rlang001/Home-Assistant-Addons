@@ -60,10 +60,9 @@ sed -i -E "s|filter f_file_output \{ level\(\w+..emerg\) \};|filter f_file_outpu
 # Set the openobserve overall logging level
 sed -i -E "s|filter f_openobserve_output \{ level\(\w+..emerg\) \};|filter f_openobserve_output { level\(${openobserve_level}..emerg\) \};|g" /etc/syslog-ng/includes/filters/base.conf
 
-
-# Add the host ip to the options
-jq --arg hostname $hostname '. + {"hostname": $hostname}' /data/options.json > /data/options.json.tmp
-cp /data/options.json.tmp /data/options.json
+# Add the host ip to the options - deprecated
+# jq --arg hostname $hostname '. + {"hostname": $hostname}' /data/options.json > /data/options.json.tmp
+# cp /data/options.json.tmp /data/options.json
 
 # Generate the openobeserve destinations
 CONFIG="/etc/syslog-ng/includes/destinations/hosts.conf"
