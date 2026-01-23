@@ -2,7 +2,7 @@ name: OpenObserve
 version: 0.3.24
 slug: openobserve
 description: OpenObserve HA Add-on
-stage: experimental
+stage: stable
 startup: application
 # startup: services
 init: false
@@ -12,7 +12,7 @@ legacy: true
 arch:
   - amd64
 
-panel_icon: mdi:math-log
+panel_icon: open-openobserve.png
 panel_admin: false
 
 ingress: false
