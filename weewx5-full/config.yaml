@@ -1,7 +1,7 @@
-name: WeeWX 5n
+name: WeeWX 5-full
 version: 0.6.76
 slug: weewx5n
-description: WeeWX 5n HA Add-on
+description: WeeWX 5 Full HA Add-on
 stage: experimental
 startup: application
 init: false
