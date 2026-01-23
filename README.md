@@ -9,7 +9,6 @@ My repository with Add-ons for the [Home Assistant (former Hass.io) system](http
 * OpenWebRX - OpenWebRX as an addon **(Experimental)**
 * SDRMR -
 * addsb-multi-portal-feeder
-* apache - mimimal apached server.
 * automatic11 -
 * debian_base - Debian docker image.  Useful as a base for addon development. **(Stable)**
 * example - addon example
@@ -30,6 +29,7 @@ My repository with Add-ons for the [Home Assistant (former Hass.io) system](http
 * WebSDR -
 * WeeWX-HA - WeeWX 4 as an addon **(Stable)**
 * WeeWX5 - WeeWX 5 as an addon.  **(Stable)**
+* WeeWX5-Full - WeeWX 5 as an addon.  **(Experimental)**
 * zonemindder - Zoneminder as an addon.  **(Experimental)**
 
 More about the Add-ons can be found in their folders.
