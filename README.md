@@ -9,10 +9,9 @@ My repository with Add-ons for the [Home Assistant (former Hass.io) system](http
 * OpenWebRX - OpenWebRX as an addon **(Experimental)**
 * SDRMR -
 * addsb-multi-portal-feeder
-* automatic11 -
 * debian_base - Debian docker image.  Useful as a base for addon development. **(Stable)**
 * example - addon example
-* keeweb - 
+* keeweb - KeePass web addon **(Experimental)**
 * noaa -
 * openwebrx-plus **(Stable)**
 * openobserve - Openobserve Observabilty platform with syslog-ng built-in. **(Stable)** 
