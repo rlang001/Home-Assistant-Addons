@@ -4,12 +4,13 @@ FROM $BUILD_FROM
 ENV TZ=UTC
 
 #ENV WEEWX_ROOT=/etc/weewx
-ENV WEECTL="weectl"
 #ENV DEFAULT_CONFIG_FILE="/root/weewx-temp.conf"
+
+ENV WEECTL="weectl"
 ENV INITIAL_CONFIG_FILE="/root/weewx-data/weewx.conf"
-#ENV MQTTSUBSCRIBE_VERSION="2.3.1"
 ENV MQTTSUBSCRIBE_VERSION="3.0.0"
 ENV NWS_VERSION="4.5.5"
+
 # Needed for MQTTSubscribe service 
 ENV RUN_MODE="driver"          
 
@@ -123,8 +124,7 @@ RUN rm -fr \
 COPY rootfs /
 
 
-# WeeWX and NGinx are started by the s6-overlay
-
+# WeeWX and NGinx are now started by the s6-overlay
 ########################################################
 # Modify the existing /run.sh file
 ########################################################
