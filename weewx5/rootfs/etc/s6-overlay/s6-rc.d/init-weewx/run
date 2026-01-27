@@ -30,3 +30,7 @@ cp -n -r /root/weewx-data/bin/user/*.py /config/bin/user
 
 # Make the database directory if needed
 mkdir -p /config/dbs
+
+# Get the weewx version
+source ~/weewx-venv/bin/activate
+VERSION=`weewxd --version`
