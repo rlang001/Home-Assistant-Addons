@@ -32,5 +32,10 @@ cp -n -r /root/weewx-data/bin/user/*.py /config/bin/user
 mkdir -p /config/dbs
 
 # Get the weewx version
-source ~/weewx-venv/bin/activate
-VERSION=`weewxd --version`
+source ~/weewx-venv/bin/activate; VERSION=`weewxd --version`
+
+# Set it in the config file
+sed -i "s| version = .*$ | version = $VERSION |" ${WEEWX_CFG}
+
+
+
