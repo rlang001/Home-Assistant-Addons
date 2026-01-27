@@ -35,7 +35,7 @@ mkdir -p /config/dbs
 source ~/weewx-venv/bin/activate; VERSION=`weewxd --version`; deactivate
 
 # Set it in the config file
-sed -i "s| version = .*$ | version = $VERSION |" ${WEEWX_CFG}
+sed -i "s|version = .*$|version = $VERSION|" ${WEEWX_CFG}
 
 
 
