@@ -15,10 +15,13 @@ RUN apt-get update && apt-get -y upgrade
 # SDR Stuff
 #########################################################
 # install rtl_433
-RUN apt-get install -y rtl-433
-
 # Install the USB library
-RUN apt-get install -y libusb-1.0-0
+
+# apt-get install -y librtlsdr0 libssl1.1 libsoapysdr0.7
+# apt-get install -y rtl-sdr openssl soapysdr-tools
+
+RUN apt-get install -y rtl-433 libusb-1.0-0
+    
 
 
 #########################################################
