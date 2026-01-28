@@ -28,27 +28,27 @@ SDR1_CONFIG=$(bashio::config 'rtl_433_sdr1_conf_file')
 SDR2_ENABLE=$(bashio::config 'sdr2_enable')
 SDR2_CONFIG=$(bashio::config 'rtl_433_sdr2_conf_file')
 
-
-
 # Auto discovery
 HA_DISCOVERY=$(bashio::config 'ha_discovery')
 DISCOVERY_LOG_LEVEL=$(bashio::config 'discovery_log_level')
 
 
-
 if ${SDR0_ENABLE}; then
-    bashio::log.info "Starting SD0 using /config/"${SDR0_CONFIG}
-    exec /usr/local/bin/rtl_433 -c "/config/"${SDR0_CONFIG} &
+    bashio::log.info "Starting SDR0 using /config/"${SDR0_CONFIG}
+    # exec /usr/local/bin/rtl_433 -c "/config/"${SDR0_CONFIG} &
+    exec /usr/bin/rtl_433 -c "/config/"${SDR0_CONFIG} &
 fi
 
 if ${SDR1_ENABLE}; then
-    bashio::log.info "Starting SD1 using /config/"${SDR1_CONFIG}
+    bashio::log.info "Starting SDR1 using /config/"${SDR1_CONFIG}
     exec /usr/local/bin/rtl_433 -c "/config/"${SDR1_CONFIG} & 
+    exec /usr/bin/rtl_433 -c "/config/"${SDR1_CONFIG} & 
 fi
 
 if ${SDR2_ENABLE}; then
-    bashio::log.info "Starting SD2 using /config/"${SDR2_CONFIG}
+    bashio::log.info "Starting SDR2 using /config/"${SDR2_CONFIG}
     exec /usr/local/bin/rtl_433 -c "/config/"${SDR2_CONFIG} &
+    exec /usr/bin/rtl_433 -c "/config/"${SDR2_CONFIG} &
 fi
 
 
