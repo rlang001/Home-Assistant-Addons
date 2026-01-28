@@ -35,29 +35,23 @@ DISCOVERY_LOG_LEVEL=$(bashio::config 'discovery_log_level')
 
 if ${SDR0_ENABLE}; then
     bashio::log.info "Starting SDR0 using /config/"${SDR0_CONFIG}
-    # exec /usr/local/bin/rtl_433 -c "/config/"${SDR0_CONFIG} &
     exec /usr/bin/rtl_433 -c "/config/"${SDR0_CONFIG} &
 fi
 
 if ${SDR1_ENABLE}; then
     bashio::log.info "Starting SDR1 using /config/"${SDR1_CONFIG}
-    exec /usr/local/bin/rtl_433 -c "/config/"${SDR1_CONFIG} & 
     exec /usr/bin/rtl_433 -c "/config/"${SDR1_CONFIG} & 
 fi
 
 if ${SDR2_ENABLE}; then
     bashio::log.info "Starting SDR2 using /config/"${SDR2_CONFIG}
-    exec /usr/local/bin/rtl_433 -c "/config/"${SDR2_CONFIG} &
     exec /usr/bin/rtl_433 -c "/config/"${SDR2_CONFIG} &
 fi
 
 
 if ${HA_DISCOVERY}; then
-
     bashio::log.info "Starting Home Assistant discovery..."
-    python3 -u /root/rtl_433_mqtt_hass.py -l ${DISCOVERY_LOG_LEVEL} &
-    
+    python3 -u /root/rtl_433_mqtt_hass.py -l ${DISCOVERY_LOG_LEVEL} & 
 fi
-
 
 sleep infinity
