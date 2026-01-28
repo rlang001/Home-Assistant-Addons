@@ -10,11 +10,11 @@ RUN apt-get update
 #    librtlsdr-dev libssl-dev rtl-sdr build-essential cmake pkg-config  git
 
 RUN apt-get install -y software-properties-common rtl-sdr wget python3.12 \
-    python3-paho-mqtt python3-yaml
+    python3-paho-mqtt python3-yaml rtl-433
 
 WORKDIR /root
 
-#########################################################
+##########################################rtl_433###############
 # Copy data for add-on to docker fs
 #########################################################
 COPY rootfs /
