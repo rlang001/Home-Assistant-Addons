@@ -3,14 +3,14 @@ FROM $BUILD_FROM
 
 ENV TZ=UTC
 
-RUN apt-get update
+RUN apt-get update  && apt-get -y upgrade
 
 # install build system
 # RUN apt-get install -y software-properties-common libtool libusb-1.0-0-dev \
 #    librtlsdr-dev libssl-dev rtl-sdr build-essential cmake pkg-config  git
 
-RUN apt-get install -y software-properties-common rtl-sdr wget python3.12 \
-    python3-paho-mqtt python3-yaml rtl-433
+#RUN apt-get install -y software-properties-common rtl-sdr wget python3.12 \
+#    python3-paho-mqtt python3-yaml rtl-433
 
 WORKDIR /root
 
