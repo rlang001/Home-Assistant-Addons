@@ -1,5 +1,5 @@
 name: rtl433_2_mqtt
-version: 1.0.2
+version: 1.0.3
 slug: rtl433_2_mqtt
 description: rtl433_2_mqtt Add-on
 url: https://github.com/rlang001/Home-Assistant-Addons/edit/master/rtl433_2_mqtt
