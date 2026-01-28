@@ -11,7 +11,7 @@ RUN apt-get update  && apt-get -y upgrade
 #RUN apt-get install -y software-properties-common rtl-sdr wget python3.12 \
 #    python3-paho-mqtt python3-yaml rtl-433
 
-RUN apt-get install -y rtl-sdr wget rtl-433 python3.12 python3-paho-mqtt python3-yaml
+RUN apt-get install -y rtl-sdr wget rtl-433 python3 python3-paho-mqtt python3-yaml
 
 
 WORKDIR /root
