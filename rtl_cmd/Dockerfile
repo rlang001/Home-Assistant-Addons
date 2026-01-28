@@ -3,7 +3,7 @@ FROM $BUILD_FROM
 
 ENV LANG C.UTF-8
 
-RUN apt-get update && apt-get -y upgrade
+#RUN apt-get update && apt-get -y upgrade
 
 #########################################################
 # Development stuff.  Not needed for operation
@@ -20,7 +20,7 @@ RUN apt-get update && apt-get -y upgrade
 # apt-get install -y librtlsdr0 libssl1.1 libsoapysdr0.7
 # apt-get install -y rtl-sdr openssl soapysdr-tools
 
-RUN apt-get install -y rtl-433 libusb-1.0-0
+#RUN apt-get install -y rtl-433 libusb-1.0-0
     
 
 
