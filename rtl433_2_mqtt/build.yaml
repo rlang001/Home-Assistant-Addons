@@ -1,12 +1,24 @@
+#build_from:
+#  aarch64: ghcr.io/hassio-addons/ubuntu-base/aarch64:10.0.1
+#  amd64: ghcr.io/hassio-addons/ubuntu-base/amd64:10.0.1
+#  armv7: ghcr.io/hassio-addons/ubuntu-base/armv7:10.0.1
+#  i386: ghcr.io/hassio-addons/ubuntu-basei386-base:latest
+
+
 build_from:
-  aarch64: ghcr.io/hassio-addons/ubuntu-base/aarch64:10.0.1
-  amd64: ghcr.io/hassio-addons/ubuntu-base/amd64:10.0.1
-  armv7: ghcr.io/hassio-addons/ubuntu-base/armv7:10.0.1
+  aarch64: ghcr.io/hassio-addons/ubuntu-base/aarch64:latest
+  #aarch64: ghcr.io/hassio-addons/ubuntu-base/aarch64:11.0.0
+  amd64: ghcr.io/hassio-addons/ubuntu-base/amd64:latest
+  #amd64: ghcr.io/hassio-addons/ubuntu-base/amd64:11.0.0
+  armv7: ghcr.io/hassio-addons/ubuntu-base/armv7:latest
+  #armv7: ghcr.io/hassio-addons/ubuntu-base/armv7:11.0.0
   i386: ghcr.io/hassio-addons/ubuntu-basei386-base:latest
+  #i386: ghcr.io/hassio-addons/ubuntu-basei386-base:11.0.0
+
 
 labels:
-  org.opencontainers.image.title: "Home Assistant Add-on: Ubuntu base"
-  org.opencontainers.image.description: "umbutu"
+  org.opencontainers.image.title: "Home Assistant Add-on: RTL-433-2-MQTT"
+  org.opencontainers.image.description: "Ubuntu"
   org.opencontainers.image.source: https://
   org.opencontainers.image.licenses: Apache License 2.0
 
