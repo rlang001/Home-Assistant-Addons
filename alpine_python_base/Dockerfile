@@ -3,7 +3,7 @@ FROM $BUILD_FROM
 
 ENV TZ=UTC
 
-RUN apk add --no-cache --update
+RUN apk add --no-cache --update 
 
 #########################################################
 # Copy data for add-on to docker fs
