@@ -1,1 +1,38 @@
 
+name: Alpine_base
+version: 0.0.1
+slug: alpine_base
+description: Alpine HA Add-on
+stage: experimental
+startup: application
+init: false
+
+legacy: true
+
+arch:
+  - i386
+
+#panel_icon: mdi:log
+panel_admin: false
+
+# full_access: true
+#devices:
+#  - /dev/ttyS0
+#  - /dev/ttyS1
+
+#ingress: true
+#ingress_port: 8099
+
+#map:
+#  - addon_config:rw
+#  - share
+#  - ssl
+# - homeassistant_config
+# - addon_config
+# - ssl
+# - addons
+# - backup
+# - share
+# - media
+# - all_addon_configs
+# - data.
