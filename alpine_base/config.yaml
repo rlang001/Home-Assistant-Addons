@@ -1,6 +1,6 @@
 
 name: Alpine_base
-version: 0.0.1
+version: 0.0.2
 slug: alpine_base
 description: Alpine HA Add-on
 stage: experimental
