@@ -8,13 +8,15 @@ cp --update=none /root/config.yaml /config
 
 ## Copy the config files if they don't exist
 # cp -n /root/rtl_433.sdr0.conf /config
-cp --update=none /root/rtl_433.sdr0.conf /config
+cp /root/rtl_433_sdr+exmaple.conf /config
+
+cp --update=none /root/rtl_433_sdr0.conf /config
 
 # cp -n /root/rtl_433.sdr1.conf /config
-cp --update=none /root/rtl_433.sdr1.conf /config
+cp --update=none /root/rtl_433_sdr1.conf /config
 
 # cp -n /root/rtl_433.sdr2.conf /config
-cp --update=none /root/rtl_433.sdr2.conf /config
+cp --update=none /root/rtl_433_sdr2.conf /config
 
 # Get the options
 
