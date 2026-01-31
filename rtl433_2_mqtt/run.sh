@@ -8,7 +8,7 @@ cp --update=none /root/config.yaml /config
 
 ## Copy the config files if they don't exist
 # cp -n /root/rtl_433.sdr0.conf /config
-cp /root/rtl_433_sdr_exmaple.conf /config
+cp /root/rtl_433_sdr_example.conf /config
 
 cp --update=none /root/rtl_433_sdr0.conf /config
 
