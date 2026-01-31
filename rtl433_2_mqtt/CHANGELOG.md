@@ -1,3 +1,6 @@
+## 1.1.0
+- Initial stable release
+  
 ## 0.3.6
 - Added mappings for freq, freq1, freq2
 
