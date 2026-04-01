@@ -12,6 +12,10 @@ arch:
   - aarch64
   - amd64
 
+#  - armhf - Deprecated
+#  - armv7 - Deprecated
+#  - i386 - Deprecated
+
 #panel_icon: mdi:log
 panel_admin: false
 
