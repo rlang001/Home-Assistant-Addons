@@ -9,7 +9,8 @@ init: false
 legacy: true
 
 arch:
-  - i386
+  - aarch64
+  - amd64
 
 #panel_icon: mdi:log
 panel_admin: false
