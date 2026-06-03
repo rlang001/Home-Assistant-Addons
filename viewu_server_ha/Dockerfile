@@ -3,5 +3,5 @@ FROM $BUILD_FROM
 
 WORKDIR /app
 COPY rootfs /
-# ENTRYPOINT [ "/sbin/tini", "--", "/docker-entrypoint.sh"]
-ENTRYPOINT [ "/docker-entrypoint.sh"]
+ENTRYPOINT [ "/sbin/tini", "--", "/docker-entrypoint.sh"]
+
