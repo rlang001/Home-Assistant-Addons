@@ -30,13 +30,13 @@ environment:
 
 options:
   host: 192.168.10.9
-  username: "mqtt"
+  user: "mqtt"
   password: "Sadi3Bail33"
   port: 1883
 
 schema:
   host: str
-  username: str
+  user: str
   password: str
   port: int
   
