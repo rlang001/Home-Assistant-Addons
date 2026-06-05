@@ -22,16 +22,16 @@ discovery:
   - mqtt
 
 options:
-  mqtt_ip: 127.0.0.1
-  mqtt_username: "mqtt_user"
-  mqtt_password: "mqtt_password"
-  mqtt_port: 1883
+  host: 127.0.0.1
+  username: "mqtt_user"
+  password: "mqtt_password"
+  port: 1883
 
 schema:
-  mqtt_ip: str
-  mqtt_username: str
-  mqtt_password: str
-  mqtt_port: int
+  host: str
+  username: str
+  password: str
+  port: int
   
 
 services:
