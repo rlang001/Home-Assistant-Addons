@@ -7,7 +7,7 @@ FROM mjeoffline/viewu:amd64_0.2.9
 #RUN chmod +x /sbin/tini
 
 #WORKDIR /app
-COPY --chmod=0755 rootfs/docker-entrypoint.sh /
+COPY --chmod=0755 docker-entrypoint.sh /
 
 #ENTRYPOINT [ "/sbin/tini", "--", "/docker-entrypoint.sh"]
 
