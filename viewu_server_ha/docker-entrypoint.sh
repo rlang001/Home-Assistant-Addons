@@ -7,33 +7,33 @@ bashio::log.info "Preparing to start..."
 # Workaround for:
 # - https://github.com/home-assistant/supervisor/issues/3884
 # - https://github.com/zigbee2mqtt/hassio-zigbee2mqtt/issues/387
-bashio::config.require 'data_path'
+# bashio::config.require 'data_path'
 
-function export_config() {
-    local key=${1}
-    local subkey
+#function export_config() {
+#    local key=${1}
+#    local subkey
 
-    if bashio::config.is_empty "${key}"; then
-        return
-    fi
+#    if bashio::config.is_empty "${key}"; then
+#        return
+#    fi
 
-    for subkey in $(bashio::jq "$(bashio::config "${key}")" 'keys[]'); do
-        export "MQTT_$(bashio::string.upper "${key}")_$(bashio::string.upper "${subkey}")=$(bashio::config "${key}.${subkey}")"
-    done
+#    for subkey in $(bashio::jq "$(bashio::config "${key}")" 'keys[]'); do
+#        export "MQTT_$(bashio::string.upper "${key}")_$(bashio::string.upper "${subkey}")=$(bashio::config "${key}.${subkey}")"
+#    done
 }
 
-export_config 'mqtt'
+#export_config 'mqtt'
 
-if bashio::config.is_empty 'mqtt' && bashio::var.has_value "$(bashio::services 'mqtt')"; then
-    if bashio::var.true "$(bashio::services 'mqtt' 'ssl')"; then
-        export MQTT_IP="mqtts://$(bashio::services 'mqtt' 'host')"
-    else
-        export MQTT_IP="mqtt://$(bashio::services 'mqtt' 'host')"
-    fi
-    export MQTT_PORT="$(bashio::services 'mqtt' 'port')"
-    export MQTT_USER="$(bashio::services 'mqtt' 'user')"
-    export MQTT_PASSWORD="$(bashio::services 'mqtt' 'password')"
-fi
+#if bashio::config.is_empty 'mqtt' && bashio::var.has_value "$(bashio::services 'mqtt')"; then
+#    if bashio::var.true "$(bashio::services 'mqtt' 'ssl')"; then
+#        export MQTT_IP="mqtts://$(bashio::services 'mqtt' 'host')"
+#    else
+#        export MQTT_IP="mqtt://$(bashio::services 'mqtt' 'host')"
+#    fi
+#    export MQTT_PORT="$(bashio::services 'mqtt' 'port')"
+#    export MQTT_USER="$(bashio::services 'mqtt' 'user')"
+#    export MQTT_PASSWORD="$(bashio::services 'mqtt' 'password')"
+#fi
 
 bashio::log.info "Starting Viewu Server..."
 cd /usr/local/bin/
