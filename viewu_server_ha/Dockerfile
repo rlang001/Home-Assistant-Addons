@@ -1,6 +1,7 @@
 
 ARG BUILD_FROM
-FROM mjeoffline/viewu:amd64_0.3.5
+FROM mjeoffline/viewu:amd64_3.5
+     
 
 #ENV TINI_VERSION=v0.19.0
 #ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /sbin
