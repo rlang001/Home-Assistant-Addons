@@ -1,3 +1,4 @@
+---
 name: Viewu Server
 version: 0.1.5
 slug: viewu_server
@@ -5,6 +6,7 @@ description: A Viewu Server in Home Assistant Add-on form.
 stage: alpha
 startup: application
 init: false
+
 # legacy: true
 url: https://github.com/rlang001/Home-Assistant-Addons/edit/master/viewu_server_ha
 
