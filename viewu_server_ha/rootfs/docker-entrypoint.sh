@@ -36,4 +36,5 @@ fi
 
 bashio::log.info "Starting Viewu Server..."
 cd /usr/local/bin/
-exec sh -c viewu_server $MQTT_SERVER $MQTT_PORT $MQTT_USER $MQTT_PASSWORD
+#exec sh -c viewu_server $MQTT_SERVER $MQTT_PORT $MQTT_USER $MQTT_PASSWORD
+exec sh -c viewu_server 192.168.10.9 1883 mqty Sadi3Bail33
