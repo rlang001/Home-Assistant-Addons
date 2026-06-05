@@ -25,12 +25,12 @@ export_config 'mqtt'
 
 if bashio::config.is_empty 'mqtt' && bashio::var.has_value "$(bashio::services 'mqtt')"; then
     if bashio::var.true "$(bashio::services 'mqtt' 'ssl')"; then
-        export MQTT_SERVER="mqtts://$(bashio::services 'mqtt' 'host')"
+        export MQTT_IP="mqtts://$(bashio::services 'mqtt' 'host')"
     else
-        export MQTT_SERVER="mqtt://$(bashio::services 'mqtt' 'host')"
+        export MQTT_IP="mqtt://$(bashio::services 'mqtt' 'host')"
     fi
     export MQTT_PORT="$(bashio::services 'mqtt' 'port')"
-    export MQTT_USER="$(bashio::services 'mqtt' 'username')"
+    export MQTT_USER="$(bashio::services 'mqtt' 'user')"
     export MQTT_PASSWORD="$(bashio::services 'mqtt' 'password')"
 fi
 
