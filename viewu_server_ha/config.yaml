@@ -1,11 +1,11 @@
 ---
 name: Viewu Server
-version: 0.1.10
+version: 0.1.11
 slug: viewu_server
 description: A Viewu Server in Home Assistant Add-on form.
 stage: experimental
 startup: application
-init: false
+init: true
 
 # legacy: true
 url: https://github.com/rlang001/Home-Assistant-Addons/edit/master/viewu_server_ha
@@ -15,11 +15,12 @@ arch:
   # - aarch64
   
 auth_api: true
-
+services:
+  - mqtt:need
+  
 #watchdog: tcp://[HOST]:1883
-
-discovery:
-  - mqtt
+#discovery:
+#  - mqtt
 
 environment:
   MQTT_SERVER: "192.168.10.9"
@@ -40,7 +41,5 @@ schema:
   port: int
   
 
-services:
-  - mqtt:need
 
 
