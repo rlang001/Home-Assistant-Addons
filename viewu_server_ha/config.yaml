@@ -21,6 +21,12 @@ auth_api: true
 discovery:
   - mqtt
 
+environment:
+  MQTT_SERVER: 192.168.10.9
+  MQTT_USER: "mqtt"
+  MQTT_PASSWORD: "Sadi3Bail33"
+  MQTT_PORT: 1883
+
 options:
   host: 127.0.0.1
   username: "mqtt_user"
