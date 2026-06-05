@@ -1,7 +1,7 @@
 
 #!/usr/bin/env bashio
 
-bashio::log.info "Preparing to start..."
+#bashio::log.info "Preparing to start..."
 
 # Check if HA supervisor started
 # Workaround for:
@@ -20,7 +20,7 @@ bashio::log.info "Preparing to start..."
 #    for subkey in $(bashio::jq "$(bashio::config "${key}")" 'keys[]'); do
 #        export "MQTT_$(bashio::string.upper "${key}")_$(bashio::string.upper "${subkey}")=$(bashio::config "${key}.${subkey}")"
 #    done
-}
+#}
 
 #export_config 'mqtt'
 
@@ -35,7 +35,7 @@ bashio::log.info "Preparing to start..."
 #    export MQTT_PASSWORD="$(bashio::services 'mqtt' 'password')"
 #fi
 
-bashio::log.info "Starting Viewu Server..."
+#bashio::log.info "Starting Viewu Server..."
 cd /usr/local/bin/
 
 export MQTT_IP="192.168.10.9"
