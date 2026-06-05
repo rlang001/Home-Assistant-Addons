@@ -3,7 +3,7 @@ name: Viewu Server
 version: 0.1.5
 slug: viewu_server
 description: A Viewu Server in Home Assistant Add-on form.
-stage: alpha
+stage: experimental
 startup: application
 init: false
 
