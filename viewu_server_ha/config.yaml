@@ -23,7 +23,7 @@ services:
 #  - mqtt
 
 environment:
-  MQTT_SERVER: "192.168.10.9"
+  MQTT_IP: "192.168.10.9"
   MQTT_PORT: "1883"
   MQTT_USER: "mqtt"
   MQTT_PASSWORD: "Sadie3Bail33"
