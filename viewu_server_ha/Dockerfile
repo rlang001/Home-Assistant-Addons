@@ -8,7 +8,7 @@ ADD --chmod=0755 https://github.com/krallin/tini/releases/download/${TINI_VERSIO
 #RUN ["chmod", "+x", "/sbin/tini"]
 
 #WORKDIR /app
-COPY docker-entrypoint.sh /
+COPY --chmod=0755 docker-entrypoint.sh /
 
 ENTRYPOINT [ "/sbin/tini", "--", "/docker-entrypoint.sh"]
 
