@@ -39,4 +39,4 @@ schema:
 services:
   - mqtt:need
 
-image: mjeoffline/viewu:amd64_0.2.9
+
