@@ -9,7 +9,7 @@ ENV TINI_VERSION=v0.19.0
 ADD --chmod=0755 https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /sbin
 #RUN ["chmod", "+x", "/sbin/tini"]
 
-RUN curl -J -L -o /tmp/bashio.tar.gz "https://github.com/hassio-addons/bashio/archive/${BASHIO_VERSION}.tar.gz"
+# RUN curl -J -L -o /tmp/bashio.tar.gz "https://github.com/hassio-addons/bashio/archive/${BASHIO_VERSION}.tar.gz"
 
 #    && mkdir /tmp/bashio \
 #    && tar zxvf \
