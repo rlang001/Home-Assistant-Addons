@@ -36,7 +36,7 @@
 #fi
 
 #bashio::log.info "Starting Viewu Server..."
-cd /usr/local/bin/
+#cd /usr/local/bin/
 
 export MQTT_IP="192.168.10.9"
 export MQTT_PORT="1883"
