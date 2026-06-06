@@ -1,6 +1,6 @@
 ---
 name: Viewu Server
-version: 0.1.32
+version: 0.1.33
 slug: viewu_server
 description: A Viewu Server in Home Assistant Add-on form.
 stage: experimental
@@ -41,5 +41,6 @@ schema:
   port: int
   
 
-
+map:
+  - addon_config:rw
 
