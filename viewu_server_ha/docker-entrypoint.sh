@@ -44,4 +44,6 @@ export MQTT_USER="mqtt"
 export MQTT_PASSWORD="Sadi3Bail33"
 
 #exec sh -c viewu_server $MQTT_SERVER $MQTT_PORT $MQTT_USER $MQTT_PASSWORD
-exec sh -c viewu_server "192.168.10.9" 1883 "mqtt" "Sadi3Bail33"
+# exec sh -c viewu_server "192.168.10.9" 1883 "mqtt" "Sadi3Bail33"
+exec sh
+
