@@ -40,7 +40,8 @@ options:
   username: root@example.com
   password: "Complexpass#123"
   openobserve_log_level: Warning
-
+  log_retention: 3650
+  
   hosts: []
   
   file_logging: false
@@ -53,6 +54,7 @@ schema:
   username: email
   password: password
   openobserve_log_level: list(Debug|Informational|Notice|Warning|Error|Critical|Alert|Emergency)?
+  log_retention: "int(1,3650)"
   
   hosts:
     - host: str
