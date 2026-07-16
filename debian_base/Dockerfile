@@ -6,7 +6,7 @@ ENV TZ=UTC
 
 RUN apt-get update
 # && apt-get upgrade -y
-RUN apt-get install -y software-properties-common minicom vim 
+RUN apt-get install -y software-properties-common minicom vim v4l-utils
 
 
 #########################################################
